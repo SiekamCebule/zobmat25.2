@@ -1,123 +1,128 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/data/repository/in_memory_distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_selected_distribution_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/toggle_distribution_selection_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distribution_math_functions_data_source.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distributions_data_source.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/repository/in_memory_distribution_filters_repository.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/repository/predefined_distributions_repository.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_filter.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distribution_filters_use_case.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distributions_use_case.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/toggle_distributions_filter_use_case.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/bloc/distributions_catalogue_cubit.dart';
+import 'package:zobmat25_2/feature/navigation/data/data_source/in_memory_navigation_data_source.dart';
+import 'package:zobmat25_2/feature/navigation/data/repositories/in_memory_navigation_repository.dart';
+import 'package:zobmat25_2/feature/navigation/domain/entity/navigation_entry.dart';
+import 'package:zobmat25_2/feature/navigation/domain/use_case/get_navigation_entry_use_case.dart';
+import 'package:zobmat25_2/feature/navigation/domain/use_case/go_to_navigation_entry_index_use_case.dart';
+import 'package:zobmat25_2/feature/navigation/domain/use_case/go_to_navigation_entry_use_case.dart';
+import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
+import 'package:zobmat25_2/feature/navigation/ui/page/dynamic_page.dart';
+import 'package:zobmat25_2/feature/theme/data/repository/in_memory_theme_repository.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
+import 'package:zobmat25_2/feature/theme/domain/use_cases/get_app_theme_use_case.dart';
+import 'package:zobmat25_2/feature/theme/domain/use_cases/toggle_theme_mode_use_case.dart';
+import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
+import 'package:zobmat25_2/feature/theme/ui/flutter_theme_creator.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+  final themeRepository = InMemoryThemeRepository(
+    initialColorScheme: AppColorScheme.blueDefault,
+    initialThemeMode: AppThemeMode.dark,
+  );
+  runApp(
+    BlocProvider(
+      create:
+          (context) => ThemeCubit(
+            getAppThemeUseCase: GetAppThemeUseCase(themeRepository: themeRepository),
+            toggleThemeModeUseCase: ToggleThemeModeUseCase(
+              themeRepository: themeRepository,
             ),
-          ],
-        ),
+          )..initialize(),
+      child: const App(),
+    ),
+  );
+}
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const isRunningWithWasm = bool.fromEnvironment('dart.tool.dart2wasm');
+    debugPrint('App uses WebAssembly: $isRunningWithWasm');
+    final themeState = context.watch<ThemeCubit>().state;
+    late final ThemeData flutterTheme;
+    if (themeState is ThemeInitial) {
+      flutterTheme = ThemeData.light(useMaterial3: true);
+    } else if (themeState is ThemeAvaiable) {
+      flutterTheme = FlutterThemeCreator().createFlutterTheme(themeState.theme);
+    }
+    final navigationRepository = InMemoryNavigationRepository(
+      dataSource: InMemoryNavigationDataSourceImpl(initial: NavigationEntry.home),
+    );
+    final distributionsRepository = PredefinedDistributionsRepository(
+      distributionsDataSource: PredefinedDistributionsDataSourceImpl(),
+      mathFunctionsDataSource: PredefinedDistributionMathFunctionsDataSourceImpl(),
+    );
+    final distributionFiltersRepository = InMemoryDistributionFiltersRepository(
+      initialFilters: {DistributionFilter.continuous, DistributionFilter.discrete},
+    );
+    final distributionDashboardRepository = InMemoryDistributionDashboardRepository(
+      initial: null,
+    );
+    return MaterialApp(
+      theme: flutterTheme,
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create:
+                (context) => NavigationCubit(
+                  goToNavigationEntryUseCase: GoToNavigationEntryUseCase(
+                    navigationRepository: navigationRepository,
+                  ),
+                  goToNavigationEntryIndexUseCase: GoToNavigationEntryIndexUseCase(
+                    navigationRepository: navigationRepository,
+                  ),
+                  getNavigationEntryUseCase: GetNavigationEntryUseCase(
+                    navigationRepository: navigationRepository,
+                  ),
+                )..initialize(),
+          ),
+          BlocProvider(
+            create:
+                (context) => DistributionsCatalogueCubit(
+                  getDistributionsUseCase: GetDistributionsUseCase(
+                    distributionsRepository: distributionsRepository,
+                    distributionFiltersRepository: distributionFiltersRepository,
+                  ),
+                  getDistributionFiltersUseCase: GetDistributionFiltersUseCase(
+                    distributionFiltersRepository: distributionFiltersRepository,
+                  ),
+                  toggleDistributionsFilterUseCase: ToggleDistributionsFilterUseCase(
+                    distributionsRepository: distributionsRepository,
+                    distributionFiltersRepository: distributionFiltersRepository,
+                  ),
+                )..initialize(),
+          ),
+          BlocProvider(
+            create:
+                (context) => DistributionDashboardCubit(
+                  getSelectedDistributionUseCase: GetSelectedDistributionUseCase(
+                    distributionDashboardRepository: distributionDashboardRepository,
+                  ),
+                  toggleDistributionSelectionUseCase: ToggleDistributionSelectionUseCase(
+                    distributionDashboardRepository: distributionDashboardRepository,
+                  ),
+                ),
+          ),
+        ],
+        child: DynamicPage(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

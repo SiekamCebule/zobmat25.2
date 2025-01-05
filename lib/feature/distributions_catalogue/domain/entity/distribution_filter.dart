@@ -1,0 +1,1 @@
+enum DistributionFilter { continuous, discrete }
