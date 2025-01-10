@@ -27,11 +27,15 @@ jobs:
     - name: Test connection
       run: curl "https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json"
 
-    - name: Install Flutter
-      uses: subosito/flutter-action@v2
+    - name: Setup Flutter SDK
+      uses: flutter-actions/setup-flutter@v4
       with:
-        flutter-version: 'stable'
-    
+        channel: beta
+        version: 3.28.0-0.1.pre
+
+    - name: Install dependencies
+      run: flutter pub get
+      
     - name: Switch to beta channel
       run: flutter channel beta
     
