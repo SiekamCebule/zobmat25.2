@@ -20,6 +20,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-north-1  # Twój region AWS
 
+    - name: Fix flutter SDK folder permission
+      run: git config --global --add safe.directory /tmp/flutter/--
+
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
