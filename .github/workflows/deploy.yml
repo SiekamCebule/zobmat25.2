@@ -23,7 +23,13 @@ jobs:
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
-          flutter-version: 'beta'  # lub konkretna wersja, np. '3.13.0'
+        flutter-version: 'latest'
+    
+    - name: Switch to beta channel
+      run: flutter channel beta
+    
+    - name: Upgrade Flutter to beta
+      run: flutter upgrade
 
     - name: Build project (optional, if needed)
       run: |
