@@ -26,7 +26,7 @@ jobs:
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: 'latest'
+        flutter-version: '3.28.0-0.1.pre'
     
     - name: Switch to beta channel
       run: flutter channel beta
