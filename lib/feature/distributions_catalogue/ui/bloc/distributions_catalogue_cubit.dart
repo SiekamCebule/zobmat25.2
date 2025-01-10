@@ -16,7 +16,6 @@ class DistributionsCatalogueCubit extends Cubit<DistributionsCatalogueState> {
   final GetDistributionsUseCase getDistributionsUseCase;
   final GetDistributionFiltersUseCase getDistributionFiltersUseCase;
   final ToggleDistributionsFilterUseCase toggleDistributionsFilterUseCase;
-  // TODO: listen to filters repository changes and emit new states.
 
   Future<void> initialize() async {
     final filters = await getDistributionFiltersUseCase();
@@ -36,16 +35,6 @@ class DistributionsCatalogueCubit extends Cubit<DistributionsCatalogueState> {
         distributions: await getDistributionsUseCase(),
       ),
     );
-  }
-
-  @override
-  void onChange(Change<DistributionsCatalogueState> change) {
-    if (change.currentState is DistributionsCatalogueAvailable) {
-      print(
-        'CHANGE IN CUBIT: ${(change.currentState as DistributionsCatalogueAvailable).filters}',
-      );
-    }
-    super.onChange(change);
   }
 }
 

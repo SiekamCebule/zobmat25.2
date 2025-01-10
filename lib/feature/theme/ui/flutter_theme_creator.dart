@@ -22,31 +22,31 @@ class FlutterThemeCreator {
       displayLarge: TextStyle(
         fontFamily: 'Raleway',
         fontSize: 57,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w400,
         color: textColor,
       ),
       displayMedium: TextStyle(
         fontFamily: 'Raleway',
         fontSize: 45,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w400,
         color: textColor,
       ),
       displaySmall: TextStyle(
         fontFamily: 'Raleway',
         fontSize: 36,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w400,
         color: textColor,
       ),
       headlineLarge: TextStyle(
         fontFamily: 'Raleway',
         fontSize: 32,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         color: textColor,
       ),
       headlineMedium: TextStyle(
         fontFamily: 'Raleway',
         fontSize: 28,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         color: textColor,
       ),
       headlineSmall: TextStyle(
@@ -58,7 +58,7 @@ class FlutterThemeCreator {
       titleLarge: TextStyle(
         fontFamily: 'Raleway',
         fontSize: 22,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w400,
         color: textColor,
       ),
       titleMedium: TextStyle(

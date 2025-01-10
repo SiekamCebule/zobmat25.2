@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/data/repository/in_memory_distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_chart_type.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_chart_type_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_parameter_in_setup_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/draw_numbers_by_distribution_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_analysis_setup_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_chart_type_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_params_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_selected_distribution_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/toggle_distribution_selection_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
@@ -73,7 +80,10 @@ class App extends StatelessWidget {
       initialFilters: {DistributionFilter.continuous, DistributionFilter.discrete},
     );
     final distributionDashboardRepository = InMemoryDistributionDashboardRepository(
-      initial: null,
+      initialDistribution: null,
+      initialChartType: DistributionChartType.pdf,
+      initialParamsSetup: null,
+      initialAnalysisSetup: null,
     );
     return MaterialApp(
       theme: flutterTheme,
@@ -118,7 +128,27 @@ class App extends StatelessWidget {
                   toggleDistributionSelectionUseCase: ToggleDistributionSelectionUseCase(
                     distributionDashboardRepository: distributionDashboardRepository,
                   ),
-                ),
+                  getDistributionChartTypeUseCase: GetDistributionChartTypeUseCase(
+                    distributionDashboardRepository: distributionDashboardRepository,
+                  ),
+                  changeDistributionChartTypeUseCase: ChangeDistributionChartTypeUseCase(
+                    distributionDashboardRepository: distributionDashboardRepository,
+                  ),
+                  getDistributionParamsSetupUseCase: GetDistributionParamsSetupUseCase(
+                    distributionDashboardRepository: distributionDashboardRepository,
+                  ),
+                  changeDistributionParameterInSetupUseCase:
+                      ChangeDistributionParameterInSetupUseCase(
+                        distributionDashboardRepository: distributionDashboardRepository,
+                      ),
+                  getDistributionAnalysisSetupUseCase:
+                      GetDistributionAnalysisSetupUseCase(
+                        distributionDashboardRepository: distributionDashboardRepository,
+                      ),
+                  drawNumbersByDistributionUseCase: DrawNumbersByDistributionUseCase(
+                    distributionDashboardRepository: distributionDashboardRepository,
+                  ),
+                )..initialize(),
           ),
         ],
         child: DynamicPage(),

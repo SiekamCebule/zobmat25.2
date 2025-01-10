@@ -20,7 +20,11 @@ class DistributionsCatalogueRail extends StatelessWidget {
       final distributionCards = catalogueState.distributions.map((distribution) {
         bool isSelected = false;
         if (dashboardState is DistributionDashboardDistributionSelected) {
+          //print('SELECTED: ${dashboardState.distribution}');
           isSelected = distribution == dashboardState.distribution;
+          //print(
+          //  'IS IT? $isSelected ($distribution VSSSSSSSSSSSSS ${dashboardState.distribution})',
+          //);
         }
         return DistributionNavigationCard(
           distribution: distribution,
@@ -32,6 +36,9 @@ class DistributionsCatalogueRail extends StatelessWidget {
           },
         );
       });
+      //print(
+      //  'distribution cards selection: ${distributionCards.map((card) => card.isSelected)}',
+      //);
       distributionsListWidget = Padding(
         padding: EdgeInsets.only(left: 5, right: 10),
         child: ScrollConfiguration(
@@ -56,7 +63,6 @@ class DistributionsCatalogueRail extends StatelessWidget {
         (catalogueState is DistributionsCatalogueAvailable)
             ? catalogueState.filters
             : {DistributionFilter.continuous, DistributionFilter.discrete};
-    print('UI: selected filters: $selectedFilters');
     final filterChipsAreEnabled = catalogueState is DistributionsCatalogueAvailable;
 
     return ColoredBox(

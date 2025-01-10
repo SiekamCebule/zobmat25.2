@@ -20,8 +20,9 @@ class PredefinedDistributionsRepository implements DistributionsRepository {
     final distributions = await models.asyncMap((model) async {
       return distributionFromModel(
         model,
-        pdf: await mathFunctionsDataSource.getPdf(model.name),
-        cdf: await mathFunctionsDataSource.getCdf(model.name),
+        pdf: await mathFunctionsDataSource.getPdf(model.id),
+        cdf: await mathFunctionsDataSource.getCdf(model.id),
+        inverseCdf: await mathFunctionsDataSource.getInverseCdf(model.id),
       );
     });
     return distributions.toList();

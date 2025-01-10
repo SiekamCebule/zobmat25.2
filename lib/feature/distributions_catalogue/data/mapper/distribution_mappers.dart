@@ -6,12 +6,15 @@ Distribution distributionFromModel(
   DistributionModel model, {
   required DistributionPdf pdf,
   required DistributionCdf cdf,
+  required DistributionInverseCdf inverseCdf,
 }) {
   return Distribution(
+    id: model.id,
     name: model.name,
     shortDescription: model.shortDescription,
     pdf: pdf,
     cdf: cdf,
+    inverseCdf: inverseCdf,
     type: model.type,
     parameters: model.parameters,
     extendedDescription: model.extendedDescription,

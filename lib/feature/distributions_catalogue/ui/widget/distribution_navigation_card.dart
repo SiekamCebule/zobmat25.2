@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zobmat25_2/config/distribution_image_urls.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_type_label_widget.dart';
 
 class DistributionNavigationCard extends StatelessWidget {
   const DistributionNavigationCard({
@@ -19,8 +20,9 @@ class DistributionNavigationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     const borderRadius = 12.0;
     final imagePath =
-        'assets/distribution_images/${distributionImageUrls[distribution.name]}';
+        'assets/distribution_images/${distributionImageUrls[distribution.id]}';
     return Card(
+      elevation: 1.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
       color:
           isSelected
@@ -28,25 +30,45 @@ class DistributionNavigationCard extends StatelessWidget {
               : Theme.of(context).colorScheme.surfaceContainer,
       child: InkWell(
         borderRadius: BorderRadius.circular(borderRadius),
-        hoverColor: Theme.of(context).colorScheme.primaryContainer,
-        //focusColor: Theme.of(context).colorScheme.primaryContainer,
+        hoverColor:
+            isSelected
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Theme.of(context).colorScheme.surfaceContainerHighest,
+        focusColor:
+            isSelected
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Theme.of(context).colorScheme.surfaceContainerHighest,
         hoverDuration: Durations.short2,
         onTap: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ClipRRect(
                 clipBehavior: Clip.antiAlias,
                 borderRadius: BorderRadius.circular(5),
-                child: Image.asset(imagePath, height: 100, fit: BoxFit.cover),
+                child: Image.asset(
+                  imagePath,
+                  height: 120,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                ),
               ),
               Gap(10),
-              Text(
-                distribution.name,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.start,
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      distribution.name,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Gap(5),
+                  DistributionTypeLabelWidget(distributionType: distribution.type),
+                  Gap(5),
+                ],
               ),
               Gap(5),
               Text(

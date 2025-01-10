@@ -13,7 +13,6 @@ class ToggleDistributionsFilterUseCase {
 
   Future<void> call(DistributionFilter filter) async {
     final isActive = await distributionFiltersRepository.isActive(filter);
-    print('toggle $filter, $isActive');
     await distributionFiltersRepository.setFilter(filter, !isActive);
   }
 }

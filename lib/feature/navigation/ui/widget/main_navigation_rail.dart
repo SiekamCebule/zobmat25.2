@@ -27,7 +27,9 @@ class MainNavigationRail extends StatelessWidget {
               backgroundColor: Colors.transparent,
               labelType: NavigationRailLabelType.all,
               unselectedLabelTextStyle: Theme.of(context).textTheme.bodyMedium,
-              selectedLabelTextStyle: Theme.of(context).textTheme.titleSmall,
+              selectedLabelTextStyle: Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w500),
               extended: false,
               destinations: [
                 NavigationRailDestination(

@@ -1,11 +1,11 @@
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_filter.dart';
 
 enum DistributionType {
-  contiunous,
+  continuous,
   discrete;
 
   DistributionFilter toFilter() =>
-      this == DistributionType.contiunous
+      this == DistributionType.continuous
           ? DistributionFilter.continuous
           : DistributionFilter.discrete;
 }

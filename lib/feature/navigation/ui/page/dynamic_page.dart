@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zobmat25_2/config/ui_constants.dart';
+import 'package:zobmat25_2/core/shared_ui/transitions.dart';
+import 'package:zobmat25_2/feature/about/ui/page/about_page.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/page/distributions_catalogue_page.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distributions_catalogue_rail.dart';
 import 'package:zobmat25_2/feature/navigation/domain/entity/navigation_entry.dart';
@@ -65,28 +68,26 @@ class _DynamicPageState extends State<DynamicPage> with SingleTickerProviderStat
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MainNavigationRail(),
-          ClipRect(
-            clipBehavior: Clip.hardEdge,
-            child: SizedBox(
-              width: 350,
-              child: SlideTransition(
-                position: _catalogueMenuSlide,
-                child: DistributionsCatalogueRail(),
+          if (navigationState.entry == NavigationEntry.distributionsCatalogue)
+            ClipRect(
+              clipBehavior: Clip.hardEdge,
+              child: SizedBox(
+                width: UiConstants.catalogueMenuWidth,
+                child: SlideTransition(
+                  position: _catalogueMenuSlide,
+                  child: DistributionsCatalogueRail(),
+                ),
               ),
             ),
-          ),
           Expanded(
             child: AnimatedSwitcher(
-              duration: Durations.medium1,
+              duration: Durations.short3,
               reverseDuration: Duration.zero,
+              transitionBuilder: defaultFadeSlideTransition,
               child: switch (navigationState.entry) {
                 NavigationEntry.home => HomePage(),
                 NavigationEntry.distributionsCatalogue => DistributionsCataloguePage(),
-                //NavigationEntry.about => AboutPage(),
-                _ =>
-                  throw UnsupportedError(
-                    'A page for ${navigationState.entry} has not been implemented yet',
-                  ),
+                NavigationEntry.about => AboutPage(),
               },
             ),
           ),

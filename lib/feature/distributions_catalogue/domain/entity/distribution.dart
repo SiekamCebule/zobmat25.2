@@ -6,20 +6,25 @@ import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distrib
 
 class Distribution extends Equatable {
   const Distribution({
+    required this.id,
     required this.name,
     required this.shortDescription,
     required this.pdf,
     required this.cdf,
+    required this.inverseCdf,
     required this.type,
     required this.parameters,
     required this.extendedDescription,
     required this.applicationsDescription,
   });
 
+  final String id;
   final String name;
   final String shortDescription;
   final DistributionPdf pdf; // f(x), funkcja gęstości prawdopodobieństwa
   final DistributionCdf cdf; // F(x), funkcja rozkładu skumulowanego (dystrybuanta)
+  final DistributionInverseCdf
+  inverseCdf; // F-1(p) funkcja kwantylowa (odwrotna dystrybuanta)
   final DistributionType type;
   final List<DistributionParameter> parameters;
   final DistributionDescriptionUi extendedDescription; // Opis

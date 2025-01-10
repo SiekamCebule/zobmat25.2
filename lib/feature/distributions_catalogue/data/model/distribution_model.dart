@@ -4,6 +4,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distrib
 
 class DistributionModel {
   const DistributionModel({
+    required this.id,
     required this.name,
     required this.shortDescription,
     required this.type,
@@ -12,6 +13,7 @@ class DistributionModel {
     required this.applicationsDescription,
   });
 
+  final String id;
   final String name;
   final String shortDescription;
   final DistributionType type;
