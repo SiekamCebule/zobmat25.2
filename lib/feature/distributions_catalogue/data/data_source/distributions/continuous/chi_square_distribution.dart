@@ -18,7 +18,7 @@ final chiSquareDistributionModel = DistributionModel(
       'degrees_of_freedom',
       'Stopnie swobody (k)',
       'Więcej stopni swobody (k) "rozciąga" rozkład. Możemy rozumieć je jako "liczbę niezależnych zmiennych"',
-      min: 0.0001,
+      min: 0.7,
       max: 245,
       defaultValue: 1,
     ),
@@ -36,7 +36,46 @@ num chiSquareDistributionPdf(num x, DistributionParamsSetup params) {
 
   if (x < 0) return 0.0;
 
-  return pow(x, (k / 2) - 1) * exp(-x / 2) / (pow(2, k / 2) * data.gamma(k / 2));
+  //return pow(x, (k / 2) - 1) * exp(-x / 2) / (pow(2, k / 2) * data.gamma(k / 2));
+  return pow(x, (k / 2) - 1) * exp(-x / 2) / (pow(2, k / 2) * gammaStirling(k / 2));
+}
+
+double gammaStirling(num x) {
+  const double sqrtTwoPi = 2.5066282746310002; // sqrt(2 * pi)
+
+  // Wyrazy poprawkowe Stirlinga
+  final corrections = [
+    1.0 / (12 * x),
+    1.0 / (288 * x * x),
+    -139.0 / (51840 * x * x * x),
+    -571.0 / (2488320 * x * x * x * x),
+    163879.0 / (209018880 * x * x * x * x * x),
+    5246819.0 / (75246796800 * x * x * x * x * x * x),
+  ];
+
+  // Suma wyrazów poprawkowych
+  double correctionSum = 1.0; // Początkowa wartość to 1 (stała w Stirlingu)
+  for (final correction in corrections) {
+    correctionSum += correction;
+  }
+
+  // Przybliżenie Stirlinga
+  return sqrtTwoPi * pow(x, x - 0.5) * exp(-x) * correctionSum;
+}
+
+double gammaApprox(num x) {
+  if (x < 0.5) {
+    return pi / (sin(pi * x) * gammaApprox(1 - x));
+  }
+  return sqrt(2 * pi) * pow(x, x - 0.5) * exp(-x);
+}
+
+double autoOptimizedGamma(num x) {
+  const eulerGamma = 0.5772156649015329;
+  if (x > 0 && x < 1) {
+    return (1 / x) - eulerGamma + (x / 2);
+  }
+  return gammaApprox(x); // W innych przypadkach użyj Lanczosa.
 }
 
 num chiSquareDistributionCdf(num x, DistributionParamsSetup params) {
