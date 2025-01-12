@@ -31,7 +31,7 @@ class DistributionChartCard extends StatelessWidget {
                 children: [
                   if (dashboardIsAvaiable)
                     Positioned.fill(
-                      top: 50,
+                      top: 80,
                       child: DistributionChartView(
                         distribution: dashboardState.distribution,
                         chartType: dashboardState.chartType,

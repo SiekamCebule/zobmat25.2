@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
@@ -66,7 +67,6 @@ num betaDistributionPdf(num x, DistributionParamsSetup params) {
 }
 
 num betaDistributionCdf(num x, DistributionParamsSetup params) {
-  const int n = 1000; // liczba kroków do numerycznego całkowania
   final alpha = params.getValue('alpha');
   final beta = params.getValue('beta');
 
@@ -82,25 +82,90 @@ num betaDistributionCdf(num x, DistributionParamsSetup params) {
     return 1.0; // CDF dla x > 1 wynosi 1
   }
 
-  final fx = dart_numerics.betaRegularized(alpha, beta, x.toDouble());
-  print(
-    'F(${x.toStringAsFixed(2)}, alpha: ${alpha.toStringAsFixed(2)}, beta: ${beta.toStringAsFixed(2)}) = $fx',
-  );
+  final fx = betaRegularized(alpha, beta, x.toDouble());
   return fx;
+}
 
-  // Numeryczne całkowanie (metoda prostokątów)
-  double dx = x / n;
-  double totalArea = 0.0;
+double betaRegularized(double a, double b, double x) {
+  var bt =
+      (x == 0.0 || x == 1.0)
+          ? 0.0
+          : exp(
+            data.gammaLn(a + b) -
+                data.gammaLn(a) -
+                data.gammaLn(b) +
+                (a * log(x)) +
+                (b * log(1.0 - x)),
+          );
 
-  for (int i = 0; i < n; i++) {
-    num t = i * dx; // Punkt na osi x
-    // Wywołanie istniejącej funkcji PDF
-    num pdfValue = betaDistributionPdf(t, params);
-    totalArea += pdfValue * dx;
+  var symmetryTransformation = x >= (a + 1.0) / (a + b + 2.0);
+
+  /* Continued fraction representation */
+  var eps = doublePrecision;
+  var fpmin = increment(0.0) / eps;
+
+  if (symmetryTransformation) {
+    x = 1.0 - x;
+    var swap = a;
+    a = b;
+    b = swap;
   }
 
-  return totalArea;
+  var qab = a + b;
+  var qap = a + 1.0;
+  var qam = a - 1.0;
+  var c = 1.0;
+  var d = 1.0 - (qab * x / qap);
+
+  if (d.abs() < fpmin) {
+    d = fpmin;
+  }
+
+  d = 1.0 / d;
+  var h = d;
+
+  for (int m = 1, m2 = 2; m <= 50000; m++, m2 += 2) {
+    var aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+    d = 1.0 + (aa * d);
+
+    if (d.abs() < fpmin) {
+      d = fpmin;
+    }
+
+    c = 1.0 + (aa / c);
+    if (c.abs() < fpmin) {
+      c = fpmin;
+    }
+
+    d = 1.0 / d;
+    h *= d * c;
+    aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+    d = 1.0 + (aa * d);
+
+    if (d.abs() < fpmin) {
+      d = fpmin;
+    }
+
+    c = 1.0 + (aa / c);
+
+    if (c.abs() < fpmin) {
+      c = fpmin;
+    }
+
+    d = 1.0 / d;
+    var del = d * c;
+    h *= del;
+
+    if ((del - 1.0).abs() <= eps) {
+      return symmetryTransformation ? 1.0 - (bt * h / a) : bt * h / a;
+    }
+  }
+
+  return symmetryTransformation ? 1.0 - (bt * h / a) : bt * h / a;
 }
+
+final double doublePrecision = pow(2, -doubleWidth) as double;
+const int doubleWidth = 53;
 
 num betaDistributionInverseCdf(num p, DistributionParamsSetup params) {
   final alpha = params.getValue('alpha');
@@ -131,3 +196,59 @@ num betaDistributionInverseCdf(num p, DistributionParamsSetup params) {
 
   return mid;
 }
+
+double increment(double value, [int count = 1]) {
+  if (value.isInfinite || value.isNaN || count == 0) {
+    return value;
+  }
+
+  if (count < 0) {
+    return decrement(value, -count);
+  }
+
+  var bytes = ByteData(8);
+  bytes.setFloat64(0, value);
+  int intValue = bytes.getInt64(0);
+  if (intValue < 0) {
+    intValue -= count;
+  } else {
+    intValue += count;
+  }
+
+  if (intValue == int64MinValue) {
+    return 0.0;
+  }
+
+  bytes.setInt64(0, intValue);
+  return bytes.getFloat64(0);
+}
+
+double decrement(double value, [int count = 1]) {
+  if (value.isInfinite || value.isNaN || count == 0) {
+    return value;
+  }
+
+  if (count < 0) {
+    return decrement(value, -count);
+  }
+
+  var bytes = ByteData(8);
+  bytes.setFloat64(0, value);
+  int intValue = bytes.getInt64(0);
+
+  if (intValue == 0) {
+    intValue = int64MinValue;
+  }
+
+  if (intValue < 0) {
+    intValue += count;
+  } else {
+    intValue -= count;
+  }
+
+  bytes.setInt64(0, intValue);
+  return bytes.getFloat64(0);
+}
+
+const int int64MinValue = -9007199254740991;
+const int int64MaxValue = 9007199254740991;

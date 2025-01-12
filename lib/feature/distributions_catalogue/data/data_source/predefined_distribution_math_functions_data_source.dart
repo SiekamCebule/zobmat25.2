@@ -1,7 +1,9 @@
 import 'package:zobmat25_2/core/distribution_math_typedefs.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/beta_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/chi_square_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/exponential_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/gamma_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/laplace_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/cauchy_distribution.dart';
 
@@ -21,6 +23,8 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'exponential_distribution': exponentialDistributionPdf,
     'gamma_distribution': gammaDistributionPdf,
     'beta_distribution': betaDistributionPdf,
+    'laplace_distribution': laplaceDistributionPdf,
+    'chi_square_distribution': chiSquareDistributionPdf,
   };
   static final Map<String, DistributionCdf> _cdfs = {
     'normal_distribution': normalDistributionCdf,
@@ -28,6 +32,8 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'exponential_distribution': exponentialDistributionCdf,
     'gamma_distribution': gammaDistributionCdf,
     'beta_distribution': betaDistributionCdf,
+    'laplace_distribution': laplaceDistributionCdf,
+    'chi_square_distribution': chiSquareDistributionCdf,
   };
   static final Map<String, DistributionCdf> _inverseCdfs = {
     'normal_distribution': normalDistributionInverseCdf,
@@ -35,6 +41,8 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'exponential_distribution': exponentialDistributionInverseCdf,
     'gamma_distribution': gammaDistributionInverseCdf,
     'beta_distribution': betaDistributionInverseCdf,
+    'laplace_distribution': laplaceDistributionInverseCdf,
+    'chi_square_distribution': chiSquareDistributionInverseCdf,
   };
 
   @override

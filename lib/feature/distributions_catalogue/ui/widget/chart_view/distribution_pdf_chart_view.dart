@@ -50,7 +50,7 @@ class DistributionPdfChartView extends StatelessWidget {
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
     final numPoints =
-        (pixelDensity * 0.8).ceil(); // Dopasuj liczbę punktów do rozdzielczości ekranu
+        (pixelDensity * 0.0001).ceil(); // Dopasuj liczbę punktów do rozdzielczości ekranu
     var interval = (maxX - minX) / numPoints;
     if (interval == 0) {
       interval = 0.01;
@@ -74,6 +74,7 @@ class DistributionPdfChartView extends StatelessWidget {
 
     return LineChart(
       LineChartData(
+        clipData: FlClipData.all(),
         borderData: FlBorderData(show: false),
         lineBarsData: [
           LineChartBarData(
