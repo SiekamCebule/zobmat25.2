@@ -1,8 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/core/shared_ui/numeral_text_field.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter_rule.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/dialog/parameter_help_dialog.dart';
 
 class DistributionParameterTextField extends StatefulWidget {
@@ -66,7 +68,7 @@ class _DistributionParameterTextFieldState extends State<DistributionParameterTe
         }
 
         if (value == '0.') {
-          return 'Wpisz dziesiętną część liczby.';
+          return 'Wpisz dziesiętną część liczby.';
         }
 
         final onlyNumbersRegex = RegExp(r'^-?[0-9.]+$');
@@ -91,6 +93,33 @@ class _DistributionParameterTextFieldState extends State<DistributionParameterTe
         }
         if (number > widget.parameter.max) {
           return 'Maksymalna wartość to ${widget.parameter.max.toString()}';
+        }
+        final notHigherRule =
+            widget.parameter.rules.singleWhereOrNull(
+                  (rule) => rule is DistributionParameterNotHigherRule,
+                )
+                as DistributionParameterNotHigherRule?;
+        if (notHigherRule != null) {
+          final paramWithHigherValue = dashboardState.paramsSetup.getParameter(
+            notHigherRule.otherParameterId,
+          );
+          if (number >= dashboardState.paramsSetup.getValue(paramWithHigherValue.id)) {
+            return 'Liczba musi być mniejsza od parametru "${paramWithHigherValue.name}"';
+          }
+        }
+
+        final notSmallerRule =
+            widget.parameter.rules.singleWhereOrNull(
+                  (rule) => rule is DistributionParameterHigherRule,
+                )
+                as DistributionParameterHigherRule?;
+        if (notSmallerRule != null) {
+          final paramWithSmallerValue = dashboardState.paramsSetup.getParameter(
+            notSmallerRule.otherParameterId,
+          );
+          if (number <= dashboardState.paramsSetup.getValue(paramWithSmallerValue.id)) {
+            return 'Liczba musi być większa od parametru "${paramWithSmallerValue.name}"';
+          }
         }
 
         return null;

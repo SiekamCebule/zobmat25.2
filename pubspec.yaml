@@ -46,7 +46,6 @@ dependencies:
   super_bullet_list: ^0.0.3
   quiver: ^3.2.2
   data: ^0.13.0
-  dart_numerics: ^0.0.6
   decimal: ^3.1.0
 
 dev_dependencies:

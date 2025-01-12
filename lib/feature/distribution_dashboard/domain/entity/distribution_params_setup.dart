@@ -7,15 +7,19 @@ class DistributionParamsSetup with EquatableMixin {
 
   final Map<DistributionParameter, double> values;
 
-  double getValue(String parameter) {
+  double getValue(String parameterId) {
     try {
-      final key = values.keys.singleWhere((param) => parameter == param.id);
+      final key = values.keys.singleWhere((param) => parameterId == param.id);
       return values[key]!;
     } catch (error) {
       throw ArgumentError(
-        'DistributionParamsSetup does not have \'$parameter\' parameter',
+        'DistributionParamsSetup does not have \'$parameterId\' parameter',
       );
     }
+  }
+
+  DistributionParameter getParameter(String parameterId) {
+    return values.keys.singleWhere((parameter) => parameter.id == parameterId);
   }
 
   @override

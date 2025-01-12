@@ -7,7 +7,6 @@ import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distrib
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 import 'package:data/data.dart' as data;
-import 'package:dart_numerics/dart_numerics.dart' as dart_numerics;
 
 final betaDistributionModel = DistributionModel(
   id: 'beta_distribution',
@@ -100,7 +99,6 @@ double betaRegularized(double a, double b, double x) {
 
   var symmetryTransformation = x >= (a + 1.0) / (a + b + 2.0);
 
-  /* Continued fraction representation */
   var eps = doublePrecision;
   var fpmin = increment(0.0) / eps;
 

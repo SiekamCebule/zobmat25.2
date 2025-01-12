@@ -5,6 +5,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/gamma_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/laplace_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 
 abstract interface class PredefinedDistributionsDataSource {
@@ -16,6 +17,7 @@ class PredefinedDistributionsDataSourceImpl implements PredefinedDistributionsDa
   Future<List<DistributionModel>> getAll() async {
     return [
       normalDistributionModel,
+      uniformDistributionModel,
       cauchyDistributionModel,
       exponentialDistributionModel,
       gammaDistributionModel,

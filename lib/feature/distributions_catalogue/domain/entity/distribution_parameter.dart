@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter_rule.dart';
 
 class DistributionParameter with EquatableMixin {
   const DistributionParameter(
@@ -7,6 +8,7 @@ class DistributionParameter with EquatableMixin {
     this.description, {
     required this.min,
     required this.max,
+    this.rules = const [],
     required this.defaultValue,
   });
 
@@ -15,6 +17,7 @@ class DistributionParameter with EquatableMixin {
   final String description;
   final double min;
   final double max;
+  final List<DistributionParameterRule> rules;
   final double defaultValue;
 
   @override

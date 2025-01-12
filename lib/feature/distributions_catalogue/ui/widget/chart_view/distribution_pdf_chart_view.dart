@@ -50,7 +50,7 @@ class DistributionPdfChartView extends StatelessWidget {
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
     final numPoints =
-        (pixelDensity * 0.0001).ceil(); // Dopasuj liczbę punktów do rozdzielczości ekranu
+        (pixelDensity * 0.8).ceil(); // Dopasuj liczbę punktów do rozdzielczości ekranu
     var interval = (maxX - minX) / numPoints;
     if (interval == 0) {
       interval = 0.01;
@@ -114,7 +114,7 @@ class DistributionPdfChartView extends StatelessWidget {
               interval: (maxY) / 5,
               reservedSize: 55,
               minIncluded: false,
-              maxIncluded: true,
+              maxIncluded: false,
             ),
           ),
           bottomTitles: AxisTitles(
@@ -134,7 +134,7 @@ class DistributionPdfChartView extends StatelessWidget {
         maxX: maxX,
         baselineX: 0,
         minY: 0,
-        maxY: maxY.toDouble(),
+        maxY: maxY.toDouble() + 0.05,
         baselineY: 0,
         lineTouchData: LineTouchData(
           touchTooltipData: LineTouchTooltipData(
