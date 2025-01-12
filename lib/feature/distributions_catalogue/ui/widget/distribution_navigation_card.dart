@@ -43,7 +43,6 @@ class DistributionNavigationCard extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           child: Column(
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ClipRRect(
                 clipBehavior: Clip.antiAlias,

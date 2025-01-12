@@ -18,6 +18,7 @@ class DistributionChartCard extends StatelessWidget {
         dashboardState is DistributionDashboardDistributionSelected;
 
     return Card(
+      clipBehavior: Clip.none,
       color: Theme.of(context).colorScheme.surfaceContainerHighest,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
@@ -26,6 +27,7 @@ class DistributionChartCard extends StatelessWidget {
           children: [
             Expanded(
               child: Stack(
+                clipBehavior: Clip.none,
                 children: [
                   if (dashboardIsAvaiable)
                     Positioned.fill(

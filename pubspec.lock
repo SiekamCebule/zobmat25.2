@@ -57,6 +57,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  dart_numerics:
+    dependency: "direct main"
+    description:
+      name: dart_numerics
+      sha256: "47408d4890551636204851325e5649bf1a1616ebc325184c36722a1716cbaba4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
+  data:
+    dependency: "direct main"
+    description:
+      name: data
+      sha256: eb69f565061178da682b57e07468ff284e1156322ae48f0e7270e466943ea0df
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.0"
+  decimal:
+    dependency: "direct main"
+    description:
+      name: decimal
+      sha256: da8f65df568345f2738cc8b0de74971c86d2d93ce5fc8c4ec094f6b7c5d48eb5
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   equatable:
     dependency: "direct main"
     description:
@@ -139,6 +163,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.2"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      sha256: "178d74305e7866013777bab2c3d8726205dc5a4dd935297175b19a23a2e66571"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: "00f33b908655e606b86d2ade4710a231b802eec6f11e87e4ea3783fd72077a50"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.20.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -203,6 +251,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.15.0"
+  more:
+    dependency: transitive
+    description:
+      name: more
+      sha256: "7589f39d4e5858213e80454844c6f0b1ef58e254e6614fe387e2029fc325efad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.4.0"
   nested:
     dependency: transitive
     description:
@@ -235,6 +291,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.2"
+  rational:
+    dependency: transitive
+    description:
+      name: rational
+      sha256: cb808fb6f1a839e6fc5f7d8cb3b0a10e1db48b3be102de73938c627f0b636336
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
   simple_gradient_text:
     dependency: "direct main"
     description:
@@ -304,6 +368,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      sha256: a97ce2013f240b2f3807bcbaf218765b6f301c3eff91092bcfa23a039e7dd151
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+  typed_data:
+    dependency: transitive
+    description:
+      name: typed_data
+      sha256: f9049c039ebfeb4cf7a7104a675823cd72dba8297f264b6637062516699fa006
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   vector_math:
     dependency: transitive
     description:
@@ -320,6 +400,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.3.1"
+  web:
+    dependency: transitive
+    description:
+      name: web
+      sha256: cd3543bd5798f6ad290ea73d210f423502e71900302dde696f8bff84bf89a1cb
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
 sdks:
   dart: ">=3.7.0-209.1.beta <4.0.0"
   flutter: ">=3.27.0"

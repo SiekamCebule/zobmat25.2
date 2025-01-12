@@ -47,7 +47,7 @@ class DistributionCdfChartView extends StatelessWidget {
 
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
-    final numPoints = (pixelDensity * 0.8).toInt();
+    final numPoints = (pixelDensity * 3).toInt();
     final interval = (maxX - minX) / numPoints;
     final spots = {
       for (var x = minX; x < maxX; x += interval) FlSpot(x, cdf(x).toDouble()),

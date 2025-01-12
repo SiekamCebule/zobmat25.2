@@ -44,21 +44,33 @@ class DistributionPdfChartView extends StatelessWidget {
           lowerBound: -1000000,
           upperBound: 1000000,
         ).toDouble();
+    // final minX = 0.0;
+    // final maxX = 1.0;
 
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
     final numPoints =
-        (pixelDensity * 0.8).toInt(); // Dopasuj liczbę punktów do rozdzielczości ekranu
-    final interval = (maxX - minX) / numPoints;
-    print('pdf_chart.x_interval: $interval');
-    final spots = {
-      for (var x = minX; x < maxX; x += interval) FlSpot(x, pdf(x).toDouble()),
-    };
+        (pixelDensity * 0.8).ceil(); // Dopasuj liczbę punktów do rozdzielczości ekranu
+    var interval = (maxX - minX) / numPoints;
+    if (interval == 0) {
+      interval = 0.01;
+    }
+    debugPrint('pdf_chart.x_interval: $interval (($maxX - $minX) / $numPoints)');
+    final spots = <FlSpot>{};
+    final infinities = <num>{};
+    for (var x = minX; x < maxX; x += interval) {
+      final fx = pdf(x);
+      if (fx == double.infinity) {
+        infinities.add(x);
+        //spots.add(FlSpot(x, 1));
+      } else {
+        spots.add(FlSpot(x, pdf(x).toDouble()));
+      }
+    }
     final maxY = spots.fold(
       0.0,
       (currentMax, spot) => spot.y > currentMax ? spot.y : currentMax,
     );
-    //.clamp(1, double.infinity);
 
     return LineChart(
       LineChartData(
@@ -130,8 +142,14 @@ class DistributionPdfChartView extends StatelessWidget {
             },
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((lineBarSpot) {
-                final text =
-                    'f(${lineBarSpot.x.toStringAsFixed(3)}) = ${lineBarSpot.y.toStringAsFixed(5)}';
+                late String text;
+                if (infinities.contains(lineBarSpot.x)) {
+                  text = 'f(${lineBarSpot.x.toStringAsFixed(3)}) = \u221E';
+                } else {
+                  text =
+                      'f(${lineBarSpot.x.toStringAsFixed(3)}) = ${lineBarSpot.y.toStringAsFixed(5)}';
+                }
+
                 return LineTooltipItem(
                   text,
                   Theme.of(context).textTheme.labelSmall!.copyWith(

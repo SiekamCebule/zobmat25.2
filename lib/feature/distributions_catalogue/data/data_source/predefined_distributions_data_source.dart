@@ -1,5 +1,7 @@
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/beta_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/cauchy_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/exponential_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/gamma_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 
@@ -14,6 +16,8 @@ class PredefinedDistributionsDataSourceImpl implements PredefinedDistributionsDa
       normalDistributionModel,
       cauchyDistributionModel,
       exponentialDistributionModel,
+      gammaDistributionModel,
+      betaDistributionModel,
     ]; // TODO: ADD DISTRIBUTIONS
   }
 }

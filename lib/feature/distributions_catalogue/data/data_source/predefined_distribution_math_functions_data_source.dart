@@ -1,5 +1,7 @@
 import 'package:zobmat25_2/core/distribution_math_typedefs.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/beta_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/exponential_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/gamma_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/cauchy_distribution.dart';
 
@@ -17,16 +19,22 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'normal_distribution': normalDistributionPdf,
     'cauchy_distribution': cauchyDistributionPdf,
     'exponential_distribution': exponentialDistributionPdf,
+    'gamma_distribution': gammaDistributionPdf,
+    'beta_distribution': betaDistributionPdf,
   };
   static final Map<String, DistributionCdf> _cdfs = {
     'normal_distribution': normalDistributionCdf,
     'cauchy_distribution': cauchyDistributionCdf,
     'exponential_distribution': exponentialDistributionCdf,
+    'gamma_distribution': gammaDistributionCdf,
+    'beta_distribution': betaDistributionCdf,
   };
   static final Map<String, DistributionCdf> _inverseCdfs = {
     'normal_distribution': normalDistributionInverseCdf,
     'cauchy_distribution': cauchyDistributionInverseCdf,
     'exponential_distribution': exponentialDistributionInverseCdf,
+    'gamma_distribution': gammaDistributionInverseCdf,
+    'beta_distribution': betaDistributionInverseCdf,
   };
 
   @override
