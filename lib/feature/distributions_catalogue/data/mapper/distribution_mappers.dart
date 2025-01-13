@@ -18,6 +18,5 @@ Distribution distributionFromModel(
     type: model.type,
     parameters: model.parameters,
     extendedDescription: model.extendedDescription,
-    applicationsDescription: model.applicationsDescription,
   );
 }

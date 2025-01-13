@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:zobmat25_2/core/math/erf.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_description_ui.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
@@ -31,8 +33,39 @@ final normalDistributionModel = DistributionModel(
       defaultValue: 1.0,
     ),
   ],
-  extendedDescription: DistributionDescriptionUi(),
-  applicationsDescription: DistributionDescriptionUi(),
+  extendedDescription: DistributionDescription(
+    components: [
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład normalny, zwany również rozkładem Gaussa, opisuje zjawiska, w których większość wyników koncentruje się wokół średniej, a liczba wyników oddalonych od niej maleje w sposób symetryczny.',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Gęstość prawdopodobieństwa',
+        data: r'f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}',
+        type: DistributionDescriptionExpressionType.display,
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Dystrybuanta',
+        data:
+            r'F(x) = \frac{1}{2} \left[ 1 + \text{erf}\left(\frac{x-\mu}{\sqrt{2}\sigma}\right) \right]',
+        type: DistributionDescriptionExpressionType.text,
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Odwrotna dystrybuanta',
+        data: r'F^{-1}(p) = \mu + \sigma \sqrt{2} \, \text{erf}^{-1}(2p - 1)',
+        type: DistributionDescriptionExpressionType.text,
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Wariancja',
+        data: r'\sigma = \sqrt{\text{Var}(X)}',
+        type: DistributionDescriptionExpressionType.text,
+      ),
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład ten znalazł swoje zastosowania w modelowaniu cech populacji (np. rozkład wzrostu i wagi ludzi), w kontroli jakości produktów, analizie finansowej czy ocenie produktywności pracownika.',
+      ),
+    ],
+  ),
 );
 
 num normalDistributionPdf(num x, DistributionParamsSetup params) {

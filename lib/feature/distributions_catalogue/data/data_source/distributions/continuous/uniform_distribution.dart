@@ -1,13 +1,16 @@
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_text_span.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_description_ui.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter_rule.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
 final uniformDistributionModel = DistributionModel(
-  id: 'uniform_distribution',
-  name: 'Rozkład jednostajny',
+  id: 'uniform_continuous_distribution',
+  name: 'Rozkład ciągły jednostajny',
   shortDescription:
       'Prosty rozkład, gdzie każda wartość ma taką samą gęstość prawdopodobieństwa.',
   type: DistributionType.continuous,
@@ -31,8 +34,48 @@ final uniformDistributionModel = DistributionModel(
       rules: [DistributionParameterHigherRule(otherParameterId: 'start')],
     ),
   ],
-  extendedDescription: DistributionDescriptionUi(),
-  applicationsDescription: DistributionDescriptionUi(),
+  extendedDescription: DistributionDescription(
+    components: [
+      DistributionDescriptionParagraph(
+        text:
+            'W tym rozkładzie każda wartość z przedziału od a do b ma taką samą gęstość prawdopodobieństwa.',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Gęstość prawdopodobieństwa',
+        data:
+            r'f(x) = \begin{cases} \frac{1}{b - a}, & \text{dla } x \in [a, b], \\0, & \text{w przeciwnym wypadku.}\end{cases}',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Dystrybuanta',
+        data:
+            r'F(x) = \begin{cases} 0, & \text{dla } x < a, \\\frac{x - a}{b - a}, & \text{dla } x \in [a, b], \\1, & \text{dla } x > b.\end{cases}',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Odwrotna dystrybuanta',
+        data: r'F^{-1}(x) = a + x \cdot (b - a), \quad \text{dla } x \in [0, 1]',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Wariancja',
+        data: r'\text{Var}(X) = \frac{(b - a)^2}{12}',
+      ),
+      DistributionDescriptionTextSpan(
+        children: [
+          DistributionDescriptionParagraph(
+            text:
+                'Rozkład ciągły jednostajny jest ważny przy generowaniu liczb losowych z innych rozkładów (co zostało wykorzystane na tej stronie). Używa się go w symulacjach ',
+          ),
+          DistributionDescriptionParagraph(
+            text: 'Monte Carlo',
+            websiteUrl: 'https://pl.wikipedia.org/wiki/Metoda_Monte_Carlo',
+          ),
+          DistributionDescriptionParagraph(
+            text:
+                ', w kryptografii, a także w grach komputerowych (losowanie ze skrzynek, generowanie pozycji obiektów na mapie).',
+          ),
+        ],
+      ),
+    ],
+  ),
 );
 
 num uniformDistributionPdf(num x, DistributionParamsSetup params) {

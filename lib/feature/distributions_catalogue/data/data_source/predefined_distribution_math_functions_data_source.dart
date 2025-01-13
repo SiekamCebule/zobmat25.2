@@ -20,7 +20,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
 
   static final Map<String, DistributionPdf> _pdfs = {
     'normal_distribution': normalDistributionPdf,
-    'uniform_distribution': uniformDistributionPdf,
+    'uniform_continuous_distribution': uniformDistributionPdf,
     'cauchy_distribution': cauchyDistributionPdf,
     'exponential_distribution': exponentialDistributionPdf,
     'gamma_distribution': gammaDistributionPdf,
@@ -30,7 +30,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
   };
   static final Map<String, DistributionCdf> _cdfs = {
     'normal_distribution': normalDistributionCdf,
-    'uniform_distribution': uniformDistributionCdf,
+    'uniform_continuous_distribution': uniformDistributionCdf,
     'cauchy_distribution': cauchyDistributionCdf,
     'exponential_distribution': exponentialDistributionCdf,
     'gamma_distribution': gammaDistributionCdf,
@@ -40,7 +40,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
   };
   static final Map<String, DistributionCdf> _inverseCdfs = {
     'normal_distribution': normalDistributionInverseCdf,
-    'uniform_distribution': uniformDistributionInverseCdf,
+    'uniform_continuous_distribution': uniformDistributionInverseCdf,
     'cauchy_distribution': cauchyDistributionInverseCdf,
     'exponential_distribution': exponentialDistributionInverseCdf,
     'gamma_distribution': gammaDistributionInverseCdf,

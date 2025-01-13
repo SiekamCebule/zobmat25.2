@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_description_ui.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
@@ -22,8 +22,7 @@ final exponentialDistributionModel = DistributionModel(
       defaultValue: 1.0,
     ),
   ],
-  extendedDescription: DistributionDescriptionUi(),
-  applicationsDescription: DistributionDescriptionUi(),
+  extendedDescription: DistributionDescription(components: []),
 );
 
 num exponentialDistributionPdf(num x, DistributionParamsSetup params) {

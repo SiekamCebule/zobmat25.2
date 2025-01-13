@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),
                       shape: StadiumBorder(),
                     ),
-                    onPressed: () {},
+                    onPressed: null, // TODO
                     child: Text('Ale... czym w ogóle są te rozkłady?'),
                   ),
                   Gap(20),
