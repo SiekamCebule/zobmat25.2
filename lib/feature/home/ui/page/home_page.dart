@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:super_bullet_list/bullet_list.dart';
 import 'package:super_bullet_list/bullet_style.dart';
+import 'package:zobmat25_2/core/shared_ui/navigation_link_text_button.dart';
 import 'package:zobmat25_2/feature/navigation/domain/entity/navigation_entry.dart';
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
 
@@ -28,12 +29,12 @@ class _HomePageState extends State<HomePage> {
               Gap(70),
               Text(
                 'Czy chcesz dowiedzieć się czegoś...',
-                style: Theme.of(context).textTheme.displaySmall,
+                style: Theme.of(context).textTheme.displayMedium,
                 textAlign: TextAlign.center,
               ),
               GradientText(
                 'o rozkładach prawdopodobieństwa?',
-                style: Theme.of(context).textTheme.displaySmall,
+                style: Theme.of(context).textTheme.displayMedium,
                 textAlign: TextAlign.center,
                 gradientType: GradientType.linear,
                 colors: [
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   //Theme.of(context).colorScheme.tertiary,
                 ],
               ),
-              Gap(15),
+              Gap(30),
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: 580),
                 child: Column(
@@ -72,9 +73,29 @@ class _HomePageState extends State<HomePage> {
                                   Text(
                                     'Opisy 23 rozkładów prawdopodobieństwa, wraz z ich zastosowaniami',
                                   ),
-                                  Text('Wykresy funkcji gęstości rozkładów (PDF)'),
-                                  Text('Wykresy funkcji rozkładu skumulowanego (CDF)'),
+                                  Text(
+                                    'Wykresy funkcji gęstości i wykresy funkcji rozkładu skumulowanego',
+                                  ),
                                   Text('Możliwość wylosowania liczb wg rozkładu'),
+                                  Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              'Odnośniki do stron internetowych, służące do głebszego zgłębienia pojęć. Odnośniki znajdują się w niektórych opisach i w sekcji ',
+                                        ),
+                                        WidgetSpan(
+                                          baseline: TextBaseline.alphabetic,
+                                          alignment: PlaceholderAlignment.middle,
+                                          child: NavigationLinkTextButton(
+                                            text: '"O stronie"',
+                                            navigationEntry: NavigationEntry.about,
+                                          ),
+                                        ),
+                                        TextSpan(text: ''),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -100,7 +121,10 @@ class _HomePageState extends State<HomePage> {
                                 separator: Gap(10),
                                 items: [
                                   Text(
-                                    'Bardziej zaawansowanych zagadnień, takich jak "funkcja n rzędu"',
+                                    'Bardziej zaawansowanych zagadnień, takich jak "funkcja n rzędu", kurtoza, czy współczynnik skośności.',
+                                  ),
+                                  Text(
+                                    'Wykresy PDF często "wariują" przy skrajnych wartościach parametrów (szczególnie rozkład beta i rozkład chi-kwadrat)',
                                   ),
                                 ],
                               ),

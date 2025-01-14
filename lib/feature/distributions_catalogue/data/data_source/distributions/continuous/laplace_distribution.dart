@@ -66,7 +66,7 @@ final laplaceDistributionModel = DistributionModel(
       ),
       DistributionDescriptionParagraph(
         text:
-            'Ogólnie rzecz biorąc, rozkład Laplace\'a jest wykorzystywany w hydrologii (maksymalna wysokość rzeki w roku), w finansach, w przetwarzaniu mowy i obrazów, a także w prywatności różniczkowej.\nPewnie zastanawiasz się, czym jest prywatność różniczkowa. Aplikacja zbiera dane o liczbie kroków. Aby chronić prywatność, algorytm dodaje losowy szum (np. ±500 kroków) z rozkładu Laplace’a. Dzięki temu nikt nie pozna twoich prawdziwych danych, ale średnia kroków w mieście nadal będzie dokładna, bo szumy się znoszą.\n\nAby przeczytać więcej o zastosowaniach tego rozkładu, [kliknij tutaj (Wikipedia)](https://en.wikipedia.org/wiki/Laplace_distribution#Occurrence_and_applications).',
+            'Ogólnie rzecz biorąc, rozkład Laplace\'a jest wykorzystywany w hydrologii (maksymalna wysokość rzeki w roku), w finansach, w przetwarzaniu mowy i obrazów, a także w prywatności różniczkowej.\nPewnie zastanawiasz się, czym jest prywatność różniczkowa. Aplikacja zbiera dane o liczbie kroków. Aby chronić prywatność, algorytm dodaje losowy szum (np. \u00B1500 kroków) z rozkładu Laplace’a. Dzięki temu nikt nie pozna twoich prawdziwych danych, ale średnia kroków w mieście nadal będzie dokładna, bo szumy się znoszą.\n\nAby przeczytać więcej o zastosowaniach tego rozkładu, [kliknij tutaj (Wikipedia)](https://en.wikipedia.org/wiki/Laplace_distribution#Occurrence_and_applications).',
         containsMarkdownLinks: true,
       ),
     ],
