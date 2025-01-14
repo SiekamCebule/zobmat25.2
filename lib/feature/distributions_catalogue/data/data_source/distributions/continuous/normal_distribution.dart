@@ -42,33 +42,27 @@ final normalDistributionModel = DistributionModel(
       DistributionDescriptionMathExpression(
         title: 'Gęstość prawdopodobieństwa',
         data: r'f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}',
-        type: DistributionDescriptionExpressionType.display,
       ),
       DistributionDescriptionMathExpression(
         title: 'Dystrybuanta',
         data:
             r'F(x) = \frac{1}{2} \left[ 1 + \text{erf}\left(\frac{x-\mu}{\sqrt{2}\sigma}\right) \right]',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Odwrotna dystrybuanta',
         data: r'F^{-1}(p) = \mu + \sigma \sqrt{2} \, \text{erf}^{-1}(2p - 1)',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Wartość oczekiwana',
         data: r'\mathbb{E}[X] = \mu',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Odchylenie standardowe',
         data: r'\sigma = \sqrt{\text{Var}(X)} = \sigma',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Wariancja',
         data: r'\text{Var}(X) = \sigma^2',
-        type: DistributionDescriptionExpressionType.text,
       ),
 
       DistributionDescriptionParagraph(

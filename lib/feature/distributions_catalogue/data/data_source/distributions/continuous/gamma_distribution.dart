@@ -20,7 +20,7 @@ final gammaDistributionModel = DistributionModel(
     DistributionParameter(
       'shape',
       'Kształt (k)',
-      'Jest to ilość zdarzeń, na które oczekujemy. Dla k=1 powstaje rozkład wykładniczy.',
+      'Ilość zdarzeń, na które oczekujemy. Dla k=1 powstaje rozkład wykładniczy.',
       min: 0.0001,
       max: 100000,
       defaultValue: 1.0,
@@ -28,7 +28,7 @@ final gammaDistributionModel = DistributionModel(
     DistributionParameter(
       'scale',
       'Skala (θ)',
-      'Jest to przeciętny czas na wystąpienie pojedynczego zdarzenia. θ=2 może na przykład oznaczać, że tramwaj przyjeżdża 2 razy na godzinę,',
+      'Przeciętny czas na wystąpienie pojedynczego zdarzenia. θ=21 oznacza, że zdarzenie występuje raz na jedną jednostkę czasu. Odwrotnością skali (θ) jest tempo zdarzeń (λ), które występuje jako parametr w rozkładzie wykładniczym.',
       min: 0.0001,
       max: 100000,
       defaultValue: 1.0,
@@ -56,33 +56,24 @@ final gammaDistributionModel = DistributionModel(
         title: 'Gęstość prawdopodobieństwa',
         data:
             r'f(x; k, \theta) = \frac{x^{k-1} e^{-\frac{x}{\theta}}}{\Gamma(k) \theta^k}, \quad x > 0',
-        type: DistributionDescriptionExpressionType.display,
       ),
       DistributionDescriptionMathExpression(
         title: 'Dystrybuanta',
         data:
             r'F(x; k, \theta) = \frac{\gamma(k, \frac{x}{\theta})}{\Gamma(k)}, \quad x > 0',
-        type: DistributionDescriptionExpressionType.text,
       ),
-      DistributionDescriptionMathExpression(
-        title: 'Odwrotna dystrybuanta',
-        data: 'BRAK',
-        type: DistributionDescriptionExpressionType.text,
-      ),
+      DistributionDescriptionMathExpression(title: 'Odwrotna dystrybuanta', data: 'BRAK'),
       DistributionDescriptionMathExpression(
         title: 'Wartość oczekiwana',
         data: r'\mathbb{E}[X] = k\theta',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Odchylenie standardowe',
         data: r'\sigma = \sqrt{k}\theta',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Wariancja',
         data: r'\text{Var}(X) = k\theta^2',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionParagraph(
         text:

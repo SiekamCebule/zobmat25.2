@@ -57,17 +57,14 @@ final uniformDistributionModel = DistributionModel(
       DistributionDescriptionMathExpression(
         title: 'Wartość oczekiwana',
         data: r'\mathbb{E}[X] = \frac{a + b}{2}',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Odchylenie standardowe',
         data: r'\sigma = \sqrt{\text{Var}(X)} = \sqrt{\frac{(b - a)^2}{12}}',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Wariancja',
         data: r'\text{Var}(X) = \frac{(b - a)^2}{12}',
-        type: DistributionDescriptionExpressionType.text,
       ),
 
       DistributionDescriptionTextSpan(

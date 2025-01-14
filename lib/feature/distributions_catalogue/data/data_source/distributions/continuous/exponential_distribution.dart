@@ -38,27 +38,22 @@ final exponentialDistributionModel = DistributionModel(
       DistributionDescriptionMathExpression(
         title: 'Dystrybuanta',
         data: r'F(x; \lambda) = 1 - e^{-\lambda x}, \quad x \geq 0',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Odwrotna dystrybuanta',
         data: r'F^{-1}(p; \lambda) = -\frac{\ln(1-p)}{\lambda}, \quad 0 \leq p < 1',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Wartość oczekiwana',
         data: r'\mathbb{E}[X] = \frac{1}{\lambda}',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Odchylenie standardowe',
         data: r'\sigma = \frac{1}{\lambda}',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
         title: 'Wariancja',
         data: r'\text{Var}(X) = \frac{1}{\lambda^2}',
-        type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionParagraph(
         text:

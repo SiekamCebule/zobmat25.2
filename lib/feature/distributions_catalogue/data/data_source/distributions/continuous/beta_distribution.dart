@@ -2,6 +2,8 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
@@ -32,7 +34,46 @@ final betaDistributionModel = DistributionModel(
       defaultValue: 1,
     ),
   ],
-  extendedDescription: DistributionDescription(components: []),
+  extendedDescription: DistributionDescription(
+    components: [
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład beta opisuje zakres wartości od 0 do 1. Prawdopodobieństwem tym możemy sterować za pomocą dwóch parametrów.\nAlfa (α) wpływa na prawdopodobieństwo wartości bliskiej 1.\nBeta (β) wpływa na prawdopodobieństwo wartości bliskiej 0.\n\nDla lepszego zrozumienia, pobaw się wykresem po lewej stronie. Ustawienie obu parametrów poniżej 1 skutkuje ciekawym kształtem.\n\nUWAGA: wykres zawiesza się dla małych wartości w stylu 0.2, a w dodatku jedna ze stron nie pokazuje się do końca prawidłowo (wykres powinien mieć kształt odwróconego "U", jeśli obie wartości są poniżej 1 i są sobie równe).',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Gęstość prawdopodobieństwa',
+        data:
+            r'f(x; \alpha, \beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}, \, 0 < x < 1',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Dystrybuanta',
+        data: r'F(x; \alpha, \beta) = I_x(\alpha, \beta), \, 0 \leq x \leq 1',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Odwrotna dystrybuanta',
+        data: r'F^{-1}(p; \alpha, \beta) = x \text{, gdzie } F(x; \alpha, \beta) = p',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Wartość oczekiwana',
+        data: r'\mathbb{E}[X] = \frac{\alpha}{\alpha + \beta}',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Odchylenie standardowe',
+        data:
+            r'\sigma = \sqrt{\frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}}',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Wariancja',
+        data:
+            r'\text{Var}(X) = \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}',
+      ),
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład beta może modelować prawdopodobieństwo sukcesu w [procesie Bernoulliego](https://pl.wikipedia.org/wiki/Proces_Bernoulliego). Proces Bernoulliego jest serią zdarzeń typu sukces/porażka. Załóżmy, że rzucamy nieuczciwą monetą. Kiedy 10 razy wypadnie orzeł, a 22 razy reszka, możemy oszacować prawdopodobieństwo orła poprzez rozkład beta(11, 23). Dodaliśmy 1, ponieważ rozkład beta(1,1) był początkowym rozkładem, do którego dokładamy informacje.\n\nRozkład beta jest stosowany także w genetyce (częstotliwość alleli w populacji), w statystyce sportowej (prawdopodobieństwo trafienia do kosza przez zawodnika NBA), w zarządzaniu projektami czy w marketingu (współczynnik klikalności CTR).',
+        containsMarkdownLinks: true,
+      ),
+    ],
+  ),
 );
 
 num betaDistributionPdf(num x, DistributionParamsSetup params) {

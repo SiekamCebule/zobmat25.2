@@ -24,7 +24,7 @@ class DistributionDashboard extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 365,
+            width: 380,
             child: Column(
               children: [
                 Expanded(flex: 7, child: DistributionDescriptionCard()),

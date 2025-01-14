@@ -116,13 +116,17 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),
-                      shape: StadiumBorder(),
+                  Tooltip(
+                    message: 'Jeszcze nad tym pracujemy...',
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),
+                        shape: StadiumBorder(),
+                      ),
+                      onPressed: null, // TODO
+
+                      child: Text('Ale... czym w ogóle są te rozkłady?'),
                     ),
-                    onPressed: null, // TODO
-                    child: Text('Ale... czym w ogóle są te rozkłady?'),
                   ),
                   Gap(20),
                   FilledButton(

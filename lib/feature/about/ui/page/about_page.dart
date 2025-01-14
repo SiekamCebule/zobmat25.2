@@ -97,6 +97,8 @@ class AboutPage extends StatelessWidget {
                         link('https://en.wikipedia.org/wiki/Exponential_distribution'),
                         link('https://pl.wikipedia.org/wiki/Proces_Poissona'),
                         link('https://builtin.com/data-science/gamma-distribution'),
+                        link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_beta'),
+                        link('https://en.wikipedia.org/wiki/Laplace_distribution'),
                       ],
                     ),
                     Gap(5),
