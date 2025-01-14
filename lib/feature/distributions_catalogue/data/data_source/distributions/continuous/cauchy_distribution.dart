@@ -26,7 +26,7 @@ final cauchyDistributionModel = DistributionModel(
     DistributionParameter(
       'scale',
       'Skala (γ)',
-      'Określa "szerokość" rozkładu. Im większa skala, tym wartości są bardziej "rozciągnięte" na boki.',
+      'Określa szerokość rozkładu. Im większa skala, tym wartości są bardziej "rozciągnięte" na boki.',
       min: 0.001,
       defaultValue: 1.0,
       max: 150,

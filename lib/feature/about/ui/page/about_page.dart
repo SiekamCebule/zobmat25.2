@@ -95,6 +95,8 @@ class AboutPage extends StatelessWidget {
                           'https://stats.stackexchange.com/questions/229474/practical-applications-of-the-laplace-and-cauchy-distributions',
                         ),
                         link('https://en.wikipedia.org/wiki/Exponential_distribution'),
+                        link('https://pl.wikipedia.org/wiki/Proces_Poissona'),
+                        link('https://builtin.com/data-science/gamma-distribution'),
                       ],
                     ),
                     Gap(5),

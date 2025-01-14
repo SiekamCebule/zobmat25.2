@@ -18,7 +18,7 @@ final exponentialDistributionModel = DistributionModel(
     DistributionParameter(
       'lambda',
       'Lambda (λ)',
-      'Można powiedzieć, że jest to "tempo", z jakim występuje zdarzenie. Wpływa na szybkość zaniku prawdopodobieństwa w miarę oddalania się od zera.',
+      'Jest to "tempo", z jakim występuje zdarzenie. Wpływa na szybkość zaniku prawdopodobieństwa w miarę oddalania się od zera. Przykłady? 20 autobusów dziennie: λ=20. Jeden autobus na 5 godzin: λ=0.2.',
       min: 0.0001,
       max: 100000,
       defaultValue: 1.0,
@@ -28,7 +28,7 @@ final exponentialDistributionModel = DistributionModel(
     components: [
       DistributionDescriptionParagraph(
         text:
-            'Na rozkład wykładniczy popatrzmy tak: wyobraź sobie autobus, który przyjeżdża średnio 2 razy na godzinę. Rozkład modeluje prawdopodobieństwo, że będziesz wciąż czekał po upływie jakiegoś czasu. Jakie jest prawdopodobieństwo, że autobus przyjedzie w 30 minut? Możesz sprawdzić to na wykresie dystrybuanty licząc 1 - F(x), gdzie x to czas (np. 0.5 dla 30 minut, jeśli lambda to ilość autobusów na godzinę). Lambda (λ) to jedyny parametr rozkładu. Jest to ilość zdarzeń w jednostce czasu (λ = 5, jeśli pięć na dzień/godzinę/minutę). Ważną cechą rozkładu wykładniczego jest "brak pamięci". Oznacza to, że ilość czasu spędzonego na czekaniu nie wpływa na prawdopodobieństwo zdarzenia w następnej chwili.',
+            'Na rozkład wykładniczy popatrzmy tak: wyobraź sobie autobus, który przyjeżdża średnio 2 razy na godzinę. Rozkład modeluje prawdopodobieństwo, że będziesz wciąż czekał po upływie jakiegoś czasu.\n\nJakie jest prawdopodobieństwo, że autobus przyjedzie w 30 minut? Możesz sprawdzić to na wykresie dystrybuanty licząc 1 - F(x), gdzie x to czas (np. 0.5 dla 30 minut, jeśli lambda to ilość autobusów na godzinę).\n\nLambda (λ) to jedyny parametr rozkładu. Jest to ilość zdarzeń w jednostce czasu (λ = 5, jeśli pięć na dzień/godzinę/minutę).\n\nWażną cechą rozkładu wykładniczego jest "brak pamięci". Oznacza to, że ilość czasu spędzonego na czekaniu nie wpływa na prawdopodobieństwo zdarzenia w następnej chwili.',
       ),
       DistributionDescriptionMathExpression(
         title: 'Gęstość prawdopodobieństwa',
@@ -62,7 +62,7 @@ final exponentialDistributionModel = DistributionModel(
       ),
       DistributionDescriptionParagraph(
         text:
-            'Uogólnieniem tego rozkładu jest rozkład gamma, który równiez możesz sprawdzić. Rozkład wykładniczy ma swoje zastosowania. Pozwala przewidzieć czas do awarii, czas na połączenie telefoniczne w call center, czas między mutacjami genetycznymi. Jest wykorszystywany w fizyce i w hydrologii.',
+            'Rozkład wykładniczy pozwala przewidzieć czas do awarii, czas na połączenie telefoniczne w call center, czy czas między mutacjami genetycznymi. Jest też wykorszystywany w fizyce i w hydrologii. Uogólnieniem tego rozkładu jest rozkład gamma, który jest dostępny na stronie.',
       ),
     ],
   ),

@@ -47,10 +47,10 @@ abstract class DistributionDescriptionTextComponentsRenderingParams {
   }
 
   static double letterSpacing() {
-    return -0.12;
+    return 0;
   }
 
   static double height() {
-    return 1.25;
+    return 1.3;
   }
 }

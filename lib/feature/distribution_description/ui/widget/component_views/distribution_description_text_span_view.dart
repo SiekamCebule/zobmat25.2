@@ -5,9 +5,14 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_text_span.dart';
 
 class DistributionDescriptionTextSpanView extends StatelessWidget {
-  const DistributionDescriptionTextSpanView({super.key, required this.textSpan});
+  const DistributionDescriptionTextSpanView({
+    super.key,
+    required this.textSpan,
+    this.addBottomPadding = true,
+  });
 
   final DistributionDescriptionTextSpan textSpan;
+  final bool addBottomPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +81,12 @@ class DistributionDescriptionTextSpanView extends StatelessWidget {
           }
         }).toList();
 
-    return SelectableText.rich(TextSpan(children: children), textAlign: TextAlign.start);
+    return Padding(
+      padding: addBottomPadding ? const EdgeInsets.only(bottom: 15) : EdgeInsets.zero,
+      child: SelectableText.rich(
+        TextSpan(children: children),
+        textAlign: TextAlign.start,
+      ),
+    );
   }
 }

@@ -24,7 +24,7 @@ final laplaceDistributionModel = DistributionModel(
     DistributionParameter(
       'scale',
       'Skala (b)',
-      'Określa "szerokość" rozkładu. Im większa skala, tym wartości są bardziej "rozciągnięte" na boki.',
+      'Określa szerokość rozkładu. Im większa skala, tym wartości są bardziej "rozciągnięte" na boki.',
       min: 0.0001,
       max: 10000,
       defaultValue: 1,
