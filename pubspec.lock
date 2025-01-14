@@ -57,14 +57,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.8"
   data:
     dependency: "direct main"
     description:
@@ -73,14 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
-  decimal:
-    dependency: "direct main"
-    description:
-      name: decimal
-      sha256: da8f65df568345f2738cc8b0de74971c86d2d93ce5fc8c4ec094f6b7c5d48eb5
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   equatable:
     dependency: "direct main"
     description:
@@ -208,14 +192,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.5"
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      sha256: "00f33b908655e606b86d2ade4710a231b802eec6f11e87e4ea3783fd72077a50"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.20.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -352,14 +328,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.2"
-  rational:
-    dependency: transitive
-    description:
-      name: rational
-      sha256: cb808fb6f1a839e6fc5f7d8cb3b0a10e1db48b3be102de73938c627f0b636336
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.3"
   simple_gradient_text:
     dependency: "direct main"
     description:
@@ -446,7 +414,7 @@ packages:
     source: hosted
     version: "1.4.0"
   url_launcher:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: url_launcher
       sha256: "9d06212b1362abc2f0f0d78e6f09f726608c74e3b9462e8368bb03314aa8d603"

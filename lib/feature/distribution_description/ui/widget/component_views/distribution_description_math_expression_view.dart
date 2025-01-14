@@ -25,6 +25,7 @@ class DistributionDescriptionMathExpressionView extends StatelessWidget {
             SelectableText(
               expression.title!,
               style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.center,
             ),
             Gap(5),
             latexWidget,

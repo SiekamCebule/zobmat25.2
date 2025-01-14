@@ -17,7 +17,7 @@ abstract class DistributionDescriptionTextComponentsRenderingParams {
   static FontWeight fontWeight(DistributionDescriptionParagraph paragraph) {
     return switch (paragraph.bold) {
       true => FontWeight.w600,
-      false => FontWeight.w400,
+      false => FontWeight.w300,
     };
   }
 
@@ -43,10 +43,14 @@ abstract class DistributionDescriptionTextComponentsRenderingParams {
   }
 
   static double wordSpacing() {
-    return 0.2;
+    return 0.15;
   }
 
   static double letterSpacing() {
-    return 0;
+    return -0.12;
+  }
+
+  static double height() {
+    return 1.25;
   }
 }

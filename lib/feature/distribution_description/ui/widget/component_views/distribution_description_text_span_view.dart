@@ -39,10 +39,21 @@ class DistributionDescriptionTextSpanView extends StatelessWidget {
                   DistributionDescriptionTextComponentsRenderingParams.wordSpacing(),
               letterSpacing:
                   DistributionDescriptionTextComponentsRenderingParams.letterSpacing(),
+              height: DistributionDescriptionTextComponentsRenderingParams.height(),
             );
-
-            if (textComponent.websiteUrl != null) {
-              print(textComponent.text);
+            if (textComponent.containsMarkdownLinks) {
+              return WidgetSpan(
+                alignment: PlaceholderAlignment.baseline,
+                baseline: TextBaseline.alphabetic,
+                child: HyperLink(
+                  text: textComponent.text,
+                  textStyle: textStyle,
+                  linkStyle: textStyle.copyWith(
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
+                ),
+              );
+            } else if (textComponent.websiteUrl != null) {
               return WidgetSpan(
                 alignment: PlaceholderAlignment.baseline,
                 baseline: TextBaseline.alphabetic,

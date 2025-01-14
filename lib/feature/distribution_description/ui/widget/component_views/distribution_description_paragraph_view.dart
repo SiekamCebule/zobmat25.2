@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hyperlink/hyperlink.dart';
 import 'package:link_text/link_text.dart';
 import 'package:zobmat25_2/config/distribution_description_text_components_rendering_params.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
@@ -33,8 +34,15 @@ class DistributionDescriptionParagraphView extends StatelessWidget {
       ),
       letterSpacing: DistributionDescriptionTextComponentsRenderingParams.letterSpacing(),
       wordSpacing: DistributionDescriptionTextComponentsRenderingParams.wordSpacing(),
+      height: DistributionDescriptionTextComponentsRenderingParams.height(),
     );
-    if (paragraph.websiteUrl == null) {
+    if (paragraph.containsMarkdownLinks) {
+      body = HyperLink(
+        text: paragraph.text,
+        textStyle: textStyle,
+        linkStyle: textStyle.copyWith(color: Theme.of(context).colorScheme.tertiary),
+      );
+    } else if (paragraph.websiteUrl == null) {
       body = SelectableText(
         paragraph.text,
         textAlign: DistributionDescriptionTextComponentsRenderingParams.textAlign(

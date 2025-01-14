@@ -9,16 +9,17 @@ class DistributionDescriptionParagraph extends DistributionDescriptionComponent
     this.bold = false,
     this.justify = false,
     this.websiteUrl,
+    this.containsMarkdownLinks = false,
     this.fontSize = CourseLessonTextFontSize.medium,
     this.color = CourseLessonTextColor.themeOnSurface,
   });
 
   final String text;
-  //final bool addBottomPadding; TODO?
   final bool italic;
   final bool bold;
   final bool justify;
   final String? websiteUrl;
+  final bool containsMarkdownLinks;
   final CourseLessonTextFontSize fontSize;
   final CourseLessonTextColor color;
 

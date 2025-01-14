@@ -56,10 +56,21 @@ final normalDistributionModel = DistributionModel(
         type: DistributionDescriptionExpressionType.text,
       ),
       DistributionDescriptionMathExpression(
-        title: 'Wariancja',
-        data: r'\sigma = \sqrt{\text{Var}(X)}',
+        title: 'Wartość oczekiwana',
+        data: r'\mathbb{E}[X] = \mu',
         type: DistributionDescriptionExpressionType.text,
       ),
+      DistributionDescriptionMathExpression(
+        title: 'Odchylenie standardowe',
+        data: r'\sigma = \sqrt{\text{Var}(X)} = \sigma',
+        type: DistributionDescriptionExpressionType.text,
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Wariancja',
+        data: r'\text{Var}(X) = \sigma^2',
+        type: DistributionDescriptionExpressionType.text,
+      ),
+
       DistributionDescriptionParagraph(
         text:
             'Rozkład ten znalazł swoje zastosowania w modelowaniu cech populacji (np. rozkład wzrostu i wagi ludzi), w kontroli jakości produktów, analizie finansowej czy ocenie produktywności pracownika.',
