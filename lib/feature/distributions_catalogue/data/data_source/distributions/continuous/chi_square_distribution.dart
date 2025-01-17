@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
+import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
@@ -17,13 +18,21 @@ final chiSquareDistributionModel = DistributionModel(
     DistributionParameter(
       'degrees_of_freedom',
       'Stopnie swobody (k)',
-      'Więcej stopni swobody (k) "rozciąga" rozkład. Możemy rozumieć je jako "liczbę niezależnych zmiennych"',
+      'Więcej stopni swobody (k) "rozciąga" rozkład. Możemy rozumieć je jako "liczbę niezależnych zmiennych"', // TODO
       min: 0.7,
       max: 245,
       defaultValue: 1,
     ),
   ],
-  extendedDescription: DistributionDescription(components: []),
+  extendedDescription: DistributionDescription(
+    components: [
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład chi-kwadrat można opisać jako rozkład sumy kwadratów zmiennej losowej o rozkładzie normalnym (μ=0, σ=1).\n\nWyobraź sobie, że masz taki zbiór: {125, 111, 113, 134.5, 125, 128.5}. Musimy go ["zestandaryzować"](https://pl.wikipedia.org/wiki/Standaryzacja_(statystyka)), czyli doprowadzić do rozkładu normalnego (μ=0, σ=1). Wyjdzie coś takiego: {0.24,−1.30,−1.08,1.28,0.24,0.62}, gdzie poszczególne liczby oznaczają ilość odchyleń standardowych (σ) od średniej (czyli od zera).\nSuma KWADRATÓW owych liczb wynosi 5, czyli ilość ilość liczb (6) minus jeden. (nazywa się to stopniami swobody)',
+        containsMarkdownLinks: true,
+      ),
+    ],
+  ),
 );
 
 num chiSquareDistributionPdf(num x, DistributionParamsSetup params) {

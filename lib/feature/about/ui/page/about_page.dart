@@ -100,6 +100,14 @@ class AboutPage extends StatelessWidget {
                           link('https://builtin.com/data-science/gamma-distribution'),
                           link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_beta'),
                           link('https://en.wikipedia.org/wiki/Laplace_distribution'),
+                          link(
+                            'https://pl.wikipedia.org/wiki/Standaryzacja_(statystyka)',
+                          ),
+                          link('https://pl.wikipedia.org/wiki/Test_t_Studenta'),
+                          link('https://www.ttable.org'),
+                          link(
+                            'https://www.hwdoi.com/pl/math/what-is-the-student-t-distribution-and-how-do-i-use-it?utm_source=chatgpt.com',
+                          ),
                         ],
                       ),
                       Gap(15),
@@ -138,6 +146,9 @@ class AboutPage extends StatelessWidget {
                           ),
                           linkSpan(
                             'Autor nieznany, domena publiczna, via Wikimedia Commons, (https://commons.wikimedia.org/wiki/File:Chi-square_distributionPDF.png)',
+                          ),
+                          linkSpan(
+                            'The original uploader was Thorin at French Wikipedia., CC BY-SA 1.0 <https://creativecommons.org/licenses/by-sa/1.0>, via Wikimedia Commons, (https://commons.wikimedia.org/wiki/File:Student_densite_best.JPG)',
                           ),
                         ],
                       ),

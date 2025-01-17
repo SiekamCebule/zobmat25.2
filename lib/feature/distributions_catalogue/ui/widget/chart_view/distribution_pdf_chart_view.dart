@@ -44,8 +44,6 @@ class DistributionPdfChartView extends StatelessWidget {
           lowerBound: -1000000,
           upperBound: 1000000,
         ).toDouble();
-    // final minX = 0.0;
-    // final maxX = 1.0;
 
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;

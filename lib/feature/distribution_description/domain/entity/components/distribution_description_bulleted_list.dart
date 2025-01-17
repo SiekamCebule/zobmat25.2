@@ -2,10 +2,16 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/distri
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description_text_component.dart';
 
 class DistributionDescriptionBulletedList extends DistributionDescriptionComponent {
-  const DistributionDescriptionBulletedList({required this.items});
+  const DistributionDescriptionBulletedList({
+    this.bulletType = DistributionDescriptionBulletType.points,
+    required this.items,
+  });
 
+  final DistributionDescriptionBulletType bulletType;
   final List<DistributionDescriptionTextComponent> items;
 
   @override
   List<Object?> get props => [super.props, items];
 }
+
+enum DistributionDescriptionBulletType { points, numbers, letters }

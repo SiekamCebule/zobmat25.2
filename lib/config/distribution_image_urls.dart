@@ -7,4 +7,5 @@ final distributionImageUrls = {
   'beta_distribution': 'chi_square_distribution.jpg',
   'laplace_distribution': 'laplace_distribution.jpg',
   'chi_square_distribution': 'chi_square_distribution.jpg',
+  't_student_distribution': 't_student_distribution.jpeg',
 };

@@ -6,6 +6,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/laplace_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/cauchy_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/t_student_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_distribution.dart';
 
 abstract interface class PredefinedDistributionMathFunctionsDataSource {
@@ -27,6 +28,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'beta_distribution': betaDistributionPdf,
     'laplace_distribution': laplaceDistributionPdf,
     'chi_square_distribution': chiSquareDistributionPdf,
+    't_student_distribution': tStudentDistributionPdf,
   };
   static final Map<String, DistributionCdf> _cdfs = {
     'normal_distribution': normalDistributionCdf,
@@ -37,6 +39,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'beta_distribution': betaDistributionCdf,
     'laplace_distribution': laplaceDistributionCdf,
     'chi_square_distribution': chiSquareDistributionCdf,
+    't_student_distribution': tStudentDistributionCdf,
   };
   static final Map<String, DistributionCdf> _inverseCdfs = {
     'normal_distribution': normalDistributionInverseCdf,
@@ -47,6 +50,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'beta_distribution': betaDistributionInverseCdf,
     'laplace_distribution': laplaceDistributionInverseCdf,
     'chi_square_distribution': chiSquareDistributionInverseCdf,
+    't_student_distribution': tStudentDistributionInverseCdf,
   };
 
   @override
