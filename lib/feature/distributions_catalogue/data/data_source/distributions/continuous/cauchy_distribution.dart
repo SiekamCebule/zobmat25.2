@@ -58,6 +58,8 @@ final cauchyDistributionModel = DistributionModel(
         title: 'Wartość oczekiwana, odchylenie standardowe, wariancja',
         data: r"\text{BRAK}",
       ),
+      DistributionDescriptionMathExpression(title: 'Mediana', data: r'Me = x_0'),
+      DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = x_0'),
       DistributionDescriptionParagraph(
         text:
             'Mimo że znaczaco różni się od innych rozkładów, jest wykorzystywany w hydrologii (maksymalne jednodniowe opady deszczu), w fizyce jądrowej, w spektroskopii, w mechanice kwantowej, [w biologii](https://stats.stackexchange.com/a/436727). Został nawet użyty do modelowania zmian umiejętności skoczków narciarskich w grze [SJ Manager](https://github.com/SiekamCebule/sj-manager).',

@@ -64,7 +64,8 @@ final normalDistributionModel = DistributionModel(
         title: 'Wariancja',
         data: r'\text{Var}(X) = \sigma^2',
       ),
-
+      DistributionDescriptionMathExpression(title: 'Mediana', data: r'Me = \mu'),
+      DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = \mu'),
       DistributionDescriptionParagraph(
         text:
             'Rozkład ten znalazł swoje zastosowania w modelowaniu cech populacji (np. rozkład wzrostu i wagi ludzi), w kontroli jakości produktów, analizie finansowej czy ocenie produktywności pracownika.',

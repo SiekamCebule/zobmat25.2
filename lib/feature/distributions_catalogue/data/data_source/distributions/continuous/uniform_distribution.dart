@@ -66,6 +66,11 @@ final uniformDistributionModel = DistributionModel(
         title: 'Wariancja',
         data: r'\text{Var}(X) = \frac{(b - a)^2}{12}',
       ),
+      DistributionDescriptionMathExpression(
+        title: 'Mediana',
+        data: r'Me = \frac{a + b}{2}',
+      ),
+      DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = \text{BRAK}'),
 
       DistributionDescriptionTextSpan(
         children: [

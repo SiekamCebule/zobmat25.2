@@ -100,6 +100,7 @@ class AboutPage extends StatelessWidget {
                           link('https://builtin.com/data-science/gamma-distribution'),
                           link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_beta'),
                           link('https://en.wikipedia.org/wiki/Laplace_distribution'),
+                          link('https://en.wikipedia.org/wiki/Chi-squared_test'),
                           link(
                             'https://pl.wikipedia.org/wiki/Standaryzacja_(statystyka)',
                           ),
@@ -108,6 +109,8 @@ class AboutPage extends StatelessWidget {
                           link(
                             'https://www.hwdoi.com/pl/math/what-is-the-student-t-distribution-and-how-do-i-use-it?utm_source=chatgpt.com',
                           ),
+                          link('https://en.wikipedia.org/wiki/Log-normal_distribution'),
+                          link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Weibulla'),
                         ],
                       ),
                       Gap(15),
@@ -149,6 +152,12 @@ class AboutPage extends StatelessWidget {
                           ),
                           linkSpan(
                             'The original uploader was Thorin at French Wikipedia., CC BY-SA 1.0 <https://creativecommons.org/licenses/by-sa/1.0>, via Wikimedia Commons, (https://commons.wikimedia.org/wiki/File:Student_densite_best.JPG)',
+                          ),
+                          linkSpan(
+                            'Autor nieznany, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/deed.en>, via Wikimedia Commons, (https://commons.wikimedia.org/wiki/File:Lognormal_distribution_PDF.png)',
+                          ),
+                          linkSpan(
+                            'Calimo, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Weibull_PDF.svg)',
                           ),
                         ],
                       ),

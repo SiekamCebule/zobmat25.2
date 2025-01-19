@@ -67,6 +67,15 @@ final betaDistributionModel = DistributionModel(
         data:
             r'\text{Var}(X) = \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}',
       ),
+      DistributionDescriptionMathExpression(
+        title: 'Mediana',
+        data: r'Me \approx I^{-1}(0.5, \alpha, \beta)',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Moda',
+        data:
+            r'Mo = \begin{cases} \frac{\alpha - 1}{\alpha + \beta - 2}, & \alpha > 1, \beta > 1 \\ \text{BRAK}, & \alpha \leq 1 \text{ lub } \beta \leq 1 \end{cases}',
+      ),
       DistributionDescriptionParagraph(
         text:
             'Rozkład beta może modelować prawdopodobieństwo sukcesu w [procesie Bernoulliego](https://pl.wikipedia.org/wiki/Proces_Bernoulliego). Proces Bernoulliego jest serią zdarzeń typu sukces/porażka. Załóżmy, że rzucamy nieuczciwą monetą. Kiedy 10 razy wypadnie orzeł, a 22 razy reszka, możemy oszacować prawdopodobieństwo orła poprzez rozkład beta(11, 23). Dodaliśmy 1, ponieważ rozkład beta(1,1) był początkowym rozkładem, do którego dokładamy informacje.\n\nRozkład beta jest stosowany także w genetyce (częstotliwość alleli w populacji), w statystyce sportowej (prawdopodobieństwo trafienia do kosza przez zawodnika NBA), w zarządzaniu projektami czy w marketingu (współczynnik klikalności CTR).',

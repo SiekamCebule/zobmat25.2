@@ -4,10 +4,12 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/exponential_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/gamma_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/laplace_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/log_normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/cauchy_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/t_student_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/weibull_distribution.dart';
 
 abstract interface class PredefinedDistributionMathFunctionsDataSource {
   Future<DistributionPdf> getPdf(String distributionId);
@@ -29,6 +31,8 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'laplace_distribution': laplaceDistributionPdf,
     'chi_square_distribution': chiSquareDistributionPdf,
     't_student_distribution': tStudentDistributionPdf,
+    'log_normal_distribution': logNormalDistributionPdf,
+    'weibull_distribution': weibullDistributionPdf,
   };
   static final Map<String, DistributionCdf> _cdfs = {
     'normal_distribution': normalDistributionCdf,
@@ -40,6 +44,8 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'laplace_distribution': laplaceDistributionCdf,
     'chi_square_distribution': chiSquareDistributionCdf,
     't_student_distribution': tStudentDistributionCdf,
+    'log_normal_distribution': logNormalDistributionCdf,
+    'weibull_distribution': weibullDistributionCdf,
   };
   static final Map<String, DistributionCdf> _inverseCdfs = {
     'normal_distribution': normalDistributionInverseCdf,
@@ -51,6 +57,8 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'laplace_distribution': laplaceDistributionInverseCdf,
     'chi_square_distribution': chiSquareDistributionInverseCdf,
     't_student_distribution': tStudentDistributionInverseCdf,
+    'log_normal_distribution': logNormalDistributionInverseCdf,
+    'weibull_distribution': weibullDistributionInverseCdf,
   };
 
   @override

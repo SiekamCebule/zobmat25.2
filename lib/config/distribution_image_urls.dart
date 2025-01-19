@@ -8,4 +8,6 @@ final distributionImageUrls = {
   'laplace_distribution': 'laplace_distribution.jpg',
   'chi_square_distribution': 'chi_square_distribution.jpg',
   't_student_distribution': 't_student_distribution.jpeg',
+  'log_normal_distribution': 'log_normal_distribution.jpg',
+  'weibull_distribution': 'weibull_distribution.jpg',
 };

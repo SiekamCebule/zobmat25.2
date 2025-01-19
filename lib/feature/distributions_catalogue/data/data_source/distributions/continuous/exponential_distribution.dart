@@ -55,6 +55,11 @@ final exponentialDistributionModel = DistributionModel(
         title: 'Wariancja',
         data: r'\text{Var}(X) = \frac{1}{\lambda^2}',
       ),
+      DistributionDescriptionMathExpression(
+        title: 'Mediana',
+        data: r'Me = \frac{\ln(2)}{\lambda}',
+      ),
+      DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = 0'),
       DistributionDescriptionParagraph(
         text:
             'Rozkład wykładniczy pozwala przewidzieć czas do awarii, czas na połączenie telefoniczne w call center, czy czas między mutacjami genetycznymi. Jest też wykorszystywany w fizyce i w hydrologii. Uogólnieniem tego rozkładu jest rozkład gamma, który jest dostępny na stronie.',

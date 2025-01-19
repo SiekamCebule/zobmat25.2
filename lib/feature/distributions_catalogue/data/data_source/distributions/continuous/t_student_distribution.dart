@@ -104,6 +104,9 @@ final tStudentDistributionModel = DistributionModel(
         data:
             r'\mathbb{E}[X] = \begin{cases} 0, & \nu > 1 \\ \text{BRAK}, & \nu \leq 1 \end{cases}',
       ),
+      DistributionDescriptionMathExpression(title: 'Mediana', data: r'Me = 0'),
+      DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = 0'),
+
       DistributionDescriptionMathExpression(
         title: 'Odchylenie standardowe, wariancja',
         data: r"""

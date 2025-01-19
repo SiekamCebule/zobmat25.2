@@ -75,6 +75,15 @@ final gammaDistributionModel = DistributionModel(
         title: 'Wariancja',
         data: r'\text{Var}(X) = k\theta^2',
       ),
+      DistributionDescriptionMathExpression(
+        title: 'Mediana',
+        data: r'Me \approx \text{wartość wyliczona numerycznie dla } F(x) = 0.5',
+      ),
+      DistributionDescriptionMathExpression(
+        title: 'Moda',
+        data:
+            r'Mo = \begin{cases} (k - 1)\theta, & k > 1 \\ \text{BRAK}, & k \leq 1 \end{cases}',
+      ),
       DistributionDescriptionParagraph(
         text:
             'Podobnie jak w przypadku rozkładu wykładniczego, rozkładu gamma używamy do szacowania czasu na wystąpienie zdarzeń. Różnica jest taka, że rozkładem wykładniczym opiszemy czas do awarii jednej żarówki, a w rozkładzie gamma przysłowiowych "żarówek" może być wiele. [Kliknij tutaj](https://en.wikipedia.org/wiki/Gamma_distribution#Occurrence_and_applications), aby dowiedzieć się więcej o zastosowaniach tego rozkładu (Wikipedia).',
