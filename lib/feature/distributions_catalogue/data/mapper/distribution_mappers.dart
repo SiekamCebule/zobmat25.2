@@ -1,21 +1,37 @@
 import 'package:zobmat25_2/core/distribution_math_typedefs.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/discrete_distribution.dart';
 
-Distribution distributionFromModel(
-  DistributionModel model, {
-  required DistributionPdf pdf,
-  required DistributionCdf cdf,
-  required DistributionInverseCdf inverseCdf,
+ContinuousDistribution continuousDistributionFromModel(
+  ContinuousDistributionModel model, {
+  required ContinuousDistributionPdf pdf,
+  required ContinuousDistributionCdf cdf,
+  required ContinuousDistributionInverseCdf inverseCdf,
 }) {
-  return Distribution(
+  return ContinuousDistribution(
     id: model.id,
     name: model.name,
     shortDescription: model.shortDescription,
     pdf: pdf,
     cdf: cdf,
     inverseCdf: inverseCdf,
-    type: model.type,
+    parameters: model.parameters,
+    extendedDescription: model.extendedDescription,
+  );
+}
+
+DiscreteDistribution discreteDistributionFromModel(
+  DiscreteDistributionModel model, {
+  required DiscreteDistributionPmf pmf,
+  required DiscreteDistributionCdf cdf,
+}) {
+  return DiscreteDistribution(
+    id: model.id,
+    name: model.name,
+    shortDescription: model.shortDescription,
+    pmf: pmf,
+    cdf: cdf,
     parameters: model.parameters,
     extendedDescription: model.extendedDescription,
   );

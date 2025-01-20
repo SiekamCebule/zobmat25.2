@@ -7,15 +7,13 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 import 'package:data/data.dart' as data;
 
-final betaDistributionModel = DistributionModel(
+final betaDistributionModel = ContinuousDistributionModel(
   id: 'beta_distribution',
   name: 'Rozkład beta',
   shortDescription:
       'Modeluje prawdopodobieństwo wystąpienia liczb między 0 i 1, choć może być ono większe po jednej ze stron.',
-  type: DistributionType.continuous,
   parameters: [
     DistributionParameter(
       'alpha',

@@ -7,14 +7,13 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final normalDistributionModel = DistributionModel(
+final normalDistributionModel = ContinuousDistributionModel(
   id: 'normal_distribution',
   name: 'Rozkład normalny',
   shortDescription:
       'Symetryczny rozkład w kształcie dzwonu opisujący wiele naturalnych zjawisk, takich jak wzrost, waga czy wyniki testów, gdzie wartości bliskie średniej występują częściej niż wartości skrajne.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'mean',

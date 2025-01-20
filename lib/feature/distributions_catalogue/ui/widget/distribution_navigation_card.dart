@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:zobmat25_2/config/distribution_image_urls.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_type_label_widget.dart';
 
 class DistributionNavigationCard extends StatelessWidget {

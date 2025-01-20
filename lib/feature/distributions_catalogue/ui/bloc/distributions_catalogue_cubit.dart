@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_filter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distribution_filters_use_case.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distributions_use_case.dart';

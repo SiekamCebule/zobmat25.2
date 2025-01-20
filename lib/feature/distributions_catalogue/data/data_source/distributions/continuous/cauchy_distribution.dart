@@ -6,14 +6,12 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final cauchyDistributionModel = DistributionModel(
+final cauchyDistributionModel = ContinuousDistributionModel(
   id: 'cauchy_distribution',
   name: 'Rozkład Cauchy\'ego',
   shortDescription:
       'Rozkład charakteryzujący się bardzo grubymi ogonami, modelujący procesy, gdzie wartości ekstremalne są znacznie bardziej prawdopodobne, takie jak błędy w pomiarach w bliskim polu lub rezonanse mechaniczne',
-  type: DistributionType.continuous,
   parameters: [
     DistributionParameter(
       'location',

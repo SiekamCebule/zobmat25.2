@@ -28,7 +28,6 @@ class DistributionDescriptionBulletedListView extends StatelessWidget {
       DistributionDescriptionBulletType.numbers => BulletStyle.numeric,
       DistributionDescriptionBulletType.points => BulletStyle.discFill,
     };
-    print('style: $bulletStyle');
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: SuperBulletList(

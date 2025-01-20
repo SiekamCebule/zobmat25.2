@@ -5,6 +5,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:super_bullet_list/bullet_list.dart';
 import 'package:super_bullet_list/bullet_style.dart';
 import 'package:zobmat25_2/core/shared_ui/navigation_link_text_button.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/bloc/distributions_catalogue_cubit.dart';
 import 'package:zobmat25_2/feature/navigation/domain/entity/navigation_entry.dart';
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
 
@@ -18,6 +19,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final dashboardState = context.watch<DistributionsCatalogueCubit>().state;
+    var distributionsCount = 24;
+    if (dashboardState is DistributionsCatalogueAvailable) {
+      distributionsCount = dashboardState.distributions.length;
+    }
     return Scaffold(
       body: Center(
         child: Transform.translate(
@@ -71,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                                 separator: Gap(10),
                                 items: [
                                   Text(
-                                    'Opisy 23 rozkładów prawdopodobieństwa, wraz z ich zastosowaniami',
+                                    'Opisy $distributionsCount rozkładów prawdopodobieństwa, wraz z ich zastosowaniami',
                                   ),
                                   Text(
                                     'Wykresy funkcji gęstości i wykresy funkcji rozkładu skumulowanego',
@@ -121,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                                 separator: Gap(10),
                                 items: [
                                   Text(
-                                    'Bardziej zaawansowanych zagadnień, takich jak "funkcja n rzędu", kurtoza, czy współczynnik skośności.',
+                                    'Bardziej zaawansowanych zagadnień, takich jak funkcja n rzędu, kurtoza, czy współczynnik skośności.',
                                   ),
                                   Text(
                                     'Wykresy PDF często "wariują" przy skrajnych wartościach parametrów (szczególnie rozkład beta i rozkład chi-kwadrat)',

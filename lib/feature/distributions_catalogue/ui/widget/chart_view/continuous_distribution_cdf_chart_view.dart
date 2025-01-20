@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/core/util/decimal_places.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
 
-class DistributionCdfChartView extends StatelessWidget {
-  const DistributionCdfChartView({super.key, required this.distribution});
+class ContinuousDistributionCdfChartView extends StatelessWidget {
+  const ContinuousDistributionCdfChartView({super.key, required this.distribution});
 
-  final Distribution distribution;
+  final ContinuousDistribution distribution;
 
   @override
   Widget build(BuildContext context) {

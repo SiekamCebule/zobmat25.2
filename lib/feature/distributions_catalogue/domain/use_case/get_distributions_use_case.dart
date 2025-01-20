@@ -1,4 +1,4 @@
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/repository/distribution_filters_repository.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/repository/distributions_repository.dart';
 

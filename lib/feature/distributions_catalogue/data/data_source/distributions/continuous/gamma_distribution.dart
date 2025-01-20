@@ -7,15 +7,15 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
+
 import 'package:data/data.dart';
 
-final gammaDistributionModel = DistributionModel(
+final gammaDistributionModel = ContinuousDistributionModel(
   id: 'gamma_distribution',
   name: 'Rozkład gamma',
   shortDescription:
       'Uogólnienie rozkładu wykładniczego. Modeluje czas oczekiwania na kilka zdarzeń w procesie, w którym zdarzenia występują losowo, ale ze stałym prawdopodobieństwem w jednostce czasu (np. czas do przyjazdu 3 tramwajów)',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'shape',

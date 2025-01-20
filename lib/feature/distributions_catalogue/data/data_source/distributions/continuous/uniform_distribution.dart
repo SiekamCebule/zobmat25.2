@@ -6,14 +6,13 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distributi
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter_rule.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final uniformDistributionModel = DistributionModel(
+final uniformDistributionModel = ContinuousDistributionModel(
   id: 'uniform_continuous_distribution',
   name: 'Rozkład ciągły jednostajny',
   shortDescription:
       'Prosty rozkład, gdzie każda wartość ma taką samą gęstość prawdopodobieństwa.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'start',

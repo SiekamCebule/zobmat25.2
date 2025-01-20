@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distribution_description/ui/widget/distribution_description_component_view.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 
 class DistirbutionDescriptionView extends StatefulWidget {
   const DistirbutionDescriptionView({super.key, required this.distribution});
@@ -25,8 +25,11 @@ class _DistirbutionDescriptionViewState extends State<DistirbutionDescriptionVie
     scheduleMicrotask(() {
       final dashboardStream = context.read<DistributionDashboardCubit>().stream;
       final appropriateStream = dashboardStream.distinct((prev, current) {
-        return (prev as DistributionDashboardDistributionSelected).distribution ==
-            (current as DistributionDashboardDistributionSelected).distribution;
+        if (prev is! DistributionDashboardDistributionSelected ||
+            current is! DistributionDashboardDistributionSelected) {
+          return false;
+        }
+        return prev.distribution == current.distribution;
       });
       _distributionChangesSubscription = appropriateStream.listen((state) async {
         await _scrollController.animateTo(

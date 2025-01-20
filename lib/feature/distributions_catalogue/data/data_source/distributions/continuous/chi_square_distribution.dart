@@ -8,20 +8,20 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
+
 import 'package:data/data.dart' as data;
 
-final chiSquareDistributionModel = DistributionModel(
+final chiSquareDistributionModel = ContinuousDistributionModel(
   id: 'chi_square_distribution',
   name: 'Rozkład chi-kwadrat',
   shortDescription:
       'Rozkład opisujący sumę kwadratów k niezależnych zmiennych losowych o rozkładzie normalnym standardowym. Jest powszechnie używany w testach statystycznych, takich jak test chi-kwadrat, oraz w analizie wariancji, gdzie ocenia zgodność danych z modelem teoretycznym.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'degrees_of_freedom',
       'Stopnie swobody (k)',
-      'Więcej stopni swobody (k) "rozciąga" rozkład. Możemy rozumieć je jako "liczbę niezależnych zmiennych"', // TODO
+      'Więcej stopni swobody (k) "rozciąga" rozkład. Stopnie swobody są związane z ilością zmiennych w teście chi-kwadrat (spójrz na opis rozkładu chi-kwadrat).', // TODO
       min: 0.7,
       max: 245,
       defaultValue: 1,

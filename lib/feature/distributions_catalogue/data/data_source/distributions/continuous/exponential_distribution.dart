@@ -6,14 +6,13 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final exponentialDistributionModel = DistributionModel(
+final exponentialDistributionModel = ContinuousDistributionModel(
   id: 'exponential_distribution',
   name: 'Rozkład wykładniczy',
   shortDescription:
       'Modeluje czas oczekiwania na pierwsze zdarzenie w procesie, w którym zdarzenia występują losowo, ale ze stałym prawdopodobieństwem w jednostce czasu, takie jak czas do nadejścia połączenia telefonicznego lub awarii urządzenia.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'lambda',

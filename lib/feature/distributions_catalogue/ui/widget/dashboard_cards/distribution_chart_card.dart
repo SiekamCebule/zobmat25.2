@@ -4,8 +4,10 @@ import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/dialog/drawed_numbers_dialog.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/distribution_chart_view.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/continuous_distribution_chart_view.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_parameter_text_field.dart';
 
 class DistributionChartCard extends StatelessWidget {
@@ -16,6 +18,19 @@ class DistributionChartCard extends StatelessWidget {
     final dashboardState = context.watch<DistributionDashboardCubit>().state;
     final dashboardIsAvaiable =
         dashboardState is DistributionDashboardDistributionSelected;
+
+    Distribution? distribution;
+    late Widget chartWidget;
+    if (dashboardIsAvaiable) {
+      distribution = dashboardState.distribution;
+      chartWidget =
+          distribution is ContinuousDistribution
+              ? ContinuousDistributionChartView(
+                distribution: distribution,
+                chartType: dashboardState.chartType,
+              )
+              : Placeholder();
+    }
 
     return Card(
       clipBehavior: Clip.none,
@@ -29,14 +44,7 @@ class DistributionChartCard extends StatelessWidget {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  if (dashboardIsAvaiable)
-                    Positioned.fill(
-                      top: 80,
-                      child: DistributionChartView(
-                        distribution: dashboardState.distribution,
-                        chartType: dashboardState.chartType,
-                      ),
-                    ),
+                  if (dashboardIsAvaiable) Positioned.fill(top: 80, child: chartWidget),
                   if (!dashboardIsAvaiable)
                     ColoredBox(
                       color: Colors.black26,

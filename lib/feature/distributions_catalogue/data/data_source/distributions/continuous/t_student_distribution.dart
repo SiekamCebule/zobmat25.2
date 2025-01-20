@@ -7,14 +7,13 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final tStudentDistributionModel = DistributionModel(
+final tStudentDistributionModel = ContinuousDistributionModel(
   id: 't_student_distribution',
   name: 'Rozkład t-Studenta',
   shortDescription:
       'Rozkład zbliżony do rozkładu normalnego, ale posiadający grubsze ogony. Powszechnie używany w kontekście "testu t", który jest ważnym narzędziem statystyczym.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'degrees_of_freedom',

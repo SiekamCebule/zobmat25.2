@@ -12,16 +12,18 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/weibull_distribution.dart';
 
 abstract interface class PredefinedDistributionMathFunctionsDataSource {
-  Future<DistributionPdf> getPdf(String distributionId);
-  Future<DistributionCdf> getCdf(String distributionId);
-  Future<DistributionInverseCdf> getInverseCdf(String distributionId);
+  Future<ContinuousDistributionPdf> getContinuousPdf(String distributionId);
+  Future<ContinuousDistributionCdf> getContinuousCdf(String distributionId);
+  Future<ContinuousDistributionInverseCdf> getContinuousInverseCdf(String distributionId);
+  Future<DiscreteDistributionPmf> getDiscretePmf(String distributionId);
+  Future<DiscreteDistributionPmf> getDiscreteCdf(String distributionId);
 }
 
 class PredefinedDistributionMathFunctionsDataSourceImpl
     implements PredefinedDistributionMathFunctionsDataSource {
   PredefinedDistributionMathFunctionsDataSourceImpl();
 
-  static final Map<String, DistributionPdf> _pdfs = {
+  static final Map<String, ContinuousDistributionPdf> _continuousPdfs = {
     'normal_distribution': normalDistributionPdf,
     'uniform_continuous_distribution': uniformDistributionPdf,
     'cauchy_distribution': cauchyDistributionPdf,
@@ -34,7 +36,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'log_normal_distribution': logNormalDistributionPdf,
     'weibull_distribution': weibullDistributionPdf,
   };
-  static final Map<String, DistributionCdf> _cdfs = {
+  static final Map<String, ContinuousDistributionCdf> _continuousCdfs = {
     'normal_distribution': normalDistributionCdf,
     'uniform_continuous_distribution': uniformDistributionCdf,
     'cauchy_distribution': cauchyDistributionCdf,
@@ -47,7 +49,7 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'log_normal_distribution': logNormalDistributionCdf,
     'weibull_distribution': weibullDistributionCdf,
   };
-  static final Map<String, DistributionCdf> _inverseCdfs = {
+  static final Map<String, ContinuousDistributionCdf> _continuousInverseCdfs = {
     'normal_distribution': normalDistributionInverseCdf,
     'uniform_continuous_distribution': uniformDistributionInverseCdf,
     'cauchy_distribution': cauchyDistributionInverseCdf,
@@ -61,13 +63,28 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'weibull_distribution': weibullDistributionInverseCdf,
   };
 
-  @override
-  Future<DistributionCdf> getPdf(String distributionId) async => _pdfs[distributionId]!;
+  static final Map<String, DiscreteDistributionPmf> _discretePmfs = {};
+
+  static final Map<String, DiscreteDistributionPmf> _discreteCdfs = {};
 
   @override
-  Future<DistributionCdf> getCdf(String distributionId) async => _cdfs[distributionId]!;
+  Future<ContinuousDistributionCdf> getContinuousPdf(String distributionId) async =>
+      _continuousPdfs[distributionId]!;
 
   @override
-  Future<DistributionInverseCdf> getInverseCdf(String distributionId) async =>
-      _inverseCdfs[distributionId]!;
+  Future<ContinuousDistributionCdf> getContinuousCdf(String distributionId) async =>
+      _continuousCdfs[distributionId]!;
+
+  @override
+  Future<ContinuousDistributionInverseCdf> getContinuousInverseCdf(
+    String distributionId,
+  ) async => _continuousInverseCdfs[distributionId]!;
+
+  @override
+  Future<DiscreteDistributionPmf> getDiscretePmf(String distributionId) async =>
+      _discretePmfs[distributionId]!;
+
+  @override
+  Future<DiscreteDistributionPmf> getDiscreteCdf(String distributionId) async =>
+      _discreteCdfs[distributionId]!;
 }

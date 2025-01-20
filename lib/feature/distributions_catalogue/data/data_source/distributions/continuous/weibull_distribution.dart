@@ -6,14 +6,13 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final weibullDistributionModel = DistributionModel(
+final weibullDistributionModel = ContinuousDistributionModel(
   id: 'weibull_distribution',
   name: 'Rozkład Weibulla',
   shortDescription:
       'Elastyczny rozkład opisujący czas życia obiektów, gdy prawdopodobieństwo śmierci/awarii zmienia się w czasie.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'scale',

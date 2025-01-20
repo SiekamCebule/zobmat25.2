@@ -6,14 +6,13 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final laplaceDistributionModel = DistributionModel(
+final laplaceDistributionModel = ContinuousDistributionModel(
   id: 'laplace_distribution',
   name: 'Rozkład Laplace\'a',
   shortDescription:
       'Symetryczny rozkład w kształcie "szczupłego dzwonu", który ma szersze ogony niż rozkład normalny.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'location',

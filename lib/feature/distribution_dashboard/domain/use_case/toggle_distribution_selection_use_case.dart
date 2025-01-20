@@ -1,6 +1,6 @@
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 
 class ToggleDistributionSelectionUseCase {
   const ToggleDistributionSelectionUseCase({

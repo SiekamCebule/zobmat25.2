@@ -8,14 +8,13 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
-final logNormalDistributionModel = DistributionModel(
+final logNormalDistributionModel = ContinuousDistributionModel(
   id: 'log_normal_distribution',
   name: 'Rozkład log-normalny',
   shortDescription:
       'Rozkład charakteryzujący się dodatnimi, asymetrycznymi wartościami, gdzie ogon rozkładu jest wydłużony w prawo. Modeluje zjawiska naturalne i ekonomiczne, takie jak ceny akcji, wielkości populacji czy koncentracje zanieczyszczeń, szczególnie gdy dane mają multiplikatywny charakter zmian.',
-  type: DistributionType.continuous,
+
   parameters: [
     DistributionParameter(
       'mean',
