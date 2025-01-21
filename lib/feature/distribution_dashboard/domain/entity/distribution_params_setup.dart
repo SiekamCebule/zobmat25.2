@@ -5,9 +5,9 @@ import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distrib
 class DistributionParamsSetup with EquatableMixin {
   const DistributionParamsSetup({required this.values});
 
-  final Map<DistributionParameter, double> values;
+  final Map<DistributionParameter, num> values;
 
-  double getValue(String parameterId) {
+  num getValue(String parameterId) {
     try {
       final key = values.keys.singleWhere((param) => parameterId == param.id);
       return values[key]!;
@@ -25,7 +25,7 @@ class DistributionParamsSetup with EquatableMixin {
   @override
   List<Object?> get props => [values];
 
-  DistributionParamsSetup copyWith({Map<DistributionParameter, double>? values}) {
+  DistributionParamsSetup copyWith({Map<DistributionParameter, num>? values}) {
     return DistributionParamsSetup(values: values ?? this.values);
   }
 }

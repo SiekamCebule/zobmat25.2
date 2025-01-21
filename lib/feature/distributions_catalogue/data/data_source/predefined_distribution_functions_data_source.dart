@@ -1,4 +1,4 @@
-import 'package:zobmat25_2/core/distribution_math_typedefs.dart';
+import 'package:zobmat25_2/core/distribution_function_typedefs.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/beta_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/chi_square_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/exponential_distribution.dart';
@@ -10,18 +10,20 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/t_student_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/weibull_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/binomial_distribution.dart';
 
-abstract interface class PredefinedDistributionMathFunctionsDataSource {
+abstract interface class PredefinedDistributionFunctionsDataSource {
   Future<ContinuousDistributionPdf> getContinuousPdf(String distributionId);
   Future<ContinuousDistributionCdf> getContinuousCdf(String distributionId);
   Future<ContinuousDistributionInverseCdf> getContinuousInverseCdf(String distributionId);
   Future<DiscreteDistributionPmf> getDiscretePmf(String distributionId);
-  Future<DiscreteDistributionPmf> getDiscreteCdf(String distributionId);
+  Future<DiscreteDistributionCdf> getDiscreteCdf(String distributionId);
+  Future<DiscreteDistributionRangeGetter> getDiscreteRangeGetter(String distributionId);
 }
 
-class PredefinedDistributionMathFunctionsDataSourceImpl
-    implements PredefinedDistributionMathFunctionsDataSource {
-  PredefinedDistributionMathFunctionsDataSourceImpl();
+class PredefinedDistributionFunctionsDataSourceImpl
+    implements PredefinedDistributionFunctionsDataSource {
+  PredefinedDistributionFunctionsDataSourceImpl();
 
   static final Map<String, ContinuousDistributionPdf> _continuousPdfs = {
     'normal_distribution': normalDistributionPdf,
@@ -63,9 +65,16 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
     'weibull_distribution': weibullDistributionInverseCdf,
   };
 
-  static final Map<String, DiscreteDistributionPmf> _discretePmfs = {};
+  static final Map<String, DiscreteDistributionPmf> _discretePmfs = {
+    'binomial_distribution': binomialDistributionPmf,
+  };
 
-  static final Map<String, DiscreteDistributionPmf> _discreteCdfs = {};
+  static final Map<String, DiscreteDistributionCdf> _discreteCdfs = {
+    'binomial_distribution': binomialDistributionCdf,
+  };
+  static final Map<String, DiscreteDistributionRangeGetter> _discreteRangeGetters = {
+    'binomial_distribution': binomialDistributionRangeGetter,
+  };
 
   @override
   Future<ContinuousDistributionCdf> getContinuousPdf(String distributionId) async =>
@@ -85,6 +94,11 @@ class PredefinedDistributionMathFunctionsDataSourceImpl
       _discretePmfs[distributionId]!;
 
   @override
-  Future<DiscreteDistributionPmf> getDiscreteCdf(String distributionId) async =>
+  Future<DiscreteDistributionCdf> getDiscreteCdf(String distributionId) async =>
       _discreteCdfs[distributionId]!;
+
+  @override
+  Future<DiscreteDistributionRangeGetter> getDiscreteRangeGetter(
+    String distributionId,
+  ) async => _discreteRangeGetters[distributionId]!;
 }

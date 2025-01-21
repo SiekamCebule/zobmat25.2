@@ -1,1 +1,0 @@
-enum DistributionChartType { pdf, cdf }

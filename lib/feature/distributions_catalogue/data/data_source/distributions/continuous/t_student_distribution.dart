@@ -18,7 +18,7 @@ final tStudentDistributionModel = ContinuousDistributionModel(
     DistributionParameter(
       'degrees_of_freedom',
       'Stopnie swobody (df)',
-      'Im więcej stopni swobody, tym rozkład jest węższy i bardziej przypomina rozkład normalny. Powiązane z ilością próbek w teście t (patrz opis rozkładu).',
+      'Im więcej stopni swobody, tym rozkład jest węższy i bardziej przypomina rozkład normalny. Stopnie swobody są powiązane z ilością próbek w teście t (spójrz na opis rozkładu t-studenta).',
       min: 0.6,
       max: 341.0,
       defaultValue: 1,
@@ -126,7 +126,7 @@ final tStudentDistributionModel = ContinuousDistributionModel(
 );
 
 num tStudentDistributionPdf(num x, DistributionParamsSetup params) {
-  final df = params.getValue('degrees_of_freedom');
+  final df = params.getValue('degrees_of_freedom').toDouble();
 
   final distribution = StudentDistribution(df);
 
@@ -134,7 +134,7 @@ num tStudentDistributionPdf(num x, DistributionParamsSetup params) {
 }
 
 num tStudentDistributionCdf(num t, DistributionParamsSetup params) {
-  final df = params.getValue('degrees_of_freedom');
+  final df = params.getValue('degrees_of_freedom').toDouble();
 
   final distribution = StudentDistribution(df);
 
@@ -142,7 +142,7 @@ num tStudentDistributionCdf(num t, DistributionParamsSetup params) {
 }
 
 num tStudentDistributionInverseCdf(num p, DistributionParamsSetup params) {
-  final df = params.getValue('degrees_of_freedom');
+  final df = params.getValue('degrees_of_freedom').toDouble();
 
   final distribution = StudentDistribution(df);
 

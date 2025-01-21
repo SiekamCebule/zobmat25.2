@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/discrete_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/ui/dialog/drawed_numbers_dialog.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/continuous_distribution_chart_view.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/contiunous_distributions/continuous_distribution_chart_view.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/discrete_distributions/discrete_distribution_chart_view.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_chart_type_segmented_button.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_parameter_text_field.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/draw_numbers_by_distribution_icon_button.dart';
 
 class DistributionChartCard extends StatelessWidget {
   const DistributionChartCard({super.key});
@@ -27,9 +28,12 @@ class DistributionChartCard extends StatelessWidget {
           distribution is ContinuousDistribution
               ? ContinuousDistributionChartView(
                 distribution: distribution,
-                chartType: dashboardState.chartType,
+                chartType: dashboardState.continuousChartType,
               )
-              : Placeholder();
+              : DiscreteDistributionChartView(
+                distribution: distribution as DiscreteDistribution,
+                chartType: dashboardState.discreteChartType,
+              );
     }
 
     return Card(
@@ -55,56 +59,12 @@ class DistributionChartCard extends StatelessWidget {
                   Positioned(
                     left: 0,
                     top: 0,
-                    child: SegmentedButton(
-                      showSelectedIcon: false,
-                      segments: [
-                        ButtonSegment(
-                          value: DistributionChartType.pdf,
-                          label: Text('Funkcja gęstości'),
-                        ),
-                        ButtonSegment(
-                          value: DistributionChartType.cdf,
-                          label: Text('Dystrybuanta'),
-                        ),
-                      ],
-                      selected:
-                          dashboardIsAvaiable
-                              ? {dashboardState.chartType}
-                              : {DistributionChartType.pdf},
-                      onSelectionChanged:
-                          dashboardIsAvaiable
-                              ? (selection) {
-                                context.read<DistributionDashboardCubit>().changeChart(
-                                  selection.single as DistributionChartType,
-                                );
-                              }
-                              : null,
-                    ),
+                    child: DistributionChartTypeSegmentedButton(),
                   ),
                   Positioned(
                     right: 0,
                     top: 0,
-                    child: IconButton(
-                      onPressed:
-                          dashboardIsAvaiable
-                              ? () async {
-                                context.read<DistributionDashboardCubit>().drawNumbers();
-                                final dashboardCubit =
-                                    context.read<DistributionDashboardCubit>();
-                                await showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return BlocProvider.value(
-                                      value: dashboardCubit,
-                                      child: DrawedNumbersDialog(),
-                                    );
-                                  },
-                                );
-                              }
-                              : null,
-                      icon: Icon(Symbols.casino_rounded),
-                      tooltip: 'Wylosuj 10 liczb',
-                    ),
+                    child: DrawNumbersByDistributionIconButton(),
                   ),
                 ],
               ),

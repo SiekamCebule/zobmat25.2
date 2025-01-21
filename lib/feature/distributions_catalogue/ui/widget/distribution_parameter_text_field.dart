@@ -46,7 +46,10 @@ class _DistributionParameterTextFieldState extends State<DistributionParameterTe
         if (!_formKey.currentState!.validate()) {
           return;
         }
-        final value = num.parse(_controller.text);
+        var value = num.parse(_controller.text);
+        if (widget.parameter.isInteger) {
+          value = value.toInt();
+        }
         context.read<DistributionDashboardCubit>().changeParameter(
           widget.parameter,
           value: value,
@@ -54,8 +57,8 @@ class _DistributionParameterTextFieldState extends State<DistributionParameterTe
       },
       initial: dashboardState.paramsSetup.values[widget.parameter]!,
       labelText: widget.parameter.name,
-      maxDecimalPlaces: 6,
-      step: 0.5,
+      maxDecimalPlaces: widget.parameter.isInteger ? 0 : 6,
+      step: widget.parameter.isInteger ? 1 : 0.5,
       min: widget.parameter.min,
       max: widget.parameter.max,
       helpButtonTooltip: 'Czym jest ${widget.parameter.name.toLowerCase()}?',

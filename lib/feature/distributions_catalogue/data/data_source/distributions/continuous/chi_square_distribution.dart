@@ -21,7 +21,7 @@ final chiSquareDistributionModel = ContinuousDistributionModel(
     DistributionParameter(
       'degrees_of_freedom',
       'Stopnie swobody (k)',
-      'Więcej stopni swobody (k) "rozciąga" rozkład. Stopnie swobody są związane z ilością zmiennych w teście chi-kwadrat (spójrz na opis rozkładu chi-kwadrat).', // TODO
+      'Więcej stopni swobody (k) "rozciąga" rozkład. Stopnie swobody są związane z ilością zmiennych w teście chi-kwadrat (spójrz na opis rozkładu chi-kwadrat).',
       min: 0.7,
       max: 245,
       defaultValue: 1,

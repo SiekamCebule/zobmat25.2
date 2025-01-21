@@ -5,5 +5,7 @@ typedef ContinuousDistributionCdf = num Function(num x, DistributionParamsSetup 
 typedef ContinuousDistributionInverseCdf =
     num Function(num x, DistributionParamsSetup params);
 
-typedef DiscreteDistributionPmf = num Function(num x, DistributionParamsSetup params);
+typedef DiscreteDistributionPmf = num Function(int x, DistributionParamsSetup params);
 typedef DiscreteDistributionCdf = num Function(num x, DistributionParamsSetup params);
+typedef DiscreteDistributionRangeGetter =
+    (int, int) Function(DistributionParamsSetup params);

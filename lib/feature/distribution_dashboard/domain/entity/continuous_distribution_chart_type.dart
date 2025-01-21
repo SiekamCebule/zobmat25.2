@@ -1,0 +1,1 @@
+enum ContinuousDistributionChartType { pdf, cdf }

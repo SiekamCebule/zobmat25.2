@@ -1,4 +1,4 @@
-import 'package:zobmat25_2/core/distribution_math_typedefs.dart';
+import 'package:zobmat25_2/core/distribution_function_typedefs.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 
 num findQuantile({

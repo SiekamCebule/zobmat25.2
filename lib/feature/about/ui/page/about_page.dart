@@ -111,6 +111,11 @@ class AboutPage extends StatelessWidget {
                           ),
                           link('https://en.wikipedia.org/wiki/Log-normal_distribution'),
                           link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Weibulla'),
+                          link('https://pl.wikipedia.org/wiki/Pr%C3%B3ba_Bernoulliego'),
+                          link('https://pl.wikipedia.org/wiki/Proces_Bernoulliego'),
+                          link(
+                            'https://www.investopedia.com/terms/b/binomialdistribution.asp',
+                          ),
                         ],
                       ),
                       Gap(15),

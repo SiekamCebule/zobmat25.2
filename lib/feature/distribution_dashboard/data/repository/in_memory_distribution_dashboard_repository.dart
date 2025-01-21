@@ -1,5 +1,6 @@
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_analysis_setup.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_chart_type.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
@@ -7,16 +8,19 @@ import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distrib
 class InMemoryDistributionDashboardRepository implements DistributionDashboardRepository {
   InMemoryDistributionDashboardRepository({
     required Distribution? initialDistribution,
-    required DistributionChartType initialChartType,
+    required ContinuousDistributionChartType initialContinuousChartType,
+    required DiscreteDistributionChartType initialDiscreteChartType,
     required DistributionParamsSetup? initialParamsSetup,
     required DistributionAnalysisSetup? initialAnalysisSetup,
   }) : _distribution = initialDistribution,
-       _chartType = initialChartType,
+       _continuousChartType = initialContinuousChartType,
+       _discreteChartType = initialDiscreteChartType,
        _paramsSetup = initialParamsSetup,
        _analysisSetup = initialAnalysisSetup;
 
   Distribution? _distribution;
-  DistributionChartType _chartType;
+  ContinuousDistributionChartType _continuousChartType;
+  DiscreteDistributionChartType _discreteChartType;
   DistributionParamsSetup? _paramsSetup;
   DistributionAnalysisSetup? _analysisSetup;
 
@@ -28,11 +32,20 @@ class InMemoryDistributionDashboardRepository implements DistributionDashboardRe
       _distribution = distribution;
 
   @override
-  Future<DistributionChartType> getChartType() async => _chartType;
+  Future<ContinuousDistributionChartType> getContinuousChartType() async =>
+      _continuousChartType;
 
   @override
-  Future<void> setChartType(DistributionChartType chartType) async =>
-      _chartType = chartType;
+  Future<void> setContinuousChartType(ContinuousDistributionChartType chartType) async =>
+      _continuousChartType = chartType;
+
+  @override
+  Future<DiscreteDistributionChartType> getDiscreteChartType() async =>
+      _discreteChartType;
+
+  @override
+  Future<void> setDiscreteChartType(DiscreteDistributionChartType chartType) async =>
+      _discreteChartType = chartType;
 
   @override
   Future<DistributionParamsSetup?> getParamsSetup() async => _paramsSetup;

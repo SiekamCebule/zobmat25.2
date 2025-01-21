@@ -1,0 +1,1 @@
+enum DiscreteDistributionChartType { pmf, cdf }

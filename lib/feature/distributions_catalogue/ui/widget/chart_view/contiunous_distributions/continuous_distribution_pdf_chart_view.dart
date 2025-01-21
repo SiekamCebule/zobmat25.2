@@ -6,8 +6,8 @@ import 'package:zobmat25_2/core/util/decimal_places.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
 
-class DistributionPdfChartView extends StatelessWidget {
-  const DistributionPdfChartView({super.key, required this.distribution});
+class ContinuousDistributionPdfChartView extends StatelessWidget {
+  const ContinuousDistributionPdfChartView({super.key, required this.distribution});
 
   final ContinuousDistribution distribution;
 
@@ -53,7 +53,9 @@ class DistributionPdfChartView extends StatelessWidget {
     if (interval == 0) {
       interval = 0.01;
     }
-    debugPrint('pdf_chart.x_interval: $interval (($maxX - $minX) / $numPoints)');
+    debugPrint(
+      'continuous_pdf_chart.x_interval: $interval (($maxX - $minX) / $numPoints)',
+    );
     final spots = <FlSpot>{};
     final infinities = <num>{};
     for (var x = minX; x < maxX; x += interval) {

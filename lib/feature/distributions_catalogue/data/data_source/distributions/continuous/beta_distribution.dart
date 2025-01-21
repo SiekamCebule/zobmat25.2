@@ -113,8 +113,8 @@ num betaDistributionPdf(num x, DistributionParamsSetup params) {
 }
 
 num betaDistributionCdf(num x, DistributionParamsSetup params) {
-  final alpha = params.getValue('alpha');
-  final beta = params.getValue('beta');
+  final alpha = params.getValue('alpha').toDouble();
+  final beta = params.getValue('beta').toDouble();
 
   if (alpha <= 0 || beta <= 0) {
     throw ArgumentError("Alpha and beta must be greater than 0.");

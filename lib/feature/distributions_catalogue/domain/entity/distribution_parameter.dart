@@ -10,16 +10,18 @@ class DistributionParameter with EquatableMixin {
     required this.max,
     this.rules = const [],
     required this.defaultValue,
+    this.isInteger = false,
   });
 
   final String id;
   final String name;
   final String description;
-  final double min;
-  final double max;
+  final num min;
+  final num max;
   final List<DistributionParameterRule> rules;
-  final double defaultValue;
+  final num defaultValue;
+  final bool isInteger;
 
   @override
-  List<Object?> get props => [id, name, description, min, max, defaultValue];
+  List<Object?> get props => [id, name, description, min, max, defaultValue, isInteger];
 }

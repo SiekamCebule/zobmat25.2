@@ -1,5 +1,5 @@
 import 'package:zobmat25_2/core/util/async_map.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distribution_math_functions_data_source.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distribution_functions_data_source.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distributions_data_source.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/mapper/distribution_mappers.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
@@ -13,7 +13,7 @@ class PredefinedDistributionsRepository implements DistributionsRepository {
   });
 
   final PredefinedDistributionsDataSource distributionsDataSource;
-  final PredefinedDistributionMathFunctionsDataSource mathFunctionsDataSource;
+  final PredefinedDistributionFunctionsDataSource mathFunctionsDataSource;
 
   @override
   Future<List<Distribution>> getAllDistributions() async {
@@ -31,6 +31,7 @@ class PredefinedDistributionsRepository implements DistributionsRepository {
           model,
           pmf: await mathFunctionsDataSource.getDiscretePmf(model.id),
           cdf: await mathFunctionsDataSource.getDiscreteCdf(model.id),
+          rangeGetter: await mathFunctionsDataSource.getDiscreteRangeGetter(model.id),
         );
       } else {
         throw UnsupportedError(

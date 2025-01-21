@@ -16,7 +16,7 @@ class ChangeDistributionParameterInSetupUseCase {
       );
     }
     final newParamsSetup = paramsSetup.copyWith(
-      values: Map.of(paramsSetup.values)..[parameter] = value.toDouble(),
+      values: Map.of(paramsSetup.values)..[parameter] = value,
     );
     await distributionDashboardRepository.setParamsSetup(newParamsSetup);
   }
