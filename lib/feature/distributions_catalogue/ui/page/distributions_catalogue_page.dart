@@ -15,7 +15,7 @@ class DistributionsCataloguePage extends StatelessWidget {
     }
     final emptyStateWidget = Center(
       child: Text(
-        'Po wybraniu rozkładu prawdopodobieństwa pokażą się tu ciekawe informacje',
+        'Po wybraniu rozkładu prawdopodobieństwa pokażą się tu ciekawe informacje.',
       ),
     );
     final mainBody =

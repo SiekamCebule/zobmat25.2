@@ -18,7 +18,7 @@ final binomialDistributionModel = DiscreteDistributionModel(
       'Ilość prób (n)',
       'Określa ilość uwzględnionych prób Bernoulliego.',
       min: 0,
-      max: 100000,
+      max: 1000,
       defaultValue: 10,
       isInteger: true,
     ),
@@ -104,18 +104,6 @@ num binomialDistributionCdf(num k, DistributionParamsSetup params) {
     cdf += binomialDistributionPmf(i, params);
   }
   return cdf;
-}
-
-// Funkcja pomocnicza do obliczania współczynnika Newtona (n choose k)
-int _binomialCoefficient(int n, int k) {
-  if (k == 0 || k == n) return 1;
-  if (k > n) return 0;
-  k = min(k, n - k); // Wykorzystanie symetrii
-  int coefficient = 1;
-  for (int i = 1; i <= k; i++) {
-    coefficient = coefficient * (n - (i - 1)) ~/ i;
-  }
-  return coefficient;
 }
 
 (int, int) binomialDistributionRangeGetter(DistributionParamsSetup params) {

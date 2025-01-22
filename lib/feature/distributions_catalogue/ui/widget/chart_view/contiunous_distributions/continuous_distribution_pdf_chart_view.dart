@@ -5,6 +5,7 @@ import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/core/util/decimal_places.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/shared/distribution_chart_shared_components.dart';
 
 class ContinuousDistributionPdfChartView extends StatelessWidget {
   const ContinuousDistributionPdfChartView({super.key, required this.distribution});
@@ -17,11 +18,6 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
     if (dashboardState is! DistributionDashboardDistributionSelected) {
       throw StateError('No distribution is selected when displaying a PDF chart');
     }
-    final boldLineColor = Theme.of(context).colorScheme.tertiaryContainer;
-    const boldLineStrokeWidth = 1.75;
-
-    final normalLineColor = Theme.of(context).colorScheme.surfaceContainerHigh;
-    const normalLineStrokeWidth = 0.75;
 
     num pdf(num x) {
       return distribution.pdf(x, dashboardState.paramsSetup);
@@ -62,7 +58,6 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
       final fx = pdf(x);
       if (fx == double.infinity) {
         infinities.add(x);
-        //spots.add(FlSpot(x, 1));
       } else {
         spots.add(FlSpot(x, pdf(x).toDouble()));
       }
@@ -93,16 +88,16 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
           horizontalInterval: 0.2,
           getDrawingHorizontalLine: (y) {
             if (roundToNDecimalPlaces(y, 3) == 0.000) {
-              return FlLine(strokeWidth: boldLineStrokeWidth, color: boldLineColor);
+              return DistributionChartSharedComponents.boldFlGridLine(context);
             } else {
-              return FlLine(strokeWidth: normalLineStrokeWidth, color: normalLineColor);
+              return DistributionChartSharedComponents.softFlGridLine(context);
             }
           },
           getDrawingVerticalLine: (x) {
             if (x == 0) {
-              return FlLine(strokeWidth: boldLineStrokeWidth, color: boldLineColor);
+              return DistributionChartSharedComponents.boldFlGridLine(context);
             } else {
-              return FlLine(strokeWidth: normalLineStrokeWidth, color: normalLineColor);
+              return DistributionChartSharedComponents.softFlGridLine(context);
             }
           },
         ),
@@ -138,9 +133,8 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
         baselineY: 0,
         lineTouchData: LineTouchData(
           touchTooltipData: LineTouchTooltipData(
-            getTooltipColor: (touchedSpot) {
-              return Theme.of(context).colorScheme.tertiary;
-            },
+            getTooltipColor:
+                (touchedSpot) => DistributionChartSharedComponents.tooltipColor(context),
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((lineBarSpot) {
                 late String text;
@@ -153,9 +147,7 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
 
                 return LineTooltipItem(
                   text,
-                  Theme.of(context).textTheme.labelSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.onTertiary,
-                  ),
+                  DistributionChartSharedComponents.textStyle(context),
                   textAlign: TextAlign.start,
                 );
               }).toList();

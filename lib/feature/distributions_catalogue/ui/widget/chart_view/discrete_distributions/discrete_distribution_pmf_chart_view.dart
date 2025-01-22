@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/discrete_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/chart_view/shared/distribution_chart_shared_components.dart';
 
 class DiscreteDistributionPmfChartView extends StatelessWidget {
   const DiscreteDistributionPmfChartView({super.key, required this.distribution});
@@ -20,16 +21,12 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
     }
 
     final chartRange = distribution.getChartRange(dashboardState.paramsSetup);
+    final xList = List.generate(chartRange.$2, (x) => x);
     final values = [for (var x = 0; x < chartRange.$2; x++) pmf(x).toDouble()];
-    print('values: $values');
-    print('chart range: $chartRange');
 
     final maxY = values.reduce((max, element) {
       return element > max ? element : max;
     });
-
-    final normalLineColor = Theme.of(context).colorScheme.surfaceContainerHigh;
-    const normalLineStrokeWidth = 0.75;
 
     return BarChart(
       BarChartData(
@@ -59,7 +56,7 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
               showTitles: true,
               reservedSize: 30,
               getTitlesWidget: (value, meta) {
-                final step = (chartRange.$2 / 20).ceil(); // Maksymalnie 20 etykiet
+                final step = (chartRange.$2 / 15).ceil(); // Maksymalnie 20 etykiet
                 if (value % step == 0) {
                   return Padding(
                     padding: const EdgeInsets.only(top: 5),
@@ -96,12 +93,28 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
           verticalInterval: 1.0,
           horizontalInterval: 0.05,
           getDrawingHorizontalLine: (y) {
-            return FlLine(strokeWidth: normalLineStrokeWidth, color: normalLineColor);
+            return DistributionChartSharedComponents.softFlGridLine(context);
           },
           getDrawingVerticalLine: (x) {
-            return FlLine(strokeWidth: 0.0);
-            //return FlLine(strokeWidth: normalLineStrokeWidth, color: normalLineColor);
+            return DistributionChartSharedComponents.flGridNoLine(context);
           },
+        ),
+        barTouchData: BarTouchData(
+          touchTooltipData: BarTouchTooltipData(
+            getTooltipColor: (touchedSpot) {
+              return DistributionChartSharedComponents.tooltipColor(context);
+            },
+            tooltipPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+              final x = xList[groupIndex];
+              final y = values[groupIndex];
+              return BarTooltipItem(
+                'P(X = $x) = ${y.toStringAsFixed(5)}',
+                DistributionChartSharedComponents.textStyle(context),
+                textAlign: TextAlign.start,
+              );
+            },
+          ),
         ),
       ),
       transformationConfig: FlTransformationConfig(
