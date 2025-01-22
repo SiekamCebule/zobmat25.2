@@ -5,14 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_analysis_setup.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_knowledge_view_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_continuous_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_discrete_distribution_chart_type_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_knowledge_view_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_parameter_in_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/draw_numbers_by_distribution_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_continuous_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_discrete_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_analysis_setup_use_case.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_continuous_distribution_chart_type_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_knowledge_view_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_params_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_selected_distribution_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/toggle_distribution_selection_use_case.dart';
@@ -27,6 +30,8 @@ class DistributionDashboardCubit extends Cubit<DistributionDashboardState> {
     required this.changeContinuousDistributionChartTypeUseCase,
     required this.getDiscreteDistributionChartTypeUseCase,
     required this.changeDiscreteDistributionChartTypeUseCase,
+    required this.getDistributionKnowledgeViewTypeUseCase,
+    required this.changeDistributionKnowledgeViewTypeUseCase,
     required this.getDistributionParamsSetupUseCase,
     required this.changeDistributionParameterInSetupUseCase,
     required this.getDistributionAnalysisSetupUseCase,
@@ -43,6 +48,10 @@ class DistributionDashboardCubit extends Cubit<DistributionDashboardState> {
   final GetDiscreteDistributionChartTypeUseCase getDiscreteDistributionChartTypeUseCase;
   final ChangeDiscreteDistributionChartTypeUseCase
   changeDiscreteDistributionChartTypeUseCase;
+
+  final GetDistributionKnowledgeViewTypeUseCase getDistributionKnowledgeViewTypeUseCase;
+  final ChangeDistributionKnowledgeViewTypeUseCase
+  changeDistributionKnowledgeViewTypeUseCase;
 
   final GetDistributionParamsSetupUseCase getDistributionParamsSetupUseCase;
   final ChangeDistributionParameterInSetupUseCase
@@ -67,6 +76,7 @@ class DistributionDashboardCubit extends Cubit<DistributionDashboardState> {
           distribution: newSelected,
           continuousChartType: await getContinuousDistributionChartTypeUseCase(),
           discreteChartType: await getDiscreteDistributionChartTypeUseCase(),
+          knowledgeViewType: await getDistributionKnowledgeViewTypeUseCase(),
           paramsSetup: (await getDistributionParamsSetupUseCase())!,
           analysisSetup: await getDistributionAnalysisSetupUseCase(),
         ),
@@ -105,6 +115,21 @@ class DistributionDashboardCubit extends Cubit<DistributionDashboardState> {
     await changeDiscreteDistributionChartTypeUseCase(chartType);
     emit(
       state.copyWith(discreteChartType: await getDiscreteDistributionChartTypeUseCase()),
+    );
+  }
+
+  Future<void> changeKnowledgeViewType(
+    DistributionKnowledgeViewType knowledgeViewType,
+  ) async {
+    final state = this.state;
+    if (state is! DistributionDashboardDistributionSelected) {
+      throw StateError(
+        'Cannot change the distribution knowledge type when no distribution is selected',
+      );
+    }
+    await changeDistributionKnowledgeViewTypeUseCase(knowledgeViewType);
+    emit(
+      state.copyWith(knowledgeViewType: await getDistributionKnowledgeViewTypeUseCase()),
     );
   }
 
@@ -154,6 +179,7 @@ class DistributionDashboardDistributionSelected extends DistributionDashboardSta
     required this.distribution,
     required this.continuousChartType,
     required this.discreteChartType,
+    required this.knowledgeViewType,
     required this.paramsSetup,
     required this.analysisSetup,
     this.drawedNumbers,
@@ -162,6 +188,7 @@ class DistributionDashboardDistributionSelected extends DistributionDashboardSta
   final Distribution distribution;
   final ContinuousDistributionChartType continuousChartType;
   final DiscreteDistributionChartType discreteChartType;
+  final DistributionKnowledgeViewType knowledgeViewType;
   final DistributionParamsSetup paramsSetup;
   final DistributionAnalysisSetup? analysisSetup;
   final List<num>? drawedNumbers;
@@ -171,6 +198,7 @@ class DistributionDashboardDistributionSelected extends DistributionDashboardSta
     distribution,
     continuousChartType,
     discreteChartType,
+    knowledgeViewType,
     paramsSetup,
     analysisSetup,
     drawedNumbers,
@@ -180,6 +208,7 @@ class DistributionDashboardDistributionSelected extends DistributionDashboardSta
     Distribution? distribution,
     ContinuousDistributionChartType? continuousChartType,
     DiscreteDistributionChartType? discreteChartType,
+    DistributionKnowledgeViewType? knowledgeViewType,
     DistributionParamsSetup? paramsSetup,
     DistributionAnalysisSetup? analysisSetup,
     List<num>? drawedNumbers,
@@ -188,6 +217,7 @@ class DistributionDashboardDistributionSelected extends DistributionDashboardSta
       distribution: distribution ?? this.distribution,
       continuousChartType: continuousChartType ?? this.continuousChartType,
       discreteChartType: discreteChartType ?? this.discreteChartType,
+      knowledgeViewType: knowledgeViewType ?? this.knowledgeViewType,
       paramsSetup: paramsSetup ?? this.paramsSetup,
       analysisSetup: analysisSetup ?? this.analysisSetup,
       drawedNumbers: drawedNumbers ?? this.drawedNumbers,

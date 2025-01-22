@@ -6,16 +6,16 @@ import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_d
 import 'package:zobmat25_2/feature/distribution_description/ui/widget/distribution_description_component_view.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 
-class DistirbutionDescriptionView extends StatefulWidget {
-  const DistirbutionDescriptionView({super.key, required this.distribution});
+class DistributionDescriptionView extends StatefulWidget {
+  const DistributionDescriptionView({super.key, required this.distribution});
 
   final Distribution distribution;
 
   @override
-  State<DistirbutionDescriptionView> createState() => _DistirbutionDescriptionViewState();
+  State<DistributionDescriptionView> createState() => _DistributionDescriptionViewState();
 }
 
-class _DistirbutionDescriptionViewState extends State<DistirbutionDescriptionView> {
+class _DistributionDescriptionViewState extends State<DistributionDescriptionView> {
   late StreamSubscription _distributionChangesSubscription;
   late ScrollController _scrollController;
 

@@ -1,0 +1,1 @@
+enum DistributionKnowledgeViewType { description, properties }

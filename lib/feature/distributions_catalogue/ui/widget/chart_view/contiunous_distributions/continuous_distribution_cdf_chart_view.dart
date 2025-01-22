@@ -90,7 +90,7 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
               interval: 1 / 5,
               reservedSize: 55,
               minIncluded: false,
-              maxIncluded: true,
+              maxIncluded: false,
             ),
           ),
           bottomTitles: AxisTitles(
@@ -111,7 +111,7 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
         baselineX: 0,
         baselineY: 0,
         minY: 0,
-        maxY: 1.0,
+        maxY: 1.0 + 0.05,
         lineTouchData: LineTouchData(
           touchTooltipData: LineTouchTooltipData(
             getTooltipColor: (touchedSpot) {

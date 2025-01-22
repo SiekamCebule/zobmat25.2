@@ -3,13 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/data/repository/in_memory_distribution_dashboard_repository.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_knowledge_view_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_continuous_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_discrete_distribution_chart_type_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_knowledge_view_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_parameter_in_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/draw_numbers_by_distribution_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_continuous_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_discrete_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_analysis_setup_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_knowledge_view_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_params_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_selected_distribution_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/toggle_distribution_selection_use_case.dart';
@@ -86,6 +89,7 @@ class App extends StatelessWidget {
       initialDistribution: null,
       initialContinuousChartType: ContinuousDistributionChartType.pdf,
       initialDiscreteChartType: DiscreteDistributionChartType.pmf,
+      initialKnowledgeViewType: DistributionKnowledgeViewType.description,
       initialParamsSetup: null,
       initialAnalysisSetup: null,
     );
@@ -146,6 +150,14 @@ class App extends StatelessWidget {
                       ),
                   changeDiscreteDistributionChartTypeUseCase:
                       ChangeDiscreteDistributionChartTypeUseCase(
+                        distributionDashboardRepository: distributionDashboardRepository,
+                      ),
+                  getDistributionKnowledgeViewTypeUseCase:
+                      GetDistributionKnowledgeViewTypeUseCase(
+                        distributionDashboardRepository: distributionDashboardRepository,
+                      ),
+                  changeDistributionKnowledgeViewTypeUseCase:
+                      ChangeDistributionKnowledgeViewTypeUseCase(
                         distributionDashboardRepository: distributionDashboardRepository,
                       ),
                   getDistributionParamsSetupUseCase: GetDistributionParamsSetupUseCase(

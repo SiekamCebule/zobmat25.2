@@ -76,7 +76,7 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
               interval: 1 / 5,
               reservedSize: 55,
               minIncluded: true,
-              maxIncluded: true,
+              maxIncluded: false,
             ),
           ),
           bottomTitles: AxisTitles(
@@ -95,7 +95,7 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
         baselineX: 0,
         baselineY: 0,
         minY: 0,
-        maxY: 1.0,
+        maxY: 1.0 + 0.05,
         lineTouchData: LineTouchData(
           touchTooltipData: LineTouchTooltipData(
             getTooltipColor: (touchedSpot) {

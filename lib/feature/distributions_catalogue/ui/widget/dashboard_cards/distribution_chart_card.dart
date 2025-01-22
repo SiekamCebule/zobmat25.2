@@ -48,7 +48,7 @@ class DistributionChartCard extends StatelessWidget {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  if (dashboardIsAvaiable) Positioned.fill(top: 80, child: chartWidget),
+                  if (dashboardIsAvaiable) Positioned.fill(top: 50, child: chartWidget),
                   if (!dashboardIsAvaiable)
                     ColoredBox(
                       color: Colors.black26,
@@ -56,9 +56,8 @@ class DistributionChartCard extends StatelessWidget {
                         child: Center(child: CircularProgressIndicator()),
                       ),
                     ),
-                  Positioned(
-                    left: 0,
-                    top: 0,
+                  Align(
+                    alignment: Alignment.topCenter,
                     child: DistributionChartTypeSegmentedButton(),
                   ),
                   Positioned(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/dashboard_cards/distribution_chart_card.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/dashboard_cards/distribution_description_card.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/dashboard_cards/distribution_description_and_properties_card.dart';
 
 class DistributionDashboard extends StatelessWidget {
   const DistributionDashboard({super.key});
@@ -23,15 +23,7 @@ class DistributionDashboard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            width: 380,
-            child: Column(
-              children: [
-                Expanded(flex: 7, child: DistributionDescriptionCard()),
-                //Expanded(flex: 5, child: DistributionApplicationsDescriptionCard()),
-              ],
-            ),
-          ),
+          SizedBox(width: 380, child: DistributionDescriptionAndPropertiesCard()),
         ],
       ),
     );
