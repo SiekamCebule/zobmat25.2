@@ -17,10 +17,10 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
             as DistributionDashboardDistributionSelected;
 
     num pmf(int k) {
-      return distribution.pmf(k, dashboardState.paramsSetup);
+      return distribution.functions.pmf(k, dashboardState.paramsSetup);
     }
 
-    final chartRange = distribution.getChartRange(dashboardState.paramsSetup);
+    final chartRange = distribution.functions.getChartRange(dashboardState.paramsSetup);
     final xList = List.generate(chartRange.$2, (x) => x);
     final values = [for (var x = 0; x < chartRange.$2; x++) pmf(x).toDouble()];
 

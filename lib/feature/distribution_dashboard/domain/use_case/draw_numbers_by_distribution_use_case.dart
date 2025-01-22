@@ -21,11 +21,11 @@ class DrawNumbersByDistributionUseCase {
       // Losowanie z rozkładu ciągłego
       for (var _ in quiver.range(count)) {
         final uniformDouble = random.nextDouble();
-        final generated = distribution.inverseCdf(uniformDouble, paramsSetup);
+        final generated = distribution.functions.inverseCdf(uniformDouble, paramsSetup);
         list.add(generated);
       }
     } else if (distribution is DiscreteDistribution) {
-      final xValuesRange = distribution.getChartRange(paramsSetup);
+      final xValuesRange = distribution.functions.getChartRange(paramsSetup);
       final possibleXValues = List.generate(
         xValuesRange.$2 - xValuesRange.$1 + 1,
         (i) => xValuesRange.$1 + i,
@@ -35,8 +35,9 @@ class DrawNumbersByDistributionUseCase {
         final uniformDouble = random.nextDouble();
 
         final generated = possibleXValues.firstWhere((x) {
-          final prevCdf = x == xValuesRange.$1 ? 0 : distribution.cdf(x - 1, paramsSetup);
-          final currentCdf = distribution.cdf(x, paramsSetup);
+          final prevCdf =
+              x == xValuesRange.$1 ? 0 : distribution.functions.cdf(x - 1, paramsSetup);
+          final currentCdf = distribution.functions.cdf(x, paramsSetup);
           return prevCdf < uniformDouble && uniformDouble <= currentCdf;
         });
         list.add(generated);

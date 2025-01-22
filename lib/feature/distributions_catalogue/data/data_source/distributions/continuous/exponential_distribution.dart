@@ -104,3 +104,31 @@ num exponentialDistributionInverseCdf(num p, DistributionParamsSetup params) {
 
   return -log(1 - p) / lambda;
 }
+
+num exponentialDistributionExpectedValue(DistributionParamsSetup params) {
+  final lambda = params.getValue('lambda');
+
+  return 1 / lambda;
+}
+
+num exponentialDistributionVariance(DistributionParamsSetup params) {
+  final lambda = params.getValue('lambda');
+
+  return 1 / pow(lambda, 2);
+}
+
+num exponentialDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = exponentialDistributionVariance(params);
+
+  return sqrt(variance);
+}
+
+num exponentialDistributionMedian(DistributionParamsSetup params) {
+  final lambda = params.getValue('lambda');
+
+  return log(2) / lambda;
+}
+
+num exponentialDistributionMode(DistributionParamsSetup params) {
+  return 0;
+}

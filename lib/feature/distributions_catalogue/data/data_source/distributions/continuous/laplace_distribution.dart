@@ -15,8 +15,8 @@ final laplaceDistributionModel = ContinuousDistributionModel(
 
   parameters: [
     DistributionParameter(
-      'location',
-      'Położenie (μ)',
+      'mean',
+      'Średnia (μ)',
       'Jest "środkiem" rozkładu. Jednocześnie oznacza też największą i najbardziej prawdopodobną wartość.',
       min: -100000,
       max: 100000,
@@ -76,33 +76,33 @@ final laplaceDistributionModel = ContinuousDistributionModel(
 );
 
 num laplaceDistributionPdf(num x, DistributionParamsSetup params) {
-  final location = params.getValue('location');
+  final mean = params.getValue('mean');
   final scale = params.getValue('scale');
 
   if (scale <= 0) {
     throw ArgumentError("Scale parameter must be greater than 0.");
   }
 
-  return (1 / (2 * scale)) * exp(-((x - location).abs()) / scale);
+  return (1 / (2 * scale)) * exp(-((x - mean).abs()) / scale);
 }
 
 num laplaceDistributionCdf(num x, DistributionParamsSetup params) {
-  final location = params.getValue('location');
+  final mean = params.getValue('mean');
   final scale = params.getValue('scale');
 
   if (scale <= 0) {
     throw ArgumentError("Scale parameter must be greater than 0.");
   }
 
-  if (x < location) {
-    return 0.5 * exp((x - location) / scale);
+  if (x < mean) {
+    return 0.5 * exp((x - mean) / scale);
   } else {
-    return 1 - 0.5 * exp(-(x - location) / scale);
+    return 1 - 0.5 * exp(-(x - mean) / scale);
   }
 }
 
 num laplaceDistributionInverseCdf(num p, DistributionParamsSetup params) {
-  final location = params.getValue('location');
+  final mean = params.getValue('mean');
   final scale = params.getValue('scale');
 
   if (scale <= 0) {
@@ -114,8 +114,33 @@ num laplaceDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   if (p < 0.5) {
-    return location + scale * log(2 * p);
+    return mean + scale * log(2 * p);
   } else {
-    return location - scale * log(2 * (1 - p));
+    return mean - scale * log(2 * (1 - p));
   }
+}
+
+num laplaceDistributionExpectedValue(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return mean;
+}
+
+num laplaceDistributionVariance(DistributionParamsSetup params) {
+  final scale = params.getValue('scale');
+  return 2 * pow(scale, 2);
+}
+
+num laplaceDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = laplaceDistributionVariance(params);
+  return sqrt(variance);
+}
+
+num laplaceDistributionMedian(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return mean;
+}
+
+num laplaceDistributionMode(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return mean;
 }

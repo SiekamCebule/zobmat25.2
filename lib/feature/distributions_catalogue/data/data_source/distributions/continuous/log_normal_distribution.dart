@@ -133,3 +133,31 @@ num logNormalDistributionInverseCdf(num p, DistributionParamsSetup params) {
   // Convert back to the log-normal scale
   return exp(normalInverseCdf);
 }
+
+num logNormalDistributionExpectedValue(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  final dev = params.getValue('dev');
+  return exp(mean + pow(dev, 2) / 2);
+}
+
+num logNormalDistributionVariance(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  final dev = params.getValue('dev');
+  return (exp(pow(dev, 2)) - 1) * exp(2 * mean + pow(dev, 2));
+}
+
+num logNormalDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = logNormalDistributionVariance(params);
+  return sqrt(variance);
+}
+
+num logNormalDistributionMedian(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return exp(mean);
+}
+
+num logNormalDistributionMode(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  final dev = params.getValue('dev');
+  return exp(mean - pow(dev, 2));
+}

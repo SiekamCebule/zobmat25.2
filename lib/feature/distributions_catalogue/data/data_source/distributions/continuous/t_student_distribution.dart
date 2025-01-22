@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:data/stats.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_bulleted_list.dart';
@@ -6,6 +8,7 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_text_span.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/distribution_property_undefined_exception.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 
 final tStudentDistributionModel = ContinuousDistributionModel(
@@ -147,4 +150,36 @@ num tStudentDistributionInverseCdf(num p, DistributionParamsSetup params) {
   final distribution = StudentDistribution(df);
 
   return distribution.inverseCumulativeProbability(p.toDouble());
+}
+
+num tStudentDistributionExpectedValue(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom');
+
+  if (df > 1) {
+    return 0;
+  }
+  throw DistributionPropertyUndefinedException();
+}
+
+num tStudentDistributionVariance(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom');
+
+  if (df > 2) {
+    return df / (df - 2);
+  }
+  throw DistributionPropertyUndefinedException();
+}
+
+num tStudentDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = tStudentDistributionVariance(params);
+
+  return sqrt(variance);
+}
+
+num tStudentDistributionMedian(DistributionParamsSetup params) {
+  return 0;
+}
+
+num tStudentDistributionMode(DistributionParamsSetup params) {
+  return 0;
 }

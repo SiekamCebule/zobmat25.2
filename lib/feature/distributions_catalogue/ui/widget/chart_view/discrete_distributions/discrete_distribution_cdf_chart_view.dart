@@ -18,10 +18,10 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
             as DistributionDashboardDistributionSelected;
 
     num cdf(int x) {
-      return distribution.cdf(x, dashboardState.paramsSetup);
+      return distribution.functions.cdf(x, dashboardState.paramsSetup);
     }
 
-    final range = distribution.getChartRange(dashboardState.paramsSetup);
+    final range = distribution.functions.getChartRange(dashboardState.paramsSetup);
 
     final values = {for (var x = range.$1; x < range.$2; x++) x: cdf(x)};
 

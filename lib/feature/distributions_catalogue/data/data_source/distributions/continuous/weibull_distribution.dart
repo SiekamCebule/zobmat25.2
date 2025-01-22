@@ -6,6 +6,7 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
+import 'package:data/data.dart' as data;
 
 final weibullDistributionModel = ContinuousDistributionModel(
   id: 'weibull_distribution',
@@ -137,4 +138,44 @@ num weibullDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   return scale * pow(-log(1 - p), 1 / shape);
+}
+
+num weibullDistributionExpectedValue(DistributionParamsSetup params) {
+  final shape = params.getValue('shape');
+  final scale = params.getValue('scale');
+
+  return scale * data.gamma(1 + 1 / shape);
+}
+
+num weibullDistributionVariance(DistributionParamsSetup params) {
+  final shape = params.getValue('shape');
+  final scale = params.getValue('scale');
+
+  final gamma1 = data.gamma(1 + 1 / shape);
+  final gamma2 = data.gamma(1 + 2 / shape);
+
+  return pow(scale, 2) * (gamma2 - pow(gamma1, 2));
+}
+
+num weibullDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = weibullDistributionVariance(params);
+
+  return sqrt(variance);
+}
+
+num weibullDistributionMedian(DistributionParamsSetup params) {
+  final scale = params.getValue('scale');
+  final shape = params.getValue('shape');
+
+  return scale * pow(log(2), 1 / shape);
+}
+
+num weibullDistributionMode(DistributionParamsSetup params) {
+  final shape = params.getValue('shape');
+  final scale = params.getValue('scale');
+
+  if (shape > 1) {
+    return scale * pow((shape - 1) / shape, 1 / shape);
+  }
+  return 0;
 }

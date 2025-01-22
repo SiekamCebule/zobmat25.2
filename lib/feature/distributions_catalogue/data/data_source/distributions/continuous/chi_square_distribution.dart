@@ -7,6 +7,7 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_text_span.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/distribution_property_undefined_exception.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 
 import 'package:data/data.dart' as data;
@@ -187,4 +188,37 @@ num chiSquareDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   return data.gammapInv(p, k / 2) * 2;
+}
+
+num chiSquareDistributionExpectedValue(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom');
+
+  return df;
+}
+
+num chiSquareDistributionVariance(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom');
+
+  return 2 * df;
+}
+
+num chiSquareDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = chiSquareDistributionVariance(params);
+
+  return sqrt(variance);
+}
+
+num chiSquareDistributionMedian(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom');
+
+  return df * pow(1 - 2 / (9 * df), 3);
+}
+
+num chiSquareDistributionMode(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom');
+
+  if (df >= 2) {
+    return df - 2;
+  }
+  throw DistributionPropertyUndefinedException();
 }

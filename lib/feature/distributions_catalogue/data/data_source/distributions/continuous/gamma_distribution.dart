@@ -6,6 +6,8 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_text_span.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/distribution_property_undefined_exception.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/parameter_should_be_computed_numerically_exception.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 
 import 'package:data/data.dart';
@@ -132,4 +134,38 @@ num gammaDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   return gammapInv(p, shape) * scale;
+}
+
+num gammaDistributionExpectedValue(DistributionParamsSetup params) {
+  final shape = params.getValue('shape');
+  final scale = params.getValue('scale');
+
+  return shape * scale;
+}
+
+num gammaDistributionVariance(DistributionParamsSetup params) {
+  final shape = params.getValue('shape');
+  final scale = params.getValue('scale');
+
+  return shape * pow(scale, 2);
+}
+
+num gammaDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = gammaDistributionVariance(params);
+
+  return sqrt(variance);
+}
+
+num gammaDistributionMedian(DistributionParamsSetup params) {
+  throw ParameterShouldBeComputedNumericallyException();
+}
+
+num gammaDistributionMode(DistributionParamsSetup params) {
+  final shape = params.getValue('shape');
+  final scale = params.getValue('scale');
+
+  if (shape > 1) {
+    return (shape - 1) * scale;
+  }
+  throw DistributionPropertyUndefinedException();
 }

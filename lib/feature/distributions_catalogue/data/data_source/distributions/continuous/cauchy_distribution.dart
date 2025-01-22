@@ -5,6 +5,7 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/distribution_property_undefined_exception.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 
 final cauchyDistributionModel = ContinuousDistributionModel(
@@ -114,4 +115,26 @@ num cauchyDistributionInverseCdf(num p, DistributionParamsSetup params) {
 
   final pi = 3.141592653589793;
   return location + scale * tan(pi * (p - 0.5));
+}
+
+num cauchyDistributionExpectedValue(DistributionParamsSetup params) {
+  throw DistributionPropertyUndefinedException();
+}
+
+num cauchyDistributionVariance(DistributionParamsSetup params) {
+  throw DistributionPropertyUndefinedException();
+}
+
+num cauchyDistributionStandardDeviation(DistributionParamsSetup params) {
+  throw DistributionPropertyUndefinedException();
+}
+
+num cauchyDistributionMedian(DistributionParamsSetup params) {
+  final x0 = params.getValue('location');
+  return x0;
+}
+
+num cauchyDistributionMode(DistributionParamsSetup params) {
+  final x0 = params.getValue('location');
+  return x0;
 }

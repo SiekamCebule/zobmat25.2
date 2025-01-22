@@ -20,13 +20,13 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
     }
 
     num cdf(num x) {
-      return distribution.cdf(x, dashboardState.paramsSetup);
+      return distribution.functions.cdf(x, dashboardState.paramsSetup);
     }
 
     const boundary = 0.0005;
     final minX =
         findQuantile(
-          cdf: distribution.cdf,
+          cdf: distribution.functions.cdf,
           params: dashboardState.paramsSetup,
           targetProbability: boundary,
           lowerBound: -1000000,
@@ -34,7 +34,7 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
         ).toDouble();
     final maxX =
         findQuantile(
-          cdf: distribution.cdf,
+          cdf: distribution.functions.cdf,
           params: dashboardState.paramsSetup,
           targetProbability: 1 - boundary,
           lowerBound: -1000000,

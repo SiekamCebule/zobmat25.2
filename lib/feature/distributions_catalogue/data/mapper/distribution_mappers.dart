@@ -1,21 +1,21 @@
-import 'package:zobmat25_2/core/distribution_function_typedefs.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/continuous_distribution_functions.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/discrete_distribution_functions.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/distribution_property_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/discrete_distribution.dart';
 
 ContinuousDistribution continuousDistributionFromModel(
   ContinuousDistributionModel model, {
-  required ContinuousDistributionPdf pdf,
-  required ContinuousDistributionCdf cdf,
-  required ContinuousDistributionInverseCdf inverseCdf,
+  required ContinuousDistributionFunctions functions,
+  required DistributionPropertyFunctions propertyFunctions,
 }) {
   return ContinuousDistribution(
     id: model.id,
     name: model.name,
     shortDescription: model.shortDescription,
-    pdf: pdf,
-    cdf: cdf,
-    inverseCdf: inverseCdf,
+    functions: functions,
+    propertyFunctions: propertyFunctions,
     parameters: model.parameters,
     extendedDescription: model.extendedDescription,
   );
@@ -23,18 +23,16 @@ ContinuousDistribution continuousDistributionFromModel(
 
 DiscreteDistribution discreteDistributionFromModel(
   DiscreteDistributionModel model, {
-  required DiscreteDistributionPmf pmf,
-  required DiscreteDistributionCdf cdf,
-  required DiscreteDistributionRangeGetter rangeGetter,
+  required DiscreteDistributionFunctions functions,
+  required DistributionPropertyFunctions propertyFunctions,
 }) {
   return DiscreteDistribution(
     id: model.id,
     name: model.name,
     shortDescription: model.shortDescription,
-    pmf: pmf,
-    cdf: cdf,
+    functions: functions,
+    propertyFunctions: propertyFunctions,
     parameters: model.parameters,
     extendedDescription: model.extendedDescription,
-    getChartRange: rangeGetter,
   );
 }

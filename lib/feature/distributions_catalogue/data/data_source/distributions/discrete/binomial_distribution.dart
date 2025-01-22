@@ -110,3 +110,38 @@ num binomialDistributionCdf(num k, DistributionParamsSetup params) {
   final n = params.getValue('n') as int;
   return (0, n + 1);
 }
+
+num binomialDistributionExpectedValue(DistributionParamsSetup params) {
+  final n = params.getValue('n');
+  final p = params.getValue('p');
+  return n * p;
+}
+
+num binomialDistributionVariance(DistributionParamsSetup params) {
+  final n = params.getValue('n');
+  final p = params.getValue('p');
+  return n * p * (1 - p);
+}
+
+num binomialDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = binomialDistributionVariance(params);
+  return sqrt(variance);
+}
+
+num binomialDistributionMedian(DistributionParamsSetup params) {
+  final n = params.getValue('n');
+  final p = params.getValue('p');
+  return (n + 1) * p;
+}
+
+num binomialDistributionMode(DistributionParamsSetup params) {
+  final n = params.getValue('n');
+  final p = params.getValue('p');
+  final mode = (n + 1) * p;
+
+  if (mode.floor() == mode) {
+    return mode.floor() - 1;
+  } else {
+    return mode.floor();
+  }
+}

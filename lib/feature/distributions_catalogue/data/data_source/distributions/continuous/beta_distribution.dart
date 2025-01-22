@@ -6,6 +6,8 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/compon
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/distribution_property_undefined_exception.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/parameter_should_be_computed_numerically_exception.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:data/data.dart' as data;
 
@@ -297,3 +299,40 @@ double decrement(double value, [int count = 1]) {
 
 const int int64MinValue = -9007199254740991;
 const int int64MaxValue = 9007199254740991;
+
+num betaDistributionExpectedValue(DistributionParamsSetup params) {
+  final alpha = params.getValue('alpha');
+  final beta = params.getValue('beta');
+  if (alpha <= 0 || beta <= 0) {
+    throw ArgumentError("Parameters 'alpha' and 'beta' must be greater than 0.");
+  }
+  return alpha / (alpha + beta);
+}
+
+num betaDistributionVariance(DistributionParamsSetup params) {
+  final alpha = params.getValue('alpha');
+  final beta = params.getValue('beta');
+  if (alpha <= 0 || beta <= 0) {
+    throw ArgumentError("Parameters 'alpha' and 'beta' must be greater than 0.");
+  }
+  final denominator = pow(alpha + beta, 2) * (alpha + beta + 1);
+  return (alpha * beta) / denominator;
+}
+
+num betaDistributionStandardDeviation(DistributionParamsSetup params) {
+  final variance = betaDistributionVariance(params);
+  return sqrt(variance);
+}
+
+num betaDistributionMedian(DistributionParamsSetup params) {
+  throw ParameterShouldBeComputedNumericallyException();
+}
+
+num betaDistributionMode(DistributionParamsSetup params) {
+  final alpha = params.getValue('alpha');
+  final beta = params.getValue('beta');
+  if (alpha <= 1 || beta <= 1) {
+    throw DistributionPropertyUndefinedException();
+  }
+  return (alpha - 1) / (alpha + beta - 2);
+}

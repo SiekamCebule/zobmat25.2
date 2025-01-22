@@ -19,19 +19,20 @@ class PredefinedDistributionsRepository implements DistributionsRepository {
   Future<List<Distribution>> getAllDistributions() async {
     final models = await distributionsDataSource.getAll();
     final distributions = await models.asyncMap((model) async {
+      final propertyFunctions = await mathFunctionsDataSource.getPropertyFunctions(
+        model.id,
+      );
       if (model is ContinuousDistributionModel) {
         return continuousDistributionFromModel(
           model,
-          pdf: await mathFunctionsDataSource.getContinuousPdf(model.id),
-          cdf: await mathFunctionsDataSource.getContinuousCdf(model.id),
-          inverseCdf: await mathFunctionsDataSource.getContinuousInverseCdf(model.id),
+          functions: await mathFunctionsDataSource.getContinuousFunctions(model.id),
+          propertyFunctions: propertyFunctions,
         );
       } else if (model is DiscreteDistributionModel) {
         return discreteDistributionFromModel(
           model,
-          pmf: await mathFunctionsDataSource.getDiscretePmf(model.id),
-          cdf: await mathFunctionsDataSource.getDiscreteCdf(model.id),
-          rangeGetter: await mathFunctionsDataSource.getDiscreteRangeGetter(model.id),
+          functions: await mathFunctionsDataSource.getDiscreteFunctions(model.id),
+          propertyFunctions: propertyFunctions,
         );
       } else {
         throw UnsupportedError(

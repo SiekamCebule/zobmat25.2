@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/distribution_description.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/distribution_property_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_type.dart';
 
@@ -10,6 +11,7 @@ abstract class Distribution extends Equatable {
     required this.shortDescription,
     required this.parameters,
     required this.extendedDescription,
+    required this.propertyFunctions,
   });
 
   final String id;
@@ -17,9 +19,16 @@ abstract class Distribution extends Equatable {
   final String shortDescription;
   final List<DistributionParameter> parameters;
   final DistributionDescription extendedDescription; // Opis
+  final DistributionPropertyFunctions propertyFunctions;
 
   DistributionType get type;
 
   @override
-  List<Object?> get props => [name, shortDescription, parameters, extendedDescription];
+  List<Object?> get props => [
+    name,
+    shortDescription,
+    parameters,
+    extendedDescription,
+    propertyFunctions,
+  ];
 }

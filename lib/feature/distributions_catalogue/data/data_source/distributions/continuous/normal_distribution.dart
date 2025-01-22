@@ -161,3 +161,34 @@ num normalDistributionInverseCdf(num p, DistributionParamsSetup params) {
             (((((b1 * r + b2) * r + b3) * r + b4) * r + b5) * r + 1);
   }
 }
+
+num normalDistributionExpectedValue(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return mean;
+}
+
+num normalDistributionVariance(DistributionParamsSetup params) {
+  final dev = params.getValue('dev');
+  if (dev <= 0) {
+    throw ArgumentError("Standard deviation (dev) must be greater than 0.");
+  }
+  return pow(dev, 2);
+}
+
+num normalDistributionStandardDeviation(DistributionParamsSetup params) {
+  final dev = params.getValue('dev');
+  if (dev <= 0) {
+    throw ArgumentError("Standard deviation (dev) must be greater than 0.");
+  }
+  return dev;
+}
+
+num normalDistributionMedian(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return mean;
+}
+
+num normalDistributionMode(DistributionParamsSetup params) {
+  final mean = params.getValue('mean');
+  return mean;
+}
