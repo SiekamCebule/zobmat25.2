@@ -51,12 +51,12 @@ class DistributionPropertiesView extends StatelessWidget {
         ),
         Gap(gapValue),
         DistributionPropertyListItem(
-          propertyName: 'Median',
+          propertyName: 'Mediana',
           value: getValueForProperty('median'),
         ),
         Gap(gapValue),
         DistributionPropertyListItem(
-          propertyName: 'Mode',
+          propertyName: 'Moda',
           value: getValueForProperty('mode'),
         ),
       ],
