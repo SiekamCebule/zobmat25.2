@@ -8,8 +8,12 @@ sealed class DistributionParameterRule with EquatableMixin {
 }
 
 class DistributionParameterNotHigherRule extends DistributionParameterRule {
-  const DistributionParameterNotHigherRule({required this.otherParameterId});
+  const DistributionParameterNotHigherRule({
+    this.orEqual = false,
+    required this.otherParameterId,
+  });
 
+  final bool orEqual;
   final String otherParameterId;
 
   @override
@@ -17,8 +21,12 @@ class DistributionParameterNotHigherRule extends DistributionParameterRule {
 }
 
 class DistributionParameterHigherRule extends DistributionParameterRule {
-  const DistributionParameterHigherRule({required this.otherParameterId});
+  const DistributionParameterHigherRule({
+    this.orEqual = false,
+    required this.otherParameterId,
+  });
 
+  final bool orEqual;
   final String otherParameterId;
 
   @override

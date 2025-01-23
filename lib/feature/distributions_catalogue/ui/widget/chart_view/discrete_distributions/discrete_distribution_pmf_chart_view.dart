@@ -117,6 +117,7 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
           ),
         ),
       ),
+      duration: Duration.zero,
       transformationConfig: FlTransformationConfig(
         scaleAxis: FlScaleAxis.horizontal,
         maxScale: 100,

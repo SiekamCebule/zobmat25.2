@@ -157,7 +157,7 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
       ),
       duration: Duration.zero,
       transformationConfig: FlTransformationConfig(
-        scaleAxis: FlScaleAxis.free,
+        scaleAxis: FlScaleAxis.horizontal,
         minScale: 1,
         maxScale: 1 + maxX.abs(),
       ),

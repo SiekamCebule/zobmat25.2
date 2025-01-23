@@ -97,31 +97,37 @@ class _DistributionParameterTextFieldState extends State<DistributionParameterTe
         if (number > widget.parameter.max) {
           return 'Maksymalna wartość to ${widget.parameter.max.toString()}';
         }
-        final notHigherRule =
-            widget.parameter.rules.singleWhereOrNull(
-                  (rule) => rule is DistributionParameterNotHigherRule,
-                )
-                as DistributionParameterNotHigherRule?;
-        if (notHigherRule != null) {
+        final notHigherRules =
+            widget.parameter.rules.whereType<DistributionParameterNotHigherRule>();
+        for (var notHigherRule in notHigherRules) {
           final paramWithHigherValue = dashboardState.paramsSetup.getParameter(
             notHigherRule.otherParameterId,
           );
-          if (number >= dashboardState.paramsSetup.getValue(paramWithHigherValue.id)) {
-            return 'Liczba musi być mniejsza od parametru "${paramWithHigherValue.name}"';
+          if (notHigherRule.orEqual) {
+            if (number > dashboardState.paramsSetup.getValue(paramWithHigherValue.id)) {
+              return 'Liczba musi być mniejsza lub równa parametrowi "${paramWithHigherValue.name}"';
+            }
+          } else {
+            if (number >= dashboardState.paramsSetup.getValue(paramWithHigherValue.id)) {
+              return 'Liczba musi być mniejsza od parametru "${paramWithHigherValue.name}"';
+            }
           }
         }
 
-        final notSmallerRule =
-            widget.parameter.rules.singleWhereOrNull(
-                  (rule) => rule is DistributionParameterHigherRule,
-                )
-                as DistributionParameterHigherRule?;
-        if (notSmallerRule != null) {
+        final higherRules =
+            widget.parameter.rules.whereType<DistributionParameterHigherRule>();
+        for (var higherRule in higherRules) {
           final paramWithSmallerValue = dashboardState.paramsSetup.getParameter(
-            notSmallerRule.otherParameterId,
+            higherRule.otherParameterId,
           );
-          if (number <= dashboardState.paramsSetup.getValue(paramWithSmallerValue.id)) {
-            return 'Liczba musi być większa od parametru "${paramWithSmallerValue.name}"';
+          if (higherRule.orEqual) {
+            if (number < dashboardState.paramsSetup.getValue(paramWithSmallerValue.id)) {
+              return 'Liczba musi być większa lub równa parametrowi: "${paramWithSmallerValue.name}"';
+            }
+          } else {
+            if (number <= dashboardState.paramsSetup.getValue(paramWithSmallerValue.id)) {
+              return 'Liczba musi być większa od parametru "${paramWithSmallerValue.name}"';
+            }
           }
         }
 

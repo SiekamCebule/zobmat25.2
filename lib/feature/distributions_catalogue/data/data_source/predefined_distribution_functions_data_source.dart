@@ -10,6 +10,8 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_continuous_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/weibull_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/binomial_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/geometric_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/hypergeometric_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/continuous_distribution_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/discrete_distribution_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/distribution_property_functions.dart';
@@ -97,6 +99,16 @@ class PredefinedDistributionFunctionsDataSourceImpl
         pmf: binomialDistributionPmf,
         cdf: binomialDistributionCdf,
         getChartRange: binomialDistributionRangeGetter,
+      ),
+      'geometric_distribution' => DiscreteDistributionFunctions(
+        pmf: geometricDistributionPmf,
+        cdf: geometricDistributionCdf,
+        getChartRange: geometricDistributionRangeGetter,
+      ),
+      'hypergeometric_distribution' => DiscreteDistributionFunctions(
+        pmf: hypergeometricDistributionPmf,
+        cdf: hypergeometricDistributionCdf,
+        getChartRange: hypergeometricDistributionRangeGetter,
       ),
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),
     };
@@ -192,6 +204,20 @@ class PredefinedDistributionFunctionsDataSourceImpl
         standardDeviation: binomialDistributionStandardDeviation,
         median: binomialDistributionMedian,
         mode: binomialDistributionMode,
+      ),
+      'geometric_distribution' => DistributionPropertyFunctions(
+        expectedValue: geometricDistributionExpectedValue,
+        variance: geometricDistributionVariance,
+        standardDeviation: geometricDistributionStandardDeviation,
+        median: geometricDistributionMedian,
+        mode: geometricDistributionMode,
+      ),
+      'hypergeometric_distribution' => DistributionPropertyFunctions(
+        expectedValue: hypergeometricDistributionExpectedValue,
+        variance: hypergeometricDistributionVariance,
+        standardDeviation: hypergeometricDistributionStandardDeviation,
+        median: hypergeometricDistributionMedian,
+        mode: hypergeometricDistributionMode,
       ),
 
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),

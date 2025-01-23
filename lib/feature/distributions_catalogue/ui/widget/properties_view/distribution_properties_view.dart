@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/distribution_property_undefined_exception.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/errors/parameter_should_be_computed_numerically_exception.dart';
@@ -30,31 +29,26 @@ class DistributionPropertiesView extends StatelessWidget {
       }
     }
 
-    const gapValue = 10.0;
-
-    return ListView(
-      shrinkWrap: true,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      spacing: 20,
       children: [
         DistributionPropertyListItem(
           propertyName: 'Wartość oczekiwana',
           value: getValueForProperty('expectedValue'),
         ),
-        Gap(gapValue),
         DistributionPropertyListItem(
           propertyName: 'Wariancja',
           value: getValueForProperty('variance'),
         ),
-        Gap(gapValue),
         DistributionPropertyListItem(
           propertyName: 'Odchylenie standardowe',
           value: getValueForProperty('standardDeviation'),
         ),
-        Gap(gapValue),
         DistributionPropertyListItem(
           propertyName: 'Mediana',
           value: getValueForProperty('median'),
         ),
-        Gap(gapValue),
         DistributionPropertyListItem(
           propertyName: 'Moda',
           value: getValueForProperty('mode'),

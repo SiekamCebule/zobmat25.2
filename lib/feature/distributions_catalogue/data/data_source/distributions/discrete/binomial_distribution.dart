@@ -24,8 +24,8 @@ final binomialDistributionModel = DiscreteDistributionModel(
     ),
     DistributionParameter(
       'p',
-      'Prawdopodobieństwo (p)',
-      'Określa prawdopobobieństwo wylosowania zera. Jeśli p=0.2, to mamy 20% szans na zero i 80% szans na jeden.',
+      'Prawdopodobieństwo sukcesu (p)',
+      'Określa prawdopobobieństwo wylosowania sukcesu (1). Jeśli p=0.2, to mamy 20% szans na sukces (1) i 80% szans na porażkę (0).',
       min: 0,
       max: 1,
       defaultValue: 0.5,
@@ -39,7 +39,7 @@ final binomialDistributionModel = DiscreteDistributionModel(
         containsMarkdownLinks: true,
       ),
       DistributionDescriptionMathExpression(
-        title: 'Gęstość prawdopodobieństwa',
+        title: 'Masa prawdopodobieństwa',
         data: r'f(k; n, p) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \dots, n',
       ),
       DistributionDescriptionMathExpression(

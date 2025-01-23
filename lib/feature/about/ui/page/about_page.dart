@@ -116,6 +116,13 @@ class AboutPage extends StatelessWidget {
                           link(
                             'https://www.investopedia.com/terms/b/binomialdistribution.asp',
                           ),
+                          link('https://en.wikipedia.org/wiki/Geometric_distribution'),
+                          link(
+                            'https://www.statisticshowto.com/hypergeometric-distribution-examples/',
+                          ),
+                          link(
+                            'https://en.wikipedia.org/wiki/Hypergeometric_distribution',
+                          ),
                         ],
                       ),
                       Gap(15),
