@@ -24,6 +24,10 @@ final geometricDistributionModel = DiscreteDistributionModel(
   ],
   extendedDescription: DistributionDescription(
     components: [
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład geometryczny jest jak gdyby "odwrotnością" rozkładu dwumianowego. Opisuje on ilość procesów Bernoulliego do wystąpienia pierwszego sukcesu (podczas gdy rozkład dwumianowy opisuje ilość sukcesów w danej próbce).\nPrzykładem użycia jest modelowanie ilości prób potrzebnych do wygrania w ruletce, lub ilości "interakcji" do pierwszego dopasowania w aplikacji randkowej.',
+      ),
       DistributionDescriptionMathExpression(
         title: 'Masa prawdopodobieństwa',
         data: r'P(X = k) = (1 - p)^{k-1} p, \quad k \geq 1, \, 0 < p \leq 1',
@@ -50,6 +54,11 @@ final geometricDistributionModel = DiscreteDistributionModel(
             r'\text{Me} = \lceil \frac{\ln 2}{\ln(1 / (1 - p))} \rceil, \quad 0 < p \leq 1',
       ),
       DistributionDescriptionMathExpression(title: 'Moda', data: r'\text{Mo} = 1'),
+      DistributionDescriptionParagraph(
+        text:
+            'Rozkład geometryczny jest wykorzystany w teorii kolejek ([Model M/M/1](https://en.wikipedia.org/wiki/M/M/1_queue)]) czy w modelowaniu czasu życia urządzeń. Był też używany do modelowania danych podczas pandemii Covid-19 ([dowiedz się więcej](https://www.nepjol.info/index.php/AJMS/article/view/38783)).',
+        containsMarkdownLinks: true,
+      ),
     ],
   ),
 );
