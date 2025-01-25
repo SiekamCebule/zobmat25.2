@@ -109,7 +109,6 @@
   <script src="flutter_bootstrap.js" async></script>
 
   <script>
-    const minimumSplashTime = 4000;
     const splashScreen = document.getElementById('splash-screen');
     const loadingText = document.getElementById('loading-text');
     const start = performance.now();
@@ -123,17 +122,13 @@
 
     // Efekt zanikania splash screena
     window.addEventListener('flutter-first-frame', () => {
-      const elapsedTime = performance.now() - start;
-      const remainingTime = minimumSplashTime - elapsedTime;
+      if (splashScreen) {
+        splashScreen.style.animation = 'fade-out 1s ease-out forwards';
 
-      setTimeout(() => {
-        if (splashScreen) {
-          splashScreen.style.animation = 'fade-out 1s ease-out forwards';
-
-          setTimeout(() => splashScreen.remove(), 300); // Usuń po animacji
-        }
-      }, Math.max(0, remainingTime));
+        setTimeout(() => splashScreen.remove(), 1000); // Usuń po zakończeniu animacji zanikania
+      }
     });
+
   </script>
 </body>
 
