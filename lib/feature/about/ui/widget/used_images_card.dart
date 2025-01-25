@@ -42,6 +42,9 @@ class UsedImagesCard extends StatelessWidget {
           style: BulletStyle.dash,
           items: [
             linkSpan(
+              'Cap Cool, flaticon (https://www.flaticon.com/free-icon/histogram_11572027?term=normal+distribution&page=1&position=50&origin=search&related_id=11572027) - Ikona aplikacji',
+            ),
+            linkSpan(
               'M. W. Toews, CC BY 2.5 <https://creativecommons.org/licenses/by/2.5>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Standard_deviation_diagram.svg)',
             ),
             linkSpan(

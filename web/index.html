@@ -1,38 +1,140 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description"
+    content="Strona internetowa stworzona na XVII edycję konkursu Zobaczyć Matematykę organizowanego przez AGH.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="zobmat25_2">
+  <meta name="apple-mobile-web-app-title" content="Katalog Rozkładów Prawdopodobieństwa">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <title>zobmat25_2</title>
+  <title>Katalog Rozkładów Prawdopodobieństwa</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Ładowanie czcionki Raleway */
+    @font-face {
+      font-family: 'Raleway';
+      src: url('../assets/fonts/raleway/Raleway-Light.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* Styl dla splash screena */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1f1f1f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    /* Kontener dla logo i tytułu */
+    .logo-title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* Styl dla logo */
+    #splash-logo {
+      width: 120px;
+      height: 120px;
+      background: url('icons/android-chrome-512x512.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    /* Styl dla tytułu */
+    #splash-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: #ffffff;
+    }
+
+    /* Styl dla animowanego tekstu */
+    #loading-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 18px;
+      color: #c4c4c4;
+    }
+
+    /* Efekt zanikania splash screena */
+    /* Efekt zanikania splash screena */
+    @keyframes fade-out {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Splash screen -->
+  <div id="splash-screen">
+    <div class="logo-title-container">
+      <div id="splash-logo"></div>
+      <div id="splash-title">Katalog Rozkładów Prawdopodobieństwa</div>
+    </div>
+    <div id="loading-text">Jeszcze chwilka...</div>
+  </div>
+
+  <!-- Flutter app -->
   <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    const minimumSplashTime = 4000;
+    const splashScreen = document.getElementById('splash-screen');
+    const loadingText = document.getElementById('loading-text');
+    const start = performance.now();
+
+    // Animacja tekstu "Jeszcze chwilka..."
+    let dots = 0;
+    setInterval(() => {
+      dots = (dots + 1) % 4; // Liczba kropek od 0 do 3
+      loadingText.textContent = `Jeszcze chwilka${'.'.repeat(dots)}`;
+    }, 350);
+
+    // Efekt zanikania splash screena
+    window.addEventListener('flutter-first-frame', () => {
+      const elapsedTime = performance.now() - start;
+      const remainingTime = minimumSplashTime - elapsedTime;
+
+      setTimeout(() => {
+        if (splashScreen) {
+          splashScreen.style.animation = 'fade-out 1s ease-out forwards';
+
+          setTimeout(() => splashScreen.remove(), 300); // Usuń po animacji
+        }
+      }, Math.max(0, remainingTime));
+    });
+  </script>
 </body>
+
 </html>

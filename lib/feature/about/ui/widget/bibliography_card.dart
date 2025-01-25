@@ -51,7 +51,7 @@ class BibliographyCard extends StatelessWidget {
             link('https://pl.wikipedia.org/wiki/Test_t_Studenta'),
             link('https://www.ttable.org'),
             link(
-              'https://www.hwdoi.com/pl/math/what-is-the-student-t-distribution-and-how-do-i-use-it?utm_source=chatgpt.com',
+              'https://www.hwdoi.com/pl/math/what-is-the-student-t-distribution-and-how-do-i-use-it',
             ),
             link('https://en.wikipedia.org/wiki/Log-normal_distribution'),
             link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Weibulla'),

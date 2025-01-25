@@ -37,7 +37,7 @@ ThemeData lightGreenTheme({required TextTheme textTheme}) {
     keyColors: const FlexKeyColors(
       useTertiary: true,
       keepPrimaryContainer: true,
-      useExpressiveOnContainerColors: true,
+      useExpressiveOnContainerColors: false,
     ),
     tones: FlexSchemeVariant.material.tones(Brightness.light),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,

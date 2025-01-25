@@ -8,7 +8,7 @@ Widget defaultFadeSlideTransition(Widget child, Animation<double> animation) {
   final slide = CurvedAnimation(
     parent: animation,
     curve: Curves.easeOut,
-  ).drive(Tween(begin: Offset(0, 0.0075), end: Offset.zero));
+  ).drive(Tween(begin: Offset(0, 0.008), end: Offset.zero));
 
   return SlideTransition(
     position: slide,

@@ -1,5 +1,6 @@
 #include "my_application.h"
 
+
 #include <flutter_linux/flutter_linux.h>
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -19,6 +20,17 @@ static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
   GtkWindow* window =
       GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
+
+     /* const string iconFilename = "assets/icons/app_icon.png";
+    path execDir = canonical(read_symlink("/proc/self/exe")).parent_path();
+    path iconPath = execDir / "data/flutter_assets" / iconFilename;
+    gtk_window_set_icon_from_file(GTK_WINDOW(window), iconPath.c_str(), NULL);*/
+
+  GdkPixbuf* icon = gdk_pixbuf_new_from_file("/home/konrad/programming-projects/real_apps/zobmat25_2/assets/icons/app_icon.png", NULL);
+  if (icon != NULL) {
+    gtk_window_set_icon(GTK_WINDOW(window), icon);
+    g_object_unref(icon);
+  }
 
   // Use a header bar when running in GNOME as this is the common style used
   // by applications and is the setup most users will be using (e.g. Ubuntu
@@ -40,11 +52,11 @@ static void my_application_activate(GApplication* application) {
   if (use_header_bar) {
     GtkHeaderBar* header_bar = GTK_HEADER_BAR(gtk_header_bar_new());
     gtk_widget_show(GTK_WIDGET(header_bar));
-    gtk_header_bar_set_title(header_bar, "zobmat25_2");
+    gtk_header_bar_set_title(header_bar, "Katalog Rozkładów Prawdopodobieństwa");
     gtk_header_bar_set_show_close_button(header_bar, TRUE);
     gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
   } else {
-    gtk_window_set_title(window, "zobmat25_2");
+    gtk_window_set_title(window, "Katalog Rozkładów Prawdopodobieństwa");
   }
 
   gtk_window_set_default_size(window, 1280, 720);

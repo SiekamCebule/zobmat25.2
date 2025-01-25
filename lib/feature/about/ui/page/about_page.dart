@@ -31,9 +31,9 @@ class AboutPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              SizedBox(height: 400, child: AboutSiteCard()),
+                              IntrinsicHeight(child: AboutSiteCard()),
                               Gap(10),
-                              SizedBox(height: 415, child: UsedTechnologiesCard()),
+                              IntrinsicHeight(child: UsedTechnologiesCard()),
                             ],
                           ),
                         ),

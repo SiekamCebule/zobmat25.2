@@ -33,7 +33,7 @@ ThemeData lightYellowTheme({required TextTheme textTheme}) {
       navigationRailLabelType: NavigationRailLabelType.all,
       cardElevation: 0,
     ),
-    keyColors: const FlexKeyColors(useExpressiveOnContainerColors: true),
+    keyColors: const FlexKeyColors(useExpressiveOnContainerColors: false),
     tones: FlexSchemeVariant.soft
         .tones(Brightness.light)
         .copyWith(secondaryContainerTone: 94),

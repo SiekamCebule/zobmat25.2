@@ -18,6 +18,8 @@ ThemeData lightOrangeTheme({required TextTheme textTheme}) {
       error: Color(0xFFBA1A1A),
       errorContainer: Color(0xFFFFDAD6),
     ),
+    surfaceMode: FlexSurfaceMode.level,
+    blendLevel: 10,
     usedColors: 7,
     textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
@@ -33,7 +35,7 @@ ThemeData lightOrangeTheme({required TextTheme textTheme}) {
     ),
     keyColors: const FlexKeyColors(
       useTertiary: true,
-      useExpressiveOnContainerColors: true,
+      useExpressiveOnContainerColors: false,
     ),
     tones: FlexSchemeVariant.material.tones(Brightness.light),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
@@ -58,6 +60,8 @@ ThemeData darkOrangeTheme({required TextTheme textTheme}) {
       errorContainer: Color(0xFF93000A),
     ),
     usedColors: 7,
+    surfaceMode: FlexSurfaceMode.level,
+    blendLevel: 0,
     textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
