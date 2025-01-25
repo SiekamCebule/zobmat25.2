@@ -24,12 +24,13 @@ ThemeData lightMonochromeTheme() {
       tintedDisabledControls: true,
       scaffoldBackgroundBaseColor: FlexScaffoldBaseColor.lowestBase,
       useM2StyleDividerInM3: true,
-      defaultRadius: 6.0,
+
       inputDecoratorIsFilled: true,
       inputDecoratorBorderType: FlexInputBorderType.outline,
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      defaultRadius: 6.0,
     ),
     keyColors: const FlexKeyColors(
       useSecondary: true,
@@ -70,6 +71,7 @@ ThemeData darkMonochromeTheme() {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      defaultRadius: 6.0,
     ),
     keyColors: const FlexKeyColors(
       useSecondary: true,

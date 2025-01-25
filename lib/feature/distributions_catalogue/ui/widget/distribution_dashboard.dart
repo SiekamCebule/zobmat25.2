@@ -7,24 +7,27 @@ class DistributionDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 28,
-            child: Column(
-              children: [
-                Expanded(flex: 1, child: DistributionChartCard()),
-                /*ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: 230),
-                  child: DistributionAnalysisCard(),
-                ),*/
-              ],
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 28,
+              child: Column(
+                children: [
+                  Expanded(flex: 1, child: DistributionChartCard()),
+                  /*ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: 230),
+                    child: DistributionAnalysisCard(),
+                  ),*/
+                ],
+              ),
             ),
-          ),
-          SizedBox(width: 380, child: DistributionDescriptionAndPropertiesCard()),
-        ],
+            SizedBox(width: 380, child: DistributionDescriptionAndPropertiesCard()),
+          ],
+        ),
       ),
     );
   }

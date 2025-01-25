@@ -1,0 +1,172 @@
+{
+    "playground_data": "Themes Playground data exported 25.01.2025 14:32:07",
+    "playground_version": "8.1.0",
+    "applyThemeToAllCupertino": true,
+    "blendDarkOnColors": true,
+    "blendLevelDark": 0,
+    "blendLevelLight": 0,
+    "blendLightOnColors": false,
+    "blendOnLevelDark": 0,
+    "blendOnLevelLight": 0,
+    "confirmPremade": true,
+    "customErrorDark": {
+        "dart_type": "color",
+        "value": "FFFFB4AB"
+    },
+    "customErrorLight": {
+        "dart_type": "color",
+        "value": "FF000000"
+    },
+    "customPrimaryContainerDark": {
+        "dart_type": "color",
+        "value": "FF3B3B3B"
+    },
+    "customPrimaryContainerLight": {
+        "dart_type": "color",
+        "value": "FFDFDFDF"
+    },
+    "customPrimaryDark": {
+        "dart_type": "color",
+        "value": "FFB1CFF5"
+    },
+    "customPrimaryDarkRef": {
+        "dart_type": "color",
+        "value": "FF00296B"
+    },
+    "customPrimaryLight": {
+        "dart_type": "color",
+        "value": "FF00296B"
+    },
+    "customPrimaryLightRef": {
+        "dart_type": "color",
+        "value": "FF00296B"
+    },
+    "customSecondaryContainerDark": {
+        "dart_type": "color",
+        "value": "FFD26900"
+    },
+    "customSecondaryContainerLight": {
+        "dart_type": "color",
+        "value": "FFFFD270"
+    },
+    "customSecondaryDark": {
+        "dart_type": "color",
+        "value": "FFCECECE"
+    },
+    "customSecondaryDarkRef": {
+        "dart_type": "color",
+        "value": "FF404040"
+    },
+    "customSecondaryLight": {
+        "dart_type": "color",
+        "value": "FF404040"
+    },
+    "customSecondaryLightRef": {
+        "dart_type": "color",
+        "value": "FF404040"
+    },
+    "customTertiaryContainerDark": {
+        "dart_type": "color",
+        "value": "FF666666"
+    },
+    "customTertiaryContainerLight": {
+        "dart_type": "color",
+        "value": "FFC8DBF8"
+    },
+    "customTertiaryDark": {
+        "dart_type": "color",
+        "value": "FFE2E2E2"
+    },
+    "customTertiaryDarkRef": {
+        "dart_type": "color",
+        "value": "FF5C5C95"
+    },
+    "customTertiaryLight": {
+        "dart_type": "color",
+        "value": "FF5C5C95"
+    },
+    "customTertiaryLightRef": {
+        "dart_type": "color",
+        "value": "FF5C5C95"
+    },
+    "customUsesDarkColorsForSeed": false,
+    "defaultRadius": 6.000000000000001,
+    "dynamicContrastLevel": 0,
+    "expressiveOnContainer": false,
+    "floatingActionButtonAlwaysCircular": false,
+    "floatingActionButtonUseShape": false,
+    "generateCodeForOwnFile": true,
+    "higherContrastFixed": false,
+    "inputDecoratorBorderType": {
+        "dart_type": "enum_flex_input_border_type",
+        "value": "outline"
+    },
+    "inputDecoratorUnfocusedHasBorder": true,
+    "interactionEffects": true,
+    "keepDarkPrimary": false,
+    "keepDarkPrimaryContainer": true,
+    "keepDarkSecondary": true,
+    "keepDarkTertiary": false,
+    "keepDarkTertiaryContainer": true,
+    "keepError": false,
+    "keepPrimary": false,
+    "keepPrimaryContainer": true,
+    "keepSecondary": true,
+    "keepSecondaryContainer": false,
+    "keepTertiary": false,
+    "keepTertiaryContainer": false,
+    "onMainsUseBWLight": false,
+    "onSurfacesUseBWLight": false,
+    "scaffoldBackgroundLightBaseColor": {
+        "dart_type": "enum_flex_scaffold_base_color",
+        "value": "lowestBase"
+    },
+    "scaffoldDarkIsTrueBlack": false,
+    "scaffoldLightIsWhite": true,
+    "schemeIndex": 58,
+    "searchUseGlobalShape": false,
+    "showSchemeInputColors": true,
+    "simulatorAppIndex": 0,
+    "simulatorComponentsIndex": 1,
+    "simulatorDeviceIndex": 12,
+    "simulatorViewZoom": 736,
+    "sliderValueTinted": false,
+    "surfaceModeDark": {
+        "dart_type": "enum_flex_surface_mode",
+        "value": "level"
+    },
+    "surfaceModeLight": {
+        "dart_type": "enum_flex_surface_mode",
+        "value": "level"
+    },
+    "surfacesUseBWLight": true,
+    "swapLegacyColorsInM3": false,
+    "swapPrimaryAndSecondaryDarkColors": false,
+    "swapPrimaryAndSecondaryLightColors": false,
+    "themeMode": {
+        "dart_type": "enum_theme_mode",
+        "value": "dark"
+    },
+    "tintedDisabledControls": true,
+    "toDarkMethodLevel": 10,
+    "toDarkSwapPrimaryAndContainer": true,
+    "topicIndexEndSide": 4,
+    "topicIndexStartSide": 9,
+    "unselectedToggleIsColored": false,
+    "useAppFont": true,
+    "useError": true,
+    "useFlexColorScheme": true,
+    "useInputDecoratorThemeInDialogs": false,
+    "useKeyColors": true,
+    "useM2StyleDividerInM3": true,
+    "useM3ErrorColors": false,
+    "useMaterial3": true,
+    "useMonoSurfacesDark": false,
+    "useMonoSurfacesLight": true,
+    "useSecondary": true,
+    "useSubThemes": true,
+    "useTertiary": true,
+    "useToDarkMethod": false,
+    "usedColors": 6,
+    "usedFlexToneSetup": 2
+}

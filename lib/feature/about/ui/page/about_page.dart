@@ -14,6 +14,7 @@ class AboutPage extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
         body: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(

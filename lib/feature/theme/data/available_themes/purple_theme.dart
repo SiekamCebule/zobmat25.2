@@ -29,7 +29,8 @@ ThemeData lightPurpleTheme() {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
-      defaultRadius: 25,
+      defaultRadius: 20,
+      cardElevation: 0,
     ),
     keyColors: const FlexKeyColors(),
     tones: FlexSchemeVariant.material
@@ -68,6 +69,8 @@ ThemeData darkPurpleTheme() {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      defaultRadius: 20,
+      cardElevation: 0,
     ),
     keyColors: const FlexKeyColors(),
     tones: FlexSchemeVariant.material
