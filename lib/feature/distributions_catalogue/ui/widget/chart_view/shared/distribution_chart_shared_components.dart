@@ -2,6 +2,10 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 abstract class DistributionChartSharedComponents {
+  static Color backgroundColor(BuildContext context) {
+    return Theme.of(context).colorScheme.surface;
+  }
+
   static Color tooltipColor(BuildContext context) {
     return Theme.of(context).colorScheme.tertiary;
   }

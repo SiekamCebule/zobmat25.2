@@ -30,7 +30,7 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
 
     return BarChart(
       BarChartData(
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+        backgroundColor: DistributionChartSharedComponents.backgroundColor(context),
         borderData: FlBorderData(show: false),
         maxY: (maxY + 0.05).clamp(0, 1),
         minY: 0,

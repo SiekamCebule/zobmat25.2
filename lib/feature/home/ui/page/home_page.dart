@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
       distributionsCount = dashboardState.distributions.length;
     }
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
       body: Center(
         child: Transform.translate(
           //offset: Offset(-UiConstants.catalogueMenuWidth / 2, 0),

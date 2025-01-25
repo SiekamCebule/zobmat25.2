@@ -18,18 +18,14 @@ class DistributionNavigationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const borderRadius = 12.0;
     final imagePath =
         'assets/distribution_images/${distributionImageUrls[distribution.id]}';
     return Card(
-      elevation: 1.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
       color:
           isSelected
               ? Theme.of(context).colorScheme.primaryContainer
-              : Theme.of(context).colorScheme.surfaceContainer,
+              : Theme.of(context).colorScheme.surfaceContainerLow,
       child: InkWell(
-        borderRadius: BorderRadius.circular(borderRadius),
         hoverColor:
             isSelected
                 ? Theme.of(context).colorScheme.primaryContainer

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
 import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
 
@@ -51,8 +52,86 @@ class MainNavigationRail extends StatelessWidget {
               selectedIndex: selectedIndex,
             ),
           ),
-          if (themeState is ThemeAvaiable)
+          if (themeState is ThemeAvaiable) ...[
+            Builder(
+              builder: (context) {
+                return IconButton.outlined(
+                  tooltip: 'Zmień motyw kolorów',
+                  onPressed: () async {
+                    final RenderBox button = context.findRenderObject() as RenderBox;
+                    final RenderBox overlay =
+                        Overlay.of(context).context.findRenderObject() as RenderBox;
+
+                    final Offset position = button.localToGlobal(
+                      Offset.zero,
+                      ancestor: overlay,
+                    );
+
+                    await showMenu(
+                      context: context,
+                      position: RelativeRect.fromLTRB(
+                        position.dx + 45, // Lewa krawędź
+                        position.dy + 35, // Górna krawędź
+                        position.dx + button.size.width + 45, // Prawa krawędź
+                        position.dy + button.size.height + 35, // Dolna krawędź
+                      ),
+                      items: [
+                        PopupMenuItem(
+                          child: Text('Pomarańcz'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.orange,
+                              ),
+                        ),
+                        PopupMenuItem(
+                          child: Text('Zieleń'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.green,
+                              ),
+                        ),
+                        PopupMenuItem(
+                          child: Text('Fiolet'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.purple,
+                              ),
+                        ),
+
+                        PopupMenuItem(
+                          child: Text('Żółć'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.yellow,
+                              ),
+                        ),
+                        PopupMenuItem(
+                          child: Text('Błękit'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.blue,
+                              ),
+                        ),
+                        PopupMenuItem(
+                          child: Text('Czerń i biel'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.monochrome,
+                              ),
+                        ),
+                      ],
+                    );
+                  },
+                  icon: Icon(Symbols.colors),
+                );
+              },
+            ),
+            Gap(15),
             IconButton.outlined(
+              tooltip:
+                  themeState.theme.themeMode == AppThemeMode.light
+                      ? 'Włącz tryb ciemny'
+                      : 'Włącz tryb jasny',
               onPressed: () {
                 context.read<ThemeCubit>().toggleThemeMode();
               },
@@ -62,6 +141,8 @@ class MainNavigationRail extends StatelessWidget {
                     : Symbols.light_mode_rounded,
               ),
             ),
+          ],
+
           const Gap(20),
         ],
       ),

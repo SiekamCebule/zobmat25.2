@@ -1,6 +1,9 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:zobmat25_2/feature/theme/data/available_themes/colors_schemes.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/green_theme.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/purple_theme.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/orange_theme.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/monochrome_theme.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
 
@@ -8,18 +11,31 @@ class FlutterThemeCreator {
   late ThemeData _themeData;
 
   ThemeData createFlutterTheme(AppTheme appTheme) {
-    _themeData =
-        appTheme.themeMode == AppThemeMode.light
-            ? FlexThemeData.light(colorScheme: lightColorSchemes[appTheme.colorScheme])
-            : FlexThemeData.dark(colorScheme: darkColorSchemes[appTheme.colorScheme]);
-    _setUpTextStyle();
-    return _themeData;
+    if (appTheme.themeMode == AppThemeMode.light) {
+      _themeData = switch (appTheme.colorScheme) {
+        AppColorScheme.orange => lightOrangeTheme(),
+        AppColorScheme.green => lightGreenTheme(),
+        AppColorScheme.purple => lightPurpleTheme(),
+        AppColorScheme.monochrome => lightMonochromeTheme(),
+        _ => throw UnimplementedError(),
+      };
+    } else {
+      _themeData = switch (appTheme.colorScheme) {
+        AppColorScheme.orange => darkOrangeTheme(),
+        AppColorScheme.green => darkGreenTheme(),
+        AppColorScheme.purple => darkPurpleTheme(),
+        AppColorScheme.monochrome => darkMonochromeTheme(),
+        _ => throw UnimplementedError(),
+      };
+    }
+    return _themeData.copyWith(textTheme: _getTextTheme());
   }
 
-  void _setUpTextStyle() {
+  TextTheme _getTextTheme() {
     const fontFamily = 'Raleway';
     final textColor = _themeData.colorScheme.onSurface;
-    final textTheme = TextTheme(
+    //final textColor = null;
+    return TextTheme(
       displayLarge: TextStyle(
         fontFamily: fontFamily,
         fontSize: 57,
@@ -111,6 +127,5 @@ class FlutterThemeCreator {
         color: textColor,
       ),
     );
-    _themeData = _themeData.copyWith(textTheme: textTheme);
   }
 }

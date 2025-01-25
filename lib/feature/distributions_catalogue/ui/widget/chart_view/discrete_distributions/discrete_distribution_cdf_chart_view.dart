@@ -91,7 +91,7 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+        backgroundColor: DistributionChartSharedComponents.backgroundColor(context),
         baselineX: 0,
         baselineY: 0,
         minY: 0,

@@ -49,6 +49,7 @@ dependencies:
   stats: ^2.1.0
   rxdart: ^0.28.0
   url_launcher: ^6.3.1
+  shared_preferences: ^2.4.0
 
 dev_dependencies:
   flutter_test:

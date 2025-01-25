@@ -45,17 +45,15 @@ class DrawedNumbersDialog extends StatelessWidget {
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 500, maxHeight: 400),
-        child: Dialog(
-          child: Column(
+        child: AlertDialog(
+          title: Text('Wylosowane liczby'),
+          content: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Gap(20),
-              Text('Wylosowane liczby:', style: Theme.of(context).textTheme.titleLarge),
-              Gap(20),
-              Expanded(child: drawedNumbersWidget),
-              Gap(20),
-            ],
+            children: [Expanded(child: drawedNumbersWidget)],
           ),
+          actions: [
+            TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('Ok')),
+          ],
         ),
       ),
     );

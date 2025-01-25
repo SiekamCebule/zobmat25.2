@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/data/repository/in_memory_distribution_dashboard_repository.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
@@ -34,18 +35,20 @@ import 'package:zobmat25_2/feature/navigation/domain/use_case/go_to_navigation_e
 import 'package:zobmat25_2/feature/navigation/domain/use_case/go_to_navigation_entry_use_case.dart';
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
 import 'package:zobmat25_2/feature/navigation/ui/page/dynamic_page.dart';
-import 'package:zobmat25_2/feature/theme/data/repository/in_memory_theme_repository.dart';
+import 'package:zobmat25_2/feature/theme/data/repository/cached_theme_repository.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
+import 'package:zobmat25_2/feature/theme/domain/use_cases/change_app_color_scheme_use_case.dart';
 import 'package:zobmat25_2/feature/theme/domain/use_cases/get_app_theme_use_case.dart';
 import 'package:zobmat25_2/feature/theme/domain/use_cases/toggle_theme_mode_use_case.dart';
 import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
 import 'package:zobmat25_2/feature/theme/ui/flutter_theme_creator.dart';
 
-void main() {
-  final themeRepository = InMemoryThemeRepository(
-    initialColorScheme: AppColorScheme.blueDefault,
-    initialThemeMode: AppThemeMode.dark,
+void main() async {
+  final themeRepository = CachedThemeRepository(
+    preferences: await SharedPreferences.getInstance(),
+    defaultColorScheme: AppColorScheme.orange,
+    defaultThemeMode: AppThemeMode.dark,
   );
   runApp(
     BlocProvider(
@@ -53,6 +56,9 @@ void main() {
           (context) => ThemeCubit(
             getAppThemeUseCase: GetAppThemeUseCase(themeRepository: themeRepository),
             toggleThemeModeUseCase: ToggleThemeModeUseCase(
+              themeRepository: themeRepository,
+            ),
+            changeAppColorSchemeUseCase: ChangeAppColorSchemeUseCase(
               themeRepository: themeRepository,
             ),
           )..initialize(),

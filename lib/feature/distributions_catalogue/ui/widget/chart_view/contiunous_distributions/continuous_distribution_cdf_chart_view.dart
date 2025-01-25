@@ -105,7 +105,7 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+        backgroundColor: DistributionChartSharedComponents.backgroundColor(context),
         minX: minX,
         maxX: maxX,
         baselineX: 0,

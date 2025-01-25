@@ -38,7 +38,7 @@ class DistributionChartCard extends StatelessWidget {
 
     return Card(
       clipBehavior: Clip.none,
-      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      color: Theme.of(context).colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.all(15.0),

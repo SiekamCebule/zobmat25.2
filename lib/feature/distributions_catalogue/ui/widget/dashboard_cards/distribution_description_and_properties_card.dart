@@ -28,7 +28,7 @@ class DistributionDescriptionAndPropertiesCard extends StatelessWidget {
     }
 
     return Card(
-      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      color: Theme.of(context).colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),

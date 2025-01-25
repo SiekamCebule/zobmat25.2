@@ -1,0 +1,165 @@
+{
+    "playground_data": "Themes Playground data exported 25.01.2025 13:51:19",
+    "playground_version": "8.1.0",
+    "applyThemeToAllCupertino": true,
+    "blendLevelDark": 15,
+    "blendLevelLight": 25,
+    "blendLightOnColors": false,
+    "blendOnLevelDark": 0,
+    "blendOnLevelLight": 0,
+    "confirmPremade": true,
+    "customErrorDark": {
+        "dart_type": "color",
+        "value": "FFFFB4AB"
+    },
+    "customErrorLight": {
+        "dart_type": "color",
+        "value": "FFBA1A1A"
+    },
+    "customPrimaryContainerDark": {
+        "dart_type": "color",
+        "value": "FF203D19"
+    },
+    "customPrimaryContainerLight": {
+        "dart_type": "color",
+        "value": "FFC5FEB2"
+    },
+    "customPrimaryDark": {
+        "dart_type": "color",
+        "value": "FFD0BCFF"
+    },
+    "customPrimaryDarkRef": {
+        "dart_type": "color",
+        "value": "FF406835"
+    },
+    "customPrimaryLight": {
+        "dart_type": "color",
+        "value": "FF406835"
+    },
+    "customPrimaryLightRef": {
+        "dart_type": "color",
+        "value": "FF406835"
+    },
+    "customSecondaryContainerDark": {
+        "dart_type": "color",
+        "value": "FF4A4458"
+    },
+    "customSecondaryContainerLight": {
+        "dart_type": "color",
+        "value": "FF0A15FF"
+    },
+    "customSecondaryDark": {
+        "dart_type": "color",
+        "value": "FFCCC2DC"
+    },
+    "customSecondaryDarkRef": {
+        "dart_type": "color",
+        "value": "FF625B71"
+    },
+    "customSecondaryLight": {
+        "dart_type": "color",
+        "value": "FF625B71"
+    },
+    "customSecondaryLightRef": {
+        "dart_type": "color",
+        "value": "FF625B71"
+    },
+    "customTertiaryContainerDark": {
+        "dart_type": "color",
+        "value": "FF633B48"
+    },
+    "customTertiaryContainerLight": {
+        "dart_type": "color",
+        "value": "FFFFD8E4"
+    },
+    "customTertiaryDark": {
+        "dart_type": "color",
+        "value": "FFF1BB98"
+    },
+    "customTertiaryDarkRef": {
+        "dart_type": "color",
+        "value": "FF757E38"
+    },
+    "customTertiaryLight": {
+        "dart_type": "color",
+        "value": "FF757E38"
+    },
+    "customTertiaryLightRef": {
+        "dart_type": "color",
+        "value": "FF757E38"
+    },
+    "customUsesDarkColorsForSeed": false,
+    "dynamicContrastLevel": 0,
+    "expressiveOnContainer": true,
+    "floatingActionButtonAlwaysCircular": false,
+    "floatingActionButtonUseShape": false,
+    "generateCodeForOwnFile": true,
+    "higherContrastFixed": false,
+    "inputDecoratorBorderType": {
+        "dart_type": "enum_flex_input_border_type",
+        "value": "outline"
+    },
+    "inputDecoratorUnfocusedHasBorder": true,
+    "interactionEffects": true,
+    "keepDarkPrimary": false,
+    "keepDarkPrimaryContainer": true,
+    "keepDarkSecondary": false,
+    "keepDarkTertiary": false,
+    "keepError": false,
+    "keepPrimary": false,
+    "keepPrimaryContainer": true,
+    "keepSecondary": false,
+    "keepSecondaryContainer": false,
+    "keepTertiary": false,
+    "keepTertiaryContainer": false,
+    "onMainsUseBWLight": false,
+    "onSurfacesUseBWLight": false,
+    "scaffoldDarkIsTrueBlack": false,
+    "scaffoldLightIsWhite": false,
+    "schemeIndex": 58,
+    "searchUseGlobalShape": false,
+    "showSchemeInputColors": true,
+    "simulatorAppIndex": 0,
+    "simulatorComponentsIndex": 1,
+    "simulatorDeviceIndex": 12,
+    "simulatorViewZoom": 736,
+    "sliderValueTinted": false,
+    "surfaceModeDark": {
+        "dart_type": "enum_flex_surface_mode",
+        "value": "level"
+    },
+    "surfaceModeLight": {
+        "dart_type": "enum_flex_surface_mode",
+        "value": "level"
+    },
+    "surfacesUseBWLight": false,
+    "swapLegacyColorsInM3": false,
+    "swapPrimaryAndSecondaryDarkColors": false,
+    "swapPrimaryAndSecondaryLightColors": false,
+    "themeMode": {
+        "dart_type": "enum_theme_mode",
+        "value": "dark"
+    },
+    "tintedDisabledControls": true,
+    "toDarkMethodLevel": 10,
+    "toDarkSwapPrimaryAndContainer": true,
+    "topicIndexEndSide": 4,
+    "topicIndexStartSide": 9,
+    "unselectedToggleIsColored": false,
+    "useAppFont": true,
+    "useError": false,
+    "useFlexColorScheme": true,
+    "useInputDecoratorThemeInDialogs": false,
+    "useKeyColors": true,
+    "useM2StyleDividerInM3": true,
+    "useM3ErrorColors": false,
+    "useMaterial3": true,
+    "useMonoSurfacesDark": false,
+    "useMonoSurfacesLight": false,
+    "useSecondary": false,
+    "useSubThemes": true,
+    "useTertiary": true,
+    "useToDarkMethod": false,
+    "usedColors": 6,
+    "usedFlexToneSetup": 9
+}
