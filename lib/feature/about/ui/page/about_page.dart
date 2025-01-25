@@ -47,14 +47,12 @@ class AboutPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Expanded(child: BibliographyCard()),
-                          Gap(10),
-                          Expanded(child: UsedImagesCard()),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Expanded(child: BibliographyCard()),
+                        Gap(10),
+                        Expanded(child: UsedImagesCard()),
+                      ],
                     ),
                   ],
                 ),
