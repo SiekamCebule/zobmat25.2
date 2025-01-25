@@ -2,7 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-ThemeData lightPurpleTheme() {
+ThemeData lightPurpleTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
     colors: const FlexSchemeColor(
       // Custom colors
@@ -20,6 +20,7 @@ ThemeData lightPurpleTheme() {
       errorContainer: Color(0xFFFFDAD6),
     ),
     usedColors: 7,
+    textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
       tintedDisabledControls: true,
@@ -29,7 +30,7 @@ ThemeData lightPurpleTheme() {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
-      defaultRadius: 20,
+      defaultRadius: 22,
       cardElevation: 0,
     ),
     keyColors: const FlexKeyColors(),
@@ -41,7 +42,7 @@ ThemeData lightPurpleTheme() {
   );
 }
 
-ThemeData darkPurpleTheme() {
+ThemeData darkPurpleTheme({required TextTheme textTheme}) {
   return FlexThemeData.dark(
     colors: const FlexSchemeColor(
       // Custom colors
@@ -59,6 +60,7 @@ ThemeData darkPurpleTheme() {
       errorContainer: Color(0xFF93000A),
     ),
     usedColors: 7,
+    textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
       tintedDisabledControls: true,
@@ -69,7 +71,7 @@ ThemeData darkPurpleTheme() {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
-      defaultRadius: 20,
+      defaultRadius: 22,
       cardElevation: 0,
     ),
     keyColors: const FlexKeyColors(),

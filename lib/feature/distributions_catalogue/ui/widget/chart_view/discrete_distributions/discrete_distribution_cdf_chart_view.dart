@@ -35,13 +35,13 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
                     .map((x) => FlSpot(x.toDouble(), values[x]!.toDouble()))
                     .toList(),
             isCurved: false,
-            color: Theme.of(context).colorScheme.tertiary,
+            color: DistributionChartSharedComponents.chartColor(context),
             barWidth: 2,
             dotData: FlDotData(
               show: true,
               getDotPainter: (spot, xPercentage, barData, index) {
                 return FlDotCirclePainter(
-                  color: Theme.of(context).colorScheme.tertiary,
+                  color: DistributionChartSharedComponents.chartColor(context),
                   radius: 6,
                 );
               },

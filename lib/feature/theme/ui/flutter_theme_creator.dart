@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/blue_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/green_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/purple_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/orange_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/monochrome_theme.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/yellow_theme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
@@ -11,30 +13,33 @@ class FlutterThemeCreator {
   late ThemeData _themeData;
 
   ThemeData createFlutterTheme(AppTheme appTheme) {
+    final textTheme = _getTextTheme();
     if (appTheme.themeMode == AppThemeMode.light) {
       _themeData = switch (appTheme.colorScheme) {
-        AppColorScheme.orange => lightOrangeTheme(),
-        AppColorScheme.green => lightGreenTheme(),
-        AppColorScheme.purple => lightPurpleTheme(),
-        AppColorScheme.monochrome => lightMonochromeTheme(),
-        _ => throw UnimplementedError(),
+        AppColorScheme.orange => lightOrangeTheme(textTheme: textTheme),
+        AppColorScheme.green => lightGreenTheme(textTheme: textTheme),
+        AppColorScheme.purple => lightPurpleTheme(textTheme: textTheme),
+        AppColorScheme.blue => lightBlueTheme(textTheme: textTheme),
+        AppColorScheme.yellow => lightYellowTheme(textTheme: textTheme),
+        AppColorScheme.monochrome => lightMonochromeTheme(textTheme: textTheme),
       };
     } else {
       _themeData = switch (appTheme.colorScheme) {
-        AppColorScheme.orange => darkOrangeTheme(),
-        AppColorScheme.green => darkGreenTheme(),
-        AppColorScheme.purple => darkPurpleTheme(),
-        AppColorScheme.monochrome => darkMonochromeTheme(),
-        _ => throw UnimplementedError(),
+        AppColorScheme.orange => darkOrangeTheme(textTheme: textTheme),
+        AppColorScheme.green => darkGreenTheme(textTheme: textTheme),
+        AppColorScheme.purple => darkPurpleTheme(textTheme: textTheme),
+        AppColorScheme.blue => darkBlueTheme(textTheme: textTheme),
+        AppColorScheme.yellow => darkYellowTheme(textTheme: textTheme),
+        AppColorScheme.monochrome => darkMonochromeTheme(textTheme: textTheme),
       };
     }
-    return _themeData.copyWith(textTheme: _getTextTheme());
+    return _themeData;
   }
 
   TextTheme _getTextTheme() {
     const fontFamily = 'Raleway';
-    final textColor = _themeData.colorScheme.onSurface;
-    //final textColor = null;
+    //final textColor = _themeData.colorScheme.onSurface;
+    final textColor = null;
     return TextTheme(
       displayLarge: TextStyle(
         fontFamily: fontFamily,

@@ -74,7 +74,7 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
         lineBarsData: [
           LineChartBarData(
             spots: spots.toList(),
-            color: Theme.of(context).colorScheme.tertiary,
+            color: DistributionChartSharedComponents.chartColor(context),
             belowBarData: BarAreaData(color: Colors.yellow),
             isCurved: true,
             dotData: FlDotData(show: false),

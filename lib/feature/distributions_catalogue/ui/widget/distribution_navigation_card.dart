@@ -23,16 +23,16 @@ class DistributionNavigationCard extends StatelessWidget {
     return Card(
       color:
           isSelected
-              ? Theme.of(context).colorScheme.primaryContainer
+              ? Theme.of(context).colorScheme.secondaryContainer
               : Theme.of(context).colorScheme.surfaceContainerLow,
       child: InkWell(
         hoverColor:
             isSelected
-                ? Theme.of(context).colorScheme.primaryContainer
+                ? Theme.of(context).colorScheme.secondaryContainer
                 : Theme.of(context).colorScheme.surfaceContainerHighest,
         focusColor:
             isSelected
-                ? Theme.of(context).colorScheme.primaryContainer
+                ? Theme.of(context).colorScheme.secondaryContainer
                 : Theme.of(context).colorScheme.surfaceContainerHighest,
         hoverDuration: Durations.short2,
         onTap: onTap,

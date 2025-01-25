@@ -82,7 +82,7 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
                   width: 7,
                   fromY: 0,
                   toY: values[x],
-                  color: Theme.of(context).colorScheme.tertiary,
+                  color: DistributionChartSharedComponents.chartColor(context),
                 ),
               ],
             ),

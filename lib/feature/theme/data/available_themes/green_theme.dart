@@ -2,7 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-ThemeData lightGreenTheme() {
+ThemeData lightGreenTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
     colors: const FlexSchemeColor(
       // Custom colors
@@ -22,6 +22,7 @@ ThemeData lightGreenTheme() {
     usedColors: 7,
     surfaceMode: FlexSurfaceMode.level,
     blendLevel: 25,
+    textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       cardElevation: 1,
       interactionEffects: true,
@@ -44,7 +45,7 @@ ThemeData lightGreenTheme() {
   );
 }
 
-ThemeData darkGreenTheme() {
+ThemeData darkGreenTheme({required TextTheme textTheme}) {
   return FlexThemeData.dark(
     colors: const FlexSchemeColor(
       // Custom colors
@@ -63,6 +64,7 @@ ThemeData darkGreenTheme() {
     ),
     surfaceMode: FlexSurfaceMode.level,
     blendLevel: 15,
+    textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       cardElevation: 1,
       interactionEffects: true,

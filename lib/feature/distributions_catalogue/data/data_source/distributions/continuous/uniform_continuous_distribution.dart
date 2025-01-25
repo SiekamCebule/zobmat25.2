@@ -45,12 +45,12 @@ final uniformContinuousDistributionModel = ContinuousDistributionModel(
       DistributionDescriptionMathExpression(
         title: 'Gęstość prawdopodobieństwa',
         data:
-            r'f(x) = \begin{cases} \frac{1}{b - a}, & \text{dla } x \in [a, b], \\0, & \text{w przeciwnym wypadku.}\b{cases}',
+            r'f(x) = \begin{cases} \frac{1}{b - a}, & \text{dla } x \in [a, b], \\0, & \text{w przeciwnym wypadku.}\end{cases}',
       ),
       DistributionDescriptionMathExpression(
         title: 'Dystrybuanta',
         data:
-            r'F(x) = \begin{cases} 0, & \text{dla } x < a, \\\frac{x - a}{b - a}, & \text{dla } x \in [a, b], \\1, & \text{dla } x > b.\b{cases}',
+            r'F(x) = \begin{cases} 0, & \text{dla } x < a, \\\frac{x - a}{b - a}, & \text{dla } x \in [a, b], \\1, & \text{dla } x > b.\end{cases}',
       ),
       DistributionDescriptionMathExpression(
         title: 'Odwrotna dystrybuanta',

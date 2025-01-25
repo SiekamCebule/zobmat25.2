@@ -6,12 +6,16 @@ abstract class DistributionChartSharedComponents {
     return Theme.of(context).colorScheme.surface;
   }
 
+  static Color chartColor(BuildContext context) {
+    return Theme.of(context).colorScheme.primary;
+  }
+
   static Color tooltipColor(BuildContext context) {
-    return Theme.of(context).colorScheme.tertiary;
+    return Theme.of(context).colorScheme.primary;
   }
 
   static Color textColor(BuildContext context) {
-    return Theme.of(context).colorScheme.onTertiary;
+    return Theme.of(context).colorScheme.onPrimary;
   }
 
   static TextStyle textStyle(BuildContext context) {

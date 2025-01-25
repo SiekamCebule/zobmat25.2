@@ -2,7 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-ThemeData lightMonochromeTheme() {
+ThemeData lightMonochromeTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
     colors: const FlexSchemeColor(
       primary: Color(0xFF00296B),
@@ -19,6 +19,7 @@ ThemeData lightMonochromeTheme() {
       errorContainer: Color(0xFFFFDAD6),
     ),
     lightIsWhite: true,
+    textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
       tintedDisabledControls: true,
@@ -45,7 +46,7 @@ ThemeData lightMonochromeTheme() {
   );
 }
 
-ThemeData darkMonochromeTheme() {
+ThemeData darkMonochromeTheme({required TextTheme textTheme}) {
   return FlexThemeData.dark(
     colors: const FlexSchemeColor(
       primary: Color(0xFFB1CFF5),
@@ -61,6 +62,7 @@ ThemeData darkMonochromeTheme() {
       error: Color(0xFFFFB4AB),
       errorContainer: Color(0xFF93000A),
     ),
+    textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
       tintedDisabledControls: true,
