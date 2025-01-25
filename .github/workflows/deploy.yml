@@ -39,8 +39,8 @@ jobs:
     - name: Switch to beta channel
       run: flutter channel beta
     
-    - name: Upgrade Flutter to beta
-      run: flutter upgrade
+    #- name: Upgrade Flutter to beta
+     # run: flutter upgrade
 
     - name: Build project (optional, if needed)
       run: |
