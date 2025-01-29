@@ -1,4 +1,5 @@
 final distributionImageUrls = {
+  // CONTINUOUS
   'normal_distribution': 'normal_distribution.jpg',
   'uniform_continuous_distribution': 'uniform_continuous_distribution.jpg',
   'cauchy_distribution': 'cauchy_distribution.jpg',
@@ -10,4 +11,10 @@ final distributionImageUrls = {
   't_student_distribution': 't_student_distribution.jpeg',
   'log_normal_distribution': 'log_normal_distribution.jpg',
   'weibull_distribution': 'weibull_distribution.jpg',
+  // DISCRETE
+  'binomial_distribution': 'binomial_distribution.jpg',
+  'geometric_distribution': 'geometric_distribution.jpg',
+  'hypergeometric_distribution': 'hypergeometric_distribution.jpg',
+  'poisson_distribution': 'poisson_distribution.jpg',
+  'pascal_distribution': 'pascal_distribution.jpg',
 };

@@ -22,7 +22,8 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
 
     final chartRange = distribution.functions.getChartRange(dashboardState.paramsSetup);
     final xList = List.generate(chartRange.$2, (x) => x);
-    final values = [for (var x = 0; x < chartRange.$2; x++) pmf(x).toDouble()];
+    final valuesMap = {for (var x = 0; x < chartRange.$2; x++) x: pmf(x).toDouble()};
+    final values = valuesMap.values.toList();
 
     final maxY = values.reduce((max, element) {
       return element > max ? element : max;

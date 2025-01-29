@@ -137,6 +137,7 @@ class DistributionDashboardCubit extends Cubit<DistributionDashboardState> {
     DistributionParameter parameter, {
     required num value,
   }) async {
+    print('we change (${parameter.toString()})\'s value to ($value)');
     final state = this.state;
     if (state is! DistributionDashboardDistributionSelected) {
       throw StateError('Cannot change the parameter when no distribution is selected');

@@ -12,6 +12,8 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/binomial_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/geometric_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/hypergeometric_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/pascal_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/poisson_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/continuous_distribution_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/discrete_distribution_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/distribution_property_functions.dart';
@@ -109,6 +111,16 @@ class PredefinedDistributionFunctionsDataSourceImpl
         pmf: hypergeometricDistributionPmf,
         cdf: hypergeometricDistributionCdf,
         getChartRange: hypergeometricDistributionRangeGetter,
+      ),
+      'poisson_distribution' => DiscreteDistributionFunctions(
+        pmf: poissonDistributionPmf,
+        cdf: poissonDistributionCdf,
+        getChartRange: poissonDistributionRangeGetter,
+      ),
+      'pascal_distribution' => DiscreteDistributionFunctions(
+        pmf: pascalDistributionPmf,
+        cdf: pascalDistributionCdf,
+        getChartRange: pascalDistributionRangeGetter,
       ),
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),
     };
@@ -218,6 +230,20 @@ class PredefinedDistributionFunctionsDataSourceImpl
         standardDeviation: hypergeometricDistributionStandardDeviation,
         median: hypergeometricDistributionMedian,
         mode: hypergeometricDistributionMode,
+      ),
+      'poisson_distribution' => DistributionPropertyFunctions(
+        expectedValue: poissonDistributionExpectedValue,
+        variance: poissonDistributionVariance,
+        standardDeviation: poissonDistributionStandardDeviation,
+        median: poissonDistributionMedian,
+        mode: poissonDistributionMode,
+      ),
+      'pascal_distribution' => DistributionPropertyFunctions(
+        expectedValue: pascalDistributionExpectedValue,
+        variance: pascalDistributionVariance,
+        standardDeviation: pascalDistributionStandardDeviation,
+        median: pascalDistributionMedian,
+        mode: pascalDistributionMode,
       ),
 
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),

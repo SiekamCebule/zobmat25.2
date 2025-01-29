@@ -77,6 +77,21 @@ class UsedImagesCard extends StatelessWidget {
             linkSpan(
               'Calimo, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Weibull_PDF.svg)',
             ),
+            linkSpan(
+              'Tayste, domena publiczna, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Binomial_distribution_pmf.svg)',
+            ),
+            linkSpan(
+              'Skbkekas,  CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Geometric_pmf.svg)',
+            ),
+            linkSpan(
+              'Fuzzyrandom, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:HypergeometricPDF.png)',
+            ),
+            linkSpan(
+              'Skbkekas, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Poisson_pmf.svg)',
+            ),
+            linkSpan(
+              'Stpasha, domena publiczna, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Negbinomial.gif)',
+            ),
           ],
         ),
       ),

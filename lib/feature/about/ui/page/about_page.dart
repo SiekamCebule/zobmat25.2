@@ -24,28 +24,32 @@ class AboutPage extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 10,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              IntrinsicHeight(child: AboutSiteCard()),
-                              Gap(10),
-                              IntrinsicHeight(child: UsedTechnologiesCard()),
-                            ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 10,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                IntrinsicHeight(child: AboutSiteCard()),
+                                Gap(10),
+                                IntrinsicHeight(child: UsedTechnologiesCard()),
+                              ],
+                            ),
                           ),
-                        ),
-                        Gap(10),
-                        Expanded(
-                          flex: 10,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [SizedBox(height: 400, child: AboutAuthorCard())],
+                          Gap(10),
+                          Expanded(
+                            flex: 10,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [SizedBox(height: 400, child: AboutAuthorCard())],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     Row(
                       children: [

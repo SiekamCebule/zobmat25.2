@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:zobmat25_2/config/distribution_image_urls.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_type_label_widget.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
+import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
 
 class DistributionNavigationCard extends StatelessWidget {
   const DistributionNavigationCard({
@@ -18,8 +21,11 @@ class DistributionNavigationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = context.watch<ThemeCubit>().state as ThemeAvaiable;
     final imagePath =
         'assets/distribution_images/${distributionImageUrls[distribution.id]}';
+    final imageShouldBeMonochrome =
+        themeState.theme.colorScheme == AppColorScheme.monochrome;
     return Card(
       color:
           isSelected
@@ -48,6 +54,8 @@ class DistributionNavigationCard extends StatelessWidget {
                   height: 120,
                   width: double.infinity,
                   fit: BoxFit.fill,
+                  color: imageShouldBeMonochrome ? Colors.grey : null,
+                  colorBlendMode: imageShouldBeMonochrome ? BlendMode.saturation : null,
                 ),
               ),
               Gap(10),

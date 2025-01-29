@@ -27,6 +27,7 @@ class DistributionDescriptionBulletedListView extends StatelessWidget {
       DistributionDescriptionBulletType.letters => BulletStyle.alphabets,
       DistributionDescriptionBulletType.numbers => BulletStyle.numeric,
       DistributionDescriptionBulletType.points => BulletStyle.discFill,
+      DistributionDescriptionBulletType.dashes => BulletStyle.dash,
     };
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
@@ -37,6 +38,7 @@ class DistributionDescriptionBulletedListView extends StatelessWidget {
                 ? true
                 : false,
         gap: 10,
+        crossAxisMargin: 1,
         separator: Gap(9),
         items: componentViews.toList(),
         iconColor: Theme.of(context).colorScheme.tertiary,

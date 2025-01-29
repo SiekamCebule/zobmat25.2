@@ -61,6 +61,11 @@ class BibliographyCard extends StatelessWidget {
             link('https://en.wikipedia.org/wiki/Geometric_distribution'),
             link('https://www.statisticshowto.com/hypergeometric-distribution-examples/'),
             link('https://en.wikipedia.org/wiki/Hypergeometric_distribution'),
+            link('https://en.wikipedia.org/wiki/Poisson_distribution'),
+            link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Pascala'),
+            link(
+              'https://www.geeksforgeeks.org/negative-binomial-distribution-properties-applications-and-examples/',
+            ),
           ],
         ),
       ),

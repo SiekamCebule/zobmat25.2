@@ -26,7 +26,7 @@ final geometricDistributionModel = DiscreteDistributionModel(
     components: [
       DistributionDescriptionParagraph(
         text:
-            'Rozkład geometryczny jest jak gdyby "odwrotnością" rozkładu dwumianowego. Opisuje on ilość procesów Bernoulliego do wystąpienia pierwszego sukcesu (podczas gdy rozkład dwumianowy opisuje ilość sukcesów w danej próbce).\nPrzykładem użycia jest modelowanie ilości prób potrzebnych do wygrania w ruletce, lub ilości "interakcji" do pierwszego dopasowania w aplikacji randkowej.',
+            'Rozkład geometryczny jest jak gdyby "odwrotnością" rozkładu dwumianowego. Opisuje on ilość procesów Bernoulliego do wystąpienia pierwszego sukcesu (podczas gdy rozkład dwumianowy opisuje ilość sukcesów w danej próbce).\nPrzykładem użycia jest modelowanie ilości prób potrzebnych do wygrania w ruletce, lub ilości "interakcji" do pierwszego dopasowania w aplikacji randkowej. Rozkład geometryczny jest szczególnym przypadkiem rozkładu ujemnego dwumianowego (rozkładu Pascala), dla r=1.',
       ),
       DistributionDescriptionMathExpression(
         title: 'Masa prawdopodobieństwa',

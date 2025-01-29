@@ -3,7 +3,7 @@ import 'package:zobmat25_2/feature/distribution_description/domain/entity/distri
 
 class DistributionDescriptionBulletedList extends DistributionDescriptionComponent {
   const DistributionDescriptionBulletedList({
-    this.bulletType = DistributionDescriptionBulletType.points,
+    this.bulletType = DistributionDescriptionBulletType.dashes,
     required this.items,
   });
 
@@ -14,4 +14,4 @@ class DistributionDescriptionBulletedList extends DistributionDescriptionCompone
   List<Object?> get props => [super.props, items];
 }
 
-enum DistributionDescriptionBulletType { points, numbers, letters }
+enum DistributionDescriptionBulletType { points, numbers, letters, dashes }

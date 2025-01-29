@@ -130,6 +130,8 @@ class _DistributionParameterTextFieldState extends State<DistributionParameterTe
           }
         }
 
+        print('validation OK');
+
         return null;
       },
     );

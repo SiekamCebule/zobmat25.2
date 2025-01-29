@@ -39,6 +39,37 @@ num findQuantile({
   return (lower + upper) / 2;
 }
 
+int findDiscreteUpperBound(
+  num threshold,
+  DistributionParamsSetup params,
+  num Function(int, DistributionParamsSetup) pmf,
+) {
+  if (threshold <= 0 || threshold >= 1) {
+    throw ArgumentError("Threshold must be in the range (0, 1).");
+  }
+
+  num cumulativeProbability = 0;
+  int k = 0;
+
+  while (true) {
+    final pmfValue = pmf(k, params);
+
+    if (pmfValue <= 0) {
+      break;
+    }
+
+    cumulativeProbability += pmfValue;
+
+    if (1 - cumulativeProbability < threshold) {
+      return k;
+    }
+
+    k++;
+  }
+
+  return k;
+}
+
 num findInverseCdf(
   ContinuousDistributionCdf cdf,
   DistributionParamsSetup params,

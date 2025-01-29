@@ -11,11 +11,17 @@ class DistributionsCataloguePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final dashboardState = context.watch<DistributionDashboardCubit>().state;
     if (dashboardState is DistributionDashboardInitial) {
-      return Center(child: CircularProgressIndicator());
+      return ColoredBox(
+        color: Theme.of(context).colorScheme.surfaceContainerLowest,
+        child: Center(child: CircularProgressIndicator()),
+      );
     }
-    final emptyStateWidget = Center(
-      child: Text(
-        'Po wybraniu rozkładu prawdopodobieństwa pokażą się tu ciekawe informacje.',
+    final emptyStateWidget = ColoredBox(
+      color: Theme.of(context).colorScheme.surfaceContainerLowest,
+      child: Center(
+        child: Text(
+          'Po wybraniu rozkładu prawdopodobieństwa pokażą się tu ciekawe informacje.',
+        ),
       ),
     );
     final mainBody =

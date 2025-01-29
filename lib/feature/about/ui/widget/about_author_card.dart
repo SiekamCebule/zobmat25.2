@@ -13,7 +13,7 @@ class AboutAuthorCard extends StatelessWidget {
         children: [
           HyperLink(
             text:
-                'Nazywam się Konrad Król i w chwili tworzenia strony uczęszczam do [III Liceum Ogólnokształcącego im. Stefana Batorego w Chorzowie](https://www.facebook.com/3LoBatoryChorzow). Zastosowanie rozkładów prawdopodobieństwa widzę w tworzonej przeze mnie grze o skokach narciarskich - w [SJ Managerze](https://github.com/SiekamCebule/sj-manager). Wykorzystałem w niej rozkład Cauchy\'ego do modelowania zmian umiejętności skoczków narciarskich na przestrzeni czasu.\nNajserdeczniej pozdrawiam mojego nauczyciela matematyki, profesora Jarosława Żaka.',
+                'Nazywam się Konrad Król i w chwili tworzenia strony uczęszczam do [III Liceum Ogólnokształcącego im. Stefana Batorego w Chorzowie](https://www.facebook.com/3LoBatoryChorzow). Zastosowanie rozkładów prawdopodobieństwa widzę w tworzeniu symulacji skoków narciarskich i modelowania zmian umiejętności skoczków na przestrzeni czasu.\nNajserdeczniej pozdrawiam mojego nauczyciela matematyki, profesora Jarosława Żaka.',
             textStyle: Theme.of(context).textTheme.bodyMedium,
             linkStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: Theme.of(context).colorScheme.primary,

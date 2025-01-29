@@ -103,7 +103,7 @@ class NumeralTextFieldState extends State<NumeralTextField> {
                           decremented = preparedNumber(decremented.toDouble());
                         }
                         _updateController(decremented.toString());
-                        widget.onSubmit();
+                        _onTextFieldChange();
                       }
                       : null,
               icon: const Icon(Symbols.remove),
@@ -117,7 +117,7 @@ class NumeralTextFieldState extends State<NumeralTextField> {
                           incremented = preparedNumber(incremented.toDouble());
                         }
                         _updateController(incremented.toString());
-                        widget.onSubmit();
+                        _onTextFieldChange();
                       }
                       : null,
               icon: const Icon(Symbols.add_rounded),
@@ -141,6 +141,7 @@ class NumeralTextFieldState extends State<NumeralTextField> {
   }
 
   void _onTextFieldChange() {
+    print('on text field change');
     widget.onSubmit();
   }
 

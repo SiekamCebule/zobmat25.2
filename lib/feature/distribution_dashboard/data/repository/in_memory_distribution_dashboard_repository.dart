@@ -64,8 +64,10 @@ class InMemoryDistributionDashboardRepository implements DistributionDashboardRe
   Future<DistributionParamsSetup?> getParamsSetup() async => _paramsSetup;
 
   @override
-  Future<void> setParamsSetup(DistributionParamsSetup paramsSetup) async =>
-      _paramsSetup = paramsSetup;
+  Future<void> setParamsSetup(DistributionParamsSetup paramsSetup) async {
+    _paramsSetup = paramsSetup;
+    print('params setup: $_paramsSetup');
+  }
 
   @override
   Future<DistributionAnalysisSetup?> getAnalysisSetup() async => _analysisSetup;
