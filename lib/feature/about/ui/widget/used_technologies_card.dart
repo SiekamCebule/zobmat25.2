@@ -53,7 +53,7 @@ class UsedTechnologiesCard extends StatelessWidget {
           ),
           Gap(5),
           hyperLink(
-            'Dużą rolę w pracy nad aplikacją odegrał [ChatGPT](https://openai.com/chatgpt/overview/), którego wykorzystałem do nauki teorii rozkładów prwadopodobieństwa, ale także do pracy programistycznej (tworzenie funkcji matematycznych w kodzie, a także ekran ładowania w HTML).',
+            'Dużą rolę w pracy nad aplikacją odegrał [ChatGPT](https://openai.com/chatgpt/overview/), którego wykorzystałem do nauki teorii i do pracy programistycznej (tworzenie funkcji matematycznych w kodzie, ekran ładowania w HTML). Opisy rozkładów tworzyłem samemu, po uprzednim zrozumieniu, jak dany rozkład działa.',
           ),
           Gap(15),
           Row(

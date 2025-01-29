@@ -13,7 +13,7 @@ class AboutAuthorCard extends StatelessWidget {
         children: [
           HyperLink(
             text:
-                'Nazywam się Konrad Król i w chwili tworzenia strony uczęszczam do [III Liceum Ogólnokształcącego im. Stefana Batorego w Chorzowie](https://www.facebook.com/3LoBatoryChorzow). Zastosowanie rozkładów prawdopodobieństwa widzę w tworzeniu symulacji skoków narciarskich i modelowania zmian umiejętności skoczków na przestrzeni czasu.\nNajserdeczniej pozdrawiam mojego nauczyciela matematyki, profesora Jarosława Żaka.',
+                'Nazywam się Konrad Król i w chwili tworzenia strony uczęszczam do [III Liceum Ogólnokształcącego im. Stefana Batorego w Chorzowie](https://www.facebook.com/3LoBatoryChorzow). Zastosowanie rozkładów prawdopodobieństwa widzę w symulacjach skoków narciarskich. Proident aliqua consequat non irure ea ea.Dolore consectetur aliquip ex deserunt voluptate nostrud tempor cillum anim.Eu commodo enim amet dolore pariatur in consequat aliquip magna deserunt.\nNajserdeczniej pozdrawiam mojego nauczyciela matematyki, profesora Jarosława Żaka.',
             textStyle: Theme.of(context).textTheme.bodyMedium,
             linkStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: Theme.of(context).colorScheme.primary,
