@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/core/util/decimal_places.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
@@ -23,23 +22,10 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
       return distribution.functions.pdf(x, dashboardState.paramsSetup);
     }
 
-    const boundary = 0.0005;
     final minX =
-        findQuantile(
-          cdf: distribution.functions.cdf,
-          params: dashboardState.paramsSetup,
-          targetProbability: boundary,
-          lowerBound: -1000000,
-          upperBound: 1000000,
-        ).toDouble();
+        distribution.functions.getChartRange(dashboardState.paramsSetup).$1.toDouble();
     final maxX =
-        findQuantile(
-          cdf: distribution.functions.cdf,
-          params: dashboardState.paramsSetup,
-          targetProbability: 1 - boundary,
-          lowerBound: -1000000,
-          upperBound: 1000000,
-        ).toDouble();
+        distribution.functions.getChartRange(dashboardState.paramsSetup).$2.toDouble();
 
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
@@ -77,6 +63,7 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
             color: DistributionChartSharedComponents.chartColor(context),
             belowBarData: BarAreaData(color: Colors.yellow),
             isCurved: true,
+            curveSmoothness: 0.35,
             dotData: FlDotData(show: false),
           ),
         ],

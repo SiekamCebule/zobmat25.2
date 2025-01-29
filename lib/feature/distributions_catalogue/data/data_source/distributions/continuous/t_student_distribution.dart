@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:data/stats.dart';
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_bulleted_list.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
@@ -24,7 +25,7 @@ final tStudentDistributionModel = ContinuousDistributionModel(
       'Im więcej stopni swobody, tym rozkład jest węższy i bardziej przypomina rozkład normalny. Stopnie swobody są powiązane z ilością próbek w teście t (spójrz na opis rozkładu t-studenta).',
       min: 0.6,
       max: 341.0,
-      defaultValue: 1,
+      defaultValue: 3,
     ),
   ],
   extendedDescription: DistributionDescription(
@@ -150,6 +151,27 @@ num tStudentDistributionInverseCdf(num p, DistributionParamsSetup params) {
   final distribution = StudentDistribution(df);
 
   return distribution.inverseCumulativeProbability(p.toDouble());
+}
+
+(num, num) tStudentDistributionRangeGetter(DistributionParamsSetup params) {
+  // final df = params.getValue('degrees_of_freedom').toDouble();
+  // late final double prob;
+  // if (df <= 2.0) {
+  //   prob = 0.00001;
+  // } else {
+  //   prob = 0.00001;
+  // }
+
+  const prob = 0.00001;
+
+  return (
+    findQuantile(cdf: tStudentDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(
+      cdf: tStudentDistributionCdf,
+      params: params,
+      targetProbability: 1 - prob,
+    ),
+  );
 }
 
 num tStudentDistributionExpectedValue(DistributionParamsSetup params) {

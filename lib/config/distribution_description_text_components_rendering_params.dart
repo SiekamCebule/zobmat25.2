@@ -16,7 +16,7 @@ abstract class DistributionDescriptionTextComponentsRenderingParams {
 
   static FontWeight fontWeight(DistributionDescriptionParagraph paragraph) {
     return switch (paragraph.bold) {
-      true => FontWeight.w600,
+      true => FontWeight.w500,
       false => FontWeight.w300,
     };
   }

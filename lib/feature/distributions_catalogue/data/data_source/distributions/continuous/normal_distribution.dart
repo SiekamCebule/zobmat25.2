@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/core/math/erf.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
@@ -160,6 +161,15 @@ num normalDistributionInverseCdf(num p, DistributionParamsSetup params) {
             q /
             (((((b1 * r + b2) * r + b3) * r + b4) * r + b5) * r + 1);
   }
+}
+
+(num, num) normalDistributionRangeGetter(DistributionParamsSetup params) {
+  const prob = 0.000001;
+
+  return (
+    findQuantile(cdf: normalDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(cdf: normalDistributionCdf, params: params, targetProbability: 1 - prob),
+  );
 }
 
 num normalDistributionExpectedValue(DistributionParamsSetup params) {

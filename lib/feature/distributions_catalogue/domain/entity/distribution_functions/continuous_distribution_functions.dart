@@ -6,6 +6,7 @@ class ContinuousDistributionFunctions with EquatableMixin {
     required this.pdf,
     required this.cdf,
     required this.inverseCdf,
+    required this.getChartRange,
   });
 
   final ContinuousDistributionPdf pdf; // f(x), funkcja gęstości prawdopodobieństwa
@@ -13,7 +14,9 @@ class ContinuousDistributionFunctions with EquatableMixin {
   cdf; // F(x), funkcja rozkładu skumulowanego (dystrybuanta)
   final ContinuousDistributionInverseCdf
   inverseCdf; // F-1(p) funkcja kwantylowa (odwrotna dystrybuanta)
+  final ContinuousDistributionRangeGetter
+  getChartRange; // Jaki jest najmniejszy i największy x jaki ma być widoczny na wykresie
 
   @override
-  List<Object?> get props => [pdf, cdf, inverseCdf];
+  List<Object?> get props => [pdf, cdf, inverseCdf, getChartRange];
 }

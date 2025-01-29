@@ -40,7 +40,10 @@ class DistributionDescriptionParagraphView extends StatelessWidget {
       body = HyperLink(
         text: paragraph.text,
         textStyle: textStyle,
-        linkStyle: textStyle.copyWith(color: Theme.of(context).colorScheme.tertiary),
+        linkStyle: textStyle.copyWith(
+          color: Theme.of(context).colorScheme.primary,
+          fontWeight: FontWeight.w500,
+        ),
       );
     } else if (paragraph.websiteUrl == null) {
       body = SelectableText(
@@ -53,7 +56,7 @@ class DistributionDescriptionParagraphView extends StatelessWidget {
     } else {
       body = LinkText(
         paragraph.text,
-        linkStyle: textStyle.copyWith(color: Theme.of(context).colorScheme.tertiary),
+        linkStyle: textStyle.copyWith(color: Theme.of(context).colorScheme.primary),
       );
     }
     return Padding(

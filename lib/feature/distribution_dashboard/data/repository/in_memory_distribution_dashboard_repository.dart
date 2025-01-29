@@ -66,7 +66,6 @@ class InMemoryDistributionDashboardRepository implements DistributionDashboardRe
   @override
   Future<void> setParamsSetup(DistributionParamsSetup paramsSetup) async {
     _paramsSetup = paramsSetup;
-    print('params setup: $_paramsSetup');
   }
 
   @override

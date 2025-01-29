@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
@@ -134,6 +135,15 @@ num gammaDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   return gammapInv(p, shape) * scale;
+}
+
+(num, num) gammaDistributionRangeGetter(DistributionParamsSetup params) {
+  const prob = 0.00001;
+
+  return (
+    findQuantile(cdf: gammaDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(cdf: gammaDistributionCdf, params: params, targetProbability: 1 - prob),
+  );
 }
 
 num gammaDistributionExpectedValue(DistributionParamsSetup params) {

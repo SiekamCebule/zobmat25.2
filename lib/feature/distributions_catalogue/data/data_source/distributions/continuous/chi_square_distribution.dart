@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_bulleted_list.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
@@ -188,6 +189,25 @@ num chiSquareDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   return data.gammapInv(p, k / 2) * 2;
+}
+
+(num, num) chiSquareDistributionRangeGetter(DistributionParamsSetup params) {
+  final df = params.getValue('degrees_of_freedom').toDouble();
+  late final double prob;
+  if (df <= 1.5) {
+    prob = 0.08;
+  } else {
+    prob = 0.00001;
+  }
+
+  return (
+    findQuantile(cdf: chiSquareDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(
+      cdf: chiSquareDistributionCdf,
+      params: params,
+      targetProbability: 1 - prob,
+    ),
+  );
 }
 
 num chiSquareDistributionExpectedValue(DistributionParamsSetup params) {

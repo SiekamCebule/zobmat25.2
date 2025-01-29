@@ -300,6 +300,10 @@ double decrement(double value, [int count = 1]) {
 const int int64MinValue = -9007199254740991;
 const int int64MaxValue = 9007199254740991;
 
+(num, num) betaDistributionRangeGetter(DistributionParamsSetup params) {
+  return (0, 1);
+}
+
 num betaDistributionExpectedValue(DistributionParamsSetup params) {
   final alpha = params.getValue('alpha');
   final beta = params.getValue('beta');

@@ -39,7 +39,7 @@ final pascalDistributionModel = DiscreteDistributionModel(
         children: [
           DistributionDescriptionParagraph(
             text:
-                'Rozkład Pascala jest często nazywany "ujemnym rozkładem dwumianowym". Jest on uogólnieniem rozkładu geometrycznego i opisuje on ilość nieudanych prób Bernoulliego przed osiągnięciem r sukcesów. Ważne jest to, że ',
+                'Rozkład Pascala jest często nazywany "ujemnym rozkładem dwumianowym". Jest on uogólnieniem rozkładu geometrycznego i opisuje ilość nieudanych prób Bernoulliego przed osiągnięciem r sukcesów. Ważne jest to, że ',
           ),
           DistributionDescriptionParagraph(
             text: 'nie modeluje on całkowitej ilości prób',
@@ -171,5 +171,5 @@ num pascalDistributionMode(DistributionParamsSetup params) {
     throw ArgumentError("Probability p must be in the range (0,1].");
   }
 
-  return (r - 1) ~/ (1 - p);
+  return ((r - 1) * (1 - p) / p).floor();
 }

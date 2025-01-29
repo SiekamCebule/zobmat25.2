@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
@@ -103,6 +104,23 @@ num exponentialDistributionInverseCdf(num p, DistributionParamsSetup params) {
   }
 
   return -log(1 - p) / lambda;
+}
+
+(num, num) exponentialDistributionRangeGetter(DistributionParamsSetup params) {
+  const prob = 0.00001;
+
+  return (
+    findQuantile(
+      cdf: exponentialDistributionCdf,
+      params: params,
+      targetProbability: prob,
+    ),
+    findQuantile(
+      cdf: exponentialDistributionCdf,
+      params: params,
+      targetProbability: 1 - prob,
+    ),
+  );
 }
 
 num exponentialDistributionExpectedValue(DistributionParamsSetup params) {

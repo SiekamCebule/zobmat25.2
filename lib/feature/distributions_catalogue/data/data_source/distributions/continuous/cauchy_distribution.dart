@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
@@ -115,6 +116,15 @@ num cauchyDistributionInverseCdf(num p, DistributionParamsSetup params) {
 
   final pi = 3.141592653589793;
   return location + scale * tan(pi * (p - 0.5));
+}
+
+(num, num) cauchyDistributionRangeGetter(DistributionParamsSetup params) {
+  const prob = 0.0015;
+
+  return (
+    findQuantile(cdf: cauchyDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(cdf: cauchyDistributionCdf, params: params, targetProbability: 1 - prob),
+  );
 }
 
 num cauchyDistributionExpectedValue(DistributionParamsSetup params) {

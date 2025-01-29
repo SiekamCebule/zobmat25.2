@@ -128,6 +128,13 @@ num uniformContinuousDistributionInverseCdf(num p, DistributionParamsSetup param
   return a + p * (b - a);
 }
 
+(num, num) uniformContinuousDistributionRangeGetter(DistributionParamsSetup params) {
+  final a = params.getValue('a');
+  final b = params.getValue('b');
+
+  return (a, b);
+}
+
 num uniformContinuousDistributionExpectedValue(DistributionParamsSetup params) {
   final a = params.getValue('a');
   final b = params.getValue('b');

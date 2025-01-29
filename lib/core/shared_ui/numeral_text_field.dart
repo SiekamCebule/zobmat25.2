@@ -141,7 +141,6 @@ class NumeralTextFieldState extends State<NumeralTextField> {
   }
 
   void _onTextFieldChange() {
-    print('on text field change');
     widget.onSubmit();
   }
 

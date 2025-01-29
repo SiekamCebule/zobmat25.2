@@ -78,6 +78,9 @@ class UsedImagesCard extends StatelessWidget {
               'Calimo, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Weibull_PDF.svg)',
             ),
             linkSpan(
+              'Danvildanvil, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Probability_density_function_of_Pareto_distribution.svg)',
+            ),
+            linkSpan(
               'Tayste, domena publiczna, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Binomial_distribution_pmf.svg)',
             ),
             linkSpan(

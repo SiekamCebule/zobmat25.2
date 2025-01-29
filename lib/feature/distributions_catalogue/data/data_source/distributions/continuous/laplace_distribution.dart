@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_paragraph.dart';
@@ -118,6 +119,19 @@ num laplaceDistributionInverseCdf(num p, DistributionParamsSetup params) {
   } else {
     return mean - scale * log(2 * (1 - p));
   }
+}
+
+(num, num) laplaceDistributionRangeGetter(DistributionParamsSetup params) {
+  const prob = 0.00001;
+
+  return (
+    findQuantile(cdf: laplaceDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(
+      cdf: laplaceDistributionCdf,
+      params: params,
+      targetProbability: 1 - prob,
+    ),
+  );
 }
 
 num laplaceDistributionExpectedValue(DistributionParamsSetup params) {

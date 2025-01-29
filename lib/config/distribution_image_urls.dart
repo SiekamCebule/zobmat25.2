@@ -11,6 +11,7 @@ final distributionImageUrls = {
   't_student_distribution': 't_student_distribution.jpeg',
   'log_normal_distribution': 'log_normal_distribution.jpg',
   'weibull_distribution': 'weibull_distribution.jpg',
+  'pareto_distribution': 'pareto_distribution.jpg',
   // DISCRETE
   'binomial_distribution': 'binomial_distribution.jpg',
   'geometric_distribution': 'geometric_distribution.jpg',

@@ -6,6 +6,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/laplace_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/log_normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/pareto_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/t_student_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_continuous_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/weibull_distribution.dart';
@@ -36,6 +37,7 @@ class PredefinedDistributionsDataSourceImpl implements PredefinedDistributionsDa
       tStudentDistributionModel,
       logNormalDistributionModel,
       weibullDistributionModel,
+      paretoDistributionModel,
 
       // DISCRETE
       binomialDistributionModel,

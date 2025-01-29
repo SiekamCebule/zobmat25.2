@@ -22,10 +22,31 @@ class DistributionPropertyListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String mathSymbol;
+    switch (propertyName) {
+      case 'Wartość oczekiwana':
+        mathSymbol = '\\mathbb{E}[X]';
+        break;
+      case 'Wariancja':
+        mathSymbol = '\\text{Var}(X)';
+        break;
+      case 'Odchylenie standardowe':
+        mathSymbol = '\\sigma';
+        break;
+      case 'Mediana':
+        mathSymbol = 'Me';
+        break;
+      case 'Moda':
+        mathSymbol = 'Mo';
+        break;
+      default:
+        throw ArgumentError('An unknown distribution property name: $propertyName');
+    }
+
     late Widget mainBody;
     if (value is num) {
       mainBody = SelectableMath.tex(
-        '\\mathbb{E}[X] = ${value!.toStringAsFixed(_valueDoublePrecision)}',
+        '$mathSymbol = ${value!.toStringAsFixed(_valueDoublePrecision)}',
         textScaleFactor: 1.1,
       );
     } else {

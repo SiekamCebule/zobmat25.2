@@ -6,6 +6,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/log_normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/normal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/cauchy_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/pareto_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/t_student_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/uniform_continuous_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/continuous/weibull_distribution.dart';
@@ -37,57 +38,75 @@ class PredefinedDistributionFunctionsDataSourceImpl
         pdf: normalDistributionPdf,
         cdf: normalDistributionCdf,
         inverseCdf: normalDistributionInverseCdf,
+        getChartRange: normalDistributionRangeGetter,
       ),
       'uniform_continuous_distribution' => ContinuousDistributionFunctions(
         pdf: uniformContinuousDistributionPdf,
         cdf: uniformContinuousDistributionCdf,
         inverseCdf: uniformContinuousDistributionInverseCdf,
+        getChartRange: uniformContinuousDistributionRangeGetter,
       ),
       'cauchy_distribution' => ContinuousDistributionFunctions(
         pdf: cauchyDistributionPdf,
         cdf: cauchyDistributionCdf,
         inverseCdf: cauchyDistributionInverseCdf,
+        getChartRange: cauchyDistributionRangeGetter,
       ),
       'exponential_distribution' => ContinuousDistributionFunctions(
         pdf: exponentialDistributionPdf,
         cdf: exponentialDistributionCdf,
         inverseCdf: exponentialDistributionInverseCdf,
+        getChartRange: exponentialDistributionRangeGetter,
       ),
       'gamma_distribution' => ContinuousDistributionFunctions(
         pdf: gammaDistributionPdf,
         cdf: gammaDistributionCdf,
         inverseCdf: gammaDistributionInverseCdf,
+        getChartRange: gammaDistributionRangeGetter,
       ),
       'beta_distribution' => ContinuousDistributionFunctions(
         pdf: betaDistributionPdf,
         cdf: betaDistributionCdf,
         inverseCdf: betaDistributionInverseCdf,
+        getChartRange: betaDistributionRangeGetter,
       ),
       'laplace_distribution' => ContinuousDistributionFunctions(
         pdf: laplaceDistributionPdf,
         cdf: laplaceDistributionCdf,
         inverseCdf: laplaceDistributionInverseCdf,
+        getChartRange: laplaceDistributionRangeGetter,
       ),
       'chi_square_distribution' => ContinuousDistributionFunctions(
         pdf: chiSquareDistributionPdf,
         cdf: chiSquareDistributionCdf,
         inverseCdf: chiSquareDistributionInverseCdf,
+        getChartRange: chiSquareDistributionRangeGetter,
       ),
       't_student_distribution' => ContinuousDistributionFunctions(
         pdf: tStudentDistributionPdf,
         cdf: tStudentDistributionCdf,
         inverseCdf: tStudentDistributionInverseCdf,
+        getChartRange: tStudentDistributionRangeGetter,
       ),
       'log_normal_distribution' => ContinuousDistributionFunctions(
         pdf: logNormalDistributionPdf,
         cdf: logNormalDistributionCdf,
         inverseCdf: logNormalDistributionInverseCdf,
+        getChartRange: logNormalDistributionRangeGetter,
       ),
       'weibull_distribution' => ContinuousDistributionFunctions(
         pdf: weibullDistributionPdf,
         cdf: weibullDistributionCdf,
         inverseCdf: weibullDistributionInverseCdf,
+        getChartRange: weibullDistributionRangeGetter,
       ),
+      'pareto_distribution' => ContinuousDistributionFunctions(
+        pdf: paretoDistributionPdf,
+        cdf: paretoDistributionCdf,
+        inverseCdf: paretoDistributionInverseCdf,
+        getChartRange: paretoDistributionRangeGetter,
+      ),
+
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),
     };
   }
@@ -208,6 +227,13 @@ class PredefinedDistributionFunctionsDataSourceImpl
         standardDeviation: weibullDistributionStandardDeviation,
         median: weibullDistributionMedian,
         mode: weibullDistributionMode,
+      ),
+      'pareto_distribution' => DistributionPropertyFunctions(
+        expectedValue: paretoDistributionExpectedValue,
+        variance: paretoDistributionVariance,
+        standardDeviation: paretoDistributionStandardDeviation,
+        median: paretoDistributionMedian,
+        mode: paretoDistributionMode,
       ),
       // DISCRETE
       'binomial_distribution' => DistributionPropertyFunctions(

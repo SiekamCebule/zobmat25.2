@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:zobmat25_2/core/math/distribution_math_helpers.dart';
 import 'package:zobmat25_2/core/math/erf.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distribution_description/domain/entity/components/distribution_description_math_expression.dart';
@@ -29,7 +30,7 @@ final logNormalDistributionModel = ContinuousDistributionModel(
       'Odchylenie standardowe (σ)',
       'Zwiększa szanse wystąpienia wartości skrajnych.',
       min: 0.001,
-      max: 3.5,
+      max: 24,
       defaultValue: 1.0,
     ),
   ],
@@ -37,7 +38,7 @@ final logNormalDistributionModel = ContinuousDistributionModel(
     components: [
       DistributionDescriptionParagraph(
         text:
-            'Zmienna losowa z tego rozkładu pochodzi z odpowiedniego przekształcenia wartości z rozkładu normalnego. Rozkład log-normalny ma tylko wartości dodatnie, a ogon rozkładu jest dosyć duży.\nRozkład log-normalny jest skalowalny',
+            'Zmienna losowa z tego rozkładu pochodzi z odpowiedniego przekształcenia wartości z rozkładu normalnego. Rozkład log-normalny ma tylko wartości dodatnie, a ogon rozkładu jest dosyć duży.\nRozkład log-normalny jest skalowalny', // TODO !
       ),
       DistributionDescriptionMathExpression(
         title: 'Gęstość prawdopodobieństwa',
@@ -72,7 +73,7 @@ final logNormalDistributionModel = ContinuousDistributionModel(
       ),
       DistributionDescriptionParagraph(
         text:
-            '[Kliknij tutaj](https://en.wikipedia.org/wiki/Log-normal_distribution#Occurrence_and_applications), aby otworzyć ogromną listę zastosowań tego rozkładu z dziedziny zachowań ludzkich, biologii, medycyny, chemii, hydrologii, nauk społecznych, demografii i technologii (artykuł w języku angielskim).',
+            '[Kliknij tutaj](https://en.wikipedia.org/wiki/Log-normal_distribution#Occurrence_and_applications), aby zobaczyć zastosowania tego rozkładu z dziedziny zachowań ludzkich, biologii, medycyny, chemii, hydrologii, nauk społecznych, demografii i technologii (artykuł w języku angielskim).',
         containsMarkdownLinks: true,
       ),
     ],
@@ -132,6 +133,22 @@ num logNormalDistributionInverseCdf(num p, DistributionParamsSetup params) {
 
   // Convert back to the log-normal scale
   return exp(normalInverseCdf);
+}
+
+(num, num) logNormalDistributionRangeGetter(DistributionParamsSetup params) {
+  final dev = params.getValue('dev').toDouble();
+  late final double prob;
+
+  prob = 0.002 + (dev / 50);
+
+  return (
+    findQuantile(cdf: logNormalDistributionCdf, params: params, targetProbability: prob),
+    findQuantile(
+      cdf: logNormalDistributionCdf,
+      params: params,
+      targetProbability: 1 - prob,
+    ),
+  );
 }
 
 num logNormalDistributionExpectedValue(DistributionParamsSetup params) {
