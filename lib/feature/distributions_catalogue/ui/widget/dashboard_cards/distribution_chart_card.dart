@@ -66,9 +66,30 @@ class _DistributionChartCardState extends State<DistributionChartCard> {
                         child: Center(child: CircularProgressIndicator()),
                       ),
                     ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: DistributionChartTypeSegmentedButton(),
+                  Row(
+                    children: [
+                      Spacer(),
+                      DistributionChartTypeSegmentedButton(),
+                      Spacer(),
+                      ShowDistributionAnalysisIconButton(
+                        selected: _analysisEnabled,
+                        onSelectionChange: (selected) async {
+                          if (!selected) {
+                            await context
+                                .read<DistributionDashboardCubit>()
+                                .initializeAnalysis();
+                          } else {
+                            await context
+                                .read<DistributionDashboardCubit>()
+                                .clearAnalysis();
+                          }
+                          setState(() {
+                            _analysisEnabled = !selected;
+                          });
+                        },
+                      ),
+                      DrawNumbersByDistributionIconButton(),
+                    ],
                   ),
                   AnimatedPositioned(
                     top: 50,
@@ -83,32 +104,6 @@ class _DistributionChartCardState extends State<DistributionChartCard> {
                       analysisComponent:
                           analysisEnabled ? dashboardState.analysisComponent : null,
                       analysis: analysisEnabled ? dashboardState.analysis : null,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Row(
-                      children: [
-                        ShowDistributionAnalysisIconButton(
-                          selected: _analysisEnabled,
-                          onSelectionChange: (selected) async {
-                            if (!selected) {
-                              await context
-                                  .read<DistributionDashboardCubit>()
-                                  .initializeAnalysis();
-                            } else {
-                              await context
-                                  .read<DistributionDashboardCubit>()
-                                  .clearAnalysis();
-                            }
-                            setState(() {
-                              _analysisEnabled = !selected;
-                            });
-                          },
-                        ),
-                        DrawNumbersByDistributionIconButton(),
-                      ],
                     ),
                   ),
                 ],

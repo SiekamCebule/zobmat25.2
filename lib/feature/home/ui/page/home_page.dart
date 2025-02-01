@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              /* Tooltip(
+              Tooltip(
                 message: 'Jeszcze nad tym pracujemy...',
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                   child: Text('Ale... czym w ogóle są te rozkłady?'),
                 ),
               ),
-              Gap(20),*/
+              Gap(20),
               Gap(350),
               FilledButton(
                 style: FilledButton.styleFrom(

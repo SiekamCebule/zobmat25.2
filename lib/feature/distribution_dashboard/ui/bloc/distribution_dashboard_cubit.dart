@@ -291,7 +291,6 @@ class DistributionDashboardCubit extends Cubit<DistributionDashboardState> {
         'Cannot change an analysis component when no distribution is selected',
       );
     }
-    print('change: $component');
     await updateDistributionAnalysisUseCase();
     emit(
       DistributionDashboardDistributionSelected(
