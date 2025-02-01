@@ -31,7 +31,7 @@ abstract class DistributionChartSharedComponents {
 
   static FlLine boldFlGridLine(BuildContext context) {
     return FlLine(
-      color: Theme.of(context).colorScheme.tertiaryContainer,
+      color: Theme.of(context).colorScheme.secondaryContainer,
       strokeWidth: 1.75,
     );
   }

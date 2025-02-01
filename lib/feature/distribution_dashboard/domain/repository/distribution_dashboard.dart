@@ -1,11 +1,12 @@
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_analysis_setup.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis/distribution_analysis.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis/setup/distribution_analysis_setup.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_knowledge_view_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 
-abstract interface class DistributionDashboardRepository {
+abstract interface class DistributionDashboard {
   Future<Distribution?> getSelectedDistribution();
   Future<void> setSelectedDistribution(Distribution? distribution);
 
@@ -23,4 +24,7 @@ abstract interface class DistributionDashboardRepository {
 
   Future<DistributionAnalysisSetup?> getAnalysisSetup();
   Future<void> setAnalysisSetup(DistributionAnalysisSetup analysisSetup);
+
+  Future<DistributionAnalysis?> getAnalysis();
+  Future<void> setAnalysis(DistributionAnalysis? analysis);
 }

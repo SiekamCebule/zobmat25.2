@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
 
 ThemeData lightGreenTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
@@ -33,6 +34,12 @@ ThemeData lightGreenTheme({required TextTheme textTheme}) {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      inputDecoratorRadius: 8,
+      inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
+      inputDecoratorFocusedBorderWidth: 0.35,
+      inputDecoratorBorderWidth: 0.35,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(
       useTertiary: true,
@@ -42,6 +49,14 @@ ThemeData lightGreenTheme({required TextTheme textTheme}) {
     tones: FlexSchemeVariant.material.tones(Brightness.light),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(232, 233, 211, 1),
+        continuousForeground: Color.fromRGBO(53, 53, 25, 1),
+        discreteBackground: Color.fromRGBO(219, 235, 234, 1),
+        discreteForeground: Color.fromRGBO(29, 48, 45, 1),
+      ),
+    ],
   );
 }
 
@@ -76,10 +91,24 @@ ThemeData darkGreenTheme({required TextTheme textTheme}) {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      inputDecoratorRadius: 8,
+      inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
+      inputDecoratorFocusedBorderWidth: 0.35,
+      inputDecoratorBorderWidth: 0.35,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(useTertiary: true, keepPrimaryContainer: true),
     tones: FlexSchemeVariant.material.tones(Brightness.dark),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(53, 53, 25, 1),
+        continuousForeground: Color.fromRGBO(232, 233, 211, 1),
+        discreteBackground: Color.fromRGBO(29, 48, 45, 1),
+        discreteForeground: Color.fromRGBO(219, 235, 234, 1),
+      ),
+    ],
   );
 }

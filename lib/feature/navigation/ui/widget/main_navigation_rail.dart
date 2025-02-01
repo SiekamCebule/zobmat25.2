@@ -77,17 +77,24 @@ class MainNavigationRail extends StatelessWidget {
                       ),
                       items: [
                         PopupMenuItem(
-                          child: Text('Pomarańcz'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
-                                AppColorScheme.orange,
-                              ),
-                        ),
-                        PopupMenuItem(
                           child: Text('Zieleń'),
                           onTap:
                               () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.green,
+                              ),
+                        ),
+                        PopupMenuItem(
+                          child: Text('Błękit'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.blue,
+                              ),
+                        ),
+                        PopupMenuItem(
+                          child: Text('Żółć'),
+                          onTap:
+                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                                AppColorScheme.yellow,
                               ),
                         ),
                         PopupMenuItem(
@@ -99,19 +106,13 @@ class MainNavigationRail extends StatelessWidget {
                         ),
 
                         PopupMenuItem(
-                          child: Text('Żółć'),
+                          child: Text('Pomarańcz'),
                           onTap:
                               () => context.read<ThemeCubit>().changeAppColorScheme(
-                                AppColorScheme.yellow,
+                                AppColorScheme.orange,
                               ),
                         ),
-                        PopupMenuItem(
-                          child: Text('Błękit'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
-                                AppColorScheme.blue,
-                              ),
-                        ),
+
                         PopupMenuItem(
                           child: Text('Czerń i biel'),
                           onTap:

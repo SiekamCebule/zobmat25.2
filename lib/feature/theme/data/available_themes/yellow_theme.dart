@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
 
 ThemeData lightYellowTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
@@ -32,6 +33,14 @@ ThemeData lightYellowTheme({required TextTheme textTheme}) {
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
       cardElevation: 0,
+      inputDecoratorRadius: 8,
+      inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
+      inputDecoratorFocusedBorderWidth: 0.1,
+      inputDecoratorBorderWidth: 0.1,
+      inputDecoratorFocusedHasBorder: true,
+      inputDecoratorUnfocusedHasBorder: true,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(useExpressiveOnContainerColors: false),
     tones: FlexSchemeVariant.soft
@@ -39,6 +48,14 @@ ThemeData lightYellowTheme({required TextTheme textTheme}) {
         .copyWith(secondaryContainerTone: 94),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(245, 224, 209, 1),
+        continuousForeground: Color.fromRGBO(53, 43, 25, 1),
+        discreteBackground: Color.fromRGBO(222, 241, 227, 1),
+        discreteForeground: Color.fromRGBO(29, 48, 33, 1),
+      ),
+    ],
   );
 }
 
@@ -60,7 +77,7 @@ ThemeData darkYellowTheme({required TextTheme textTheme}) {
       errorContainer: Color(0xFF93000A),
     ),
     surfaceMode: FlexSurfaceMode.level,
-    blendLevel: 15,
+    blendLevel: 10,
     textTheme: textTheme,
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
@@ -72,10 +89,27 @@ ThemeData darkYellowTheme({required TextTheme textTheme}) {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      cardElevation: 0,
+      inputDecoratorRadius: 8,
+      inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
+      inputDecoratorFocusedBorderWidth: 0.1,
+      inputDecoratorBorderWidth: 0.1,
+      inputDecoratorFocusedHasBorder: true,
+      inputDecoratorUnfocusedHasBorder: true,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(),
     tones: FlexSchemeVariant.soft.tones(Brightness.dark),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(53, 43, 25, 1),
+        continuousForeground: Color.fromRGBO(245, 224, 209, 1),
+        discreteForeground: Color.fromRGBO(222, 241, 227, 1),
+        discreteBackground: Color.fromRGBO(29, 48, 33, 1),
+      ),
+    ],
   );
 }

@@ -31,7 +31,7 @@ final hypergeometricDistributionModel = DiscreteDistributionModel(
     DistributionParameter(
       'K',
       'Ilość sukcesów w populacji (K)',
-      'Liczba sukcesów w populacji, czyli elementów spełniających określone kryterium (np. liczba kart, które chcemy wylosować).',
+      'Liczba sukcesów w populacji, czyli elementów spełniających określone kryterium (np. liczba pożądanych kart, z tych które losujemy. Np. ilość wszystkich pików, jeśli chcemy wylosować piki).',
       min: 0,
       max: 10000,
       defaultValue: 5,

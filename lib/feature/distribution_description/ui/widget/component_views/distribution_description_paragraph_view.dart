@@ -42,7 +42,7 @@ class DistributionDescriptionParagraphView extends StatelessWidget {
         textStyle: textStyle,
         linkStyle: textStyle.copyWith(
           color: Theme.of(context).colorScheme.primary,
-          fontWeight: FontWeight.w500,
+          //fontWeight: FontWeight.w500,
         ),
       );
     } else if (paragraph.websiteUrl == null) {

@@ -8,7 +8,7 @@ import 'package:zobmat25_2/core/util/flutter_text_formatters.dart';
 class NumeralTextField extends StatefulWidget {
   const NumeralTextField({
     super.key,
-    required this.formKey,
+    this.formKey,
     this.enabled = true,
     required this.controller,
     this.additionalButtons,
@@ -17,7 +17,7 @@ class NumeralTextField extends StatefulWidget {
     required this.labelText,
     this.skipPlusMinusButtons = false,
     this.suffixText,
-    required this.step,
+    this.step = 1.0,
     required this.min,
     required this.max,
     this.initial,
@@ -28,7 +28,7 @@ class NumeralTextField extends StatefulWidget {
     this.validator,
   }) : assert(initial == null || (initial >= min && initial <= max));
 
-  final GlobalKey formKey;
+  final GlobalKey? formKey;
   final bool enabled;
   final VoidCallback onSubmit;
   final TextEditingController controller;
@@ -64,10 +64,6 @@ class NumeralTextFieldState extends State<NumeralTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurfaceVariant),
-    );
     final showHelpButton = widget.onHelpButtonTap != null;
 
     final textField = IntrinsicHeight(
@@ -80,8 +76,6 @@ class NumeralTextFieldState extends State<NumeralTextField> {
               controller: widget.controller,
               decoration: InputDecoration(
                 label: Text(widget.labelText),
-                border: border,
-                enabledBorder: border,
                 suffixText: widget.suffixText,
               ),
               inputFormatters: _inputFormatters,

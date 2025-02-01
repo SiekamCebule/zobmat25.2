@@ -2,8 +2,8 @@ import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distrib
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/repository/distribution_filters_repository.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/repository/distributions_repository.dart';
 
-class GetDistributionsUseCase {
-  const GetDistributionsUseCase({
+class GetFilteredDistributionsUseCase {
+  const GetFilteredDistributionsUseCase({
     required this.distributionsRepository,
     required this.distributionFiltersRepository,
   });

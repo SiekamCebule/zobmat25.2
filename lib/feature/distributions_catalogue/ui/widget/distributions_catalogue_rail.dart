@@ -17,7 +17,7 @@ class DistributionsCatalogueRail extends StatelessWidget {
     if (catalogueState is! DistributionsCatalogueAvailable) {
       distributionsListWidget = Center(child: CircularProgressIndicator());
     } else if (catalogueState.filters.isNotEmpty) {
-      final distributionCards = catalogueState.distributions.map((distribution) {
+      final distributionCards = catalogueState.filteredDistributions.map((distribution) {
         bool isSelected = false;
         if (dashboardState is DistributionDashboardDistributionSelected) {
           //print('SELECTED: ${dashboardState.distribution}');

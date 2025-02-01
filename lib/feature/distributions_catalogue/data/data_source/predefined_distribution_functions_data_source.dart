@@ -15,6 +15,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/hypergeometric_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/pascal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/poisson_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/zipf_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/continuous_distribution_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/discrete_distribution_functions.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_functions/distribution_property_functions.dart';
@@ -140,6 +141,11 @@ class PredefinedDistributionFunctionsDataSourceImpl
         pmf: pascalDistributionPmf,
         cdf: pascalDistributionCdf,
         getChartRange: pascalDistributionRangeGetter,
+      ),
+      'zipf_distribution' => DiscreteDistributionFunctions(
+        pmf: zipfDistributionPmf,
+        cdf: zipfDistributionCdf,
+        getChartRange: zipfDistributionRangeGetter,
       ),
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),
     };
@@ -270,6 +276,13 @@ class PredefinedDistributionFunctionsDataSourceImpl
         standardDeviation: pascalDistributionStandardDeviation,
         median: pascalDistributionMedian,
         mode: pascalDistributionMode,
+      ),
+      'zipf_distribution' => DistributionPropertyFunctions(
+        expectedValue: zipfDistributionExpectedValue,
+        variance: zipfDistributionVariance,
+        standardDeviation: zipfDistributionStandardDeviation,
+        median: zipfDistributionMedian,
+        mode: zipfDistributionMode,
       ),
 
       _ => throw ArgumentError('Unknown distribution ID: $distributionId'),

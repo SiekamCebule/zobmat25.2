@@ -99,3 +99,39 @@ num findInverseCdf(
 
   throw StateError('Nie udało się znaleźć odwrotnej CDF w zadanym przedziale.');
 }
+
+num continuousVariableChanceForBelonging({
+  required ContinuousDistributionCdf cdf,
+  required num a,
+  required num b,
+  required DistributionParamsSetup params,
+}) {
+  if (a > b) {
+    return 0.0;
+  }
+  num fA = (a == double.negativeInfinity) ? 0.0 : cdf(a, params);
+  num fB = (b == double.infinity) ? 1.0 : cdf(b, params);
+
+  return fB - fA;
+}
+
+num discreteVariableChanceForBelonging({
+  required DiscreteDistributionCdf cdf,
+  required num a,
+  required num b,
+  required DistributionParamsSetup params,
+}) {
+  if (a > b) {
+    return 0.0;
+  }
+
+  if (b == double.infinity) {
+    return 1.0 - cdf(a - 1, params);
+  }
+
+  if (a == double.negativeInfinity) {
+    return cdf(b, params);
+  }
+
+  return cdf(b, params) - cdf(a - 1, params);
+}

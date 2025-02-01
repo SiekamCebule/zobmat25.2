@@ -1,12 +1,12 @@
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 
 class GetSelectedDistributionUseCase {
-  const GetSelectedDistributionUseCase({required this.distributionDashboardRepository});
+  const GetSelectedDistributionUseCase({required this.distributionDashboard});
 
-  final DistributionDashboardRepository distributionDashboardRepository;
+  final DistributionDashboard distributionDashboard;
 
   Future<Distribution?> call() async {
-    return distributionDashboardRepository.getSelectedDistribution();
+    return distributionDashboard.getSelectedDistribution();
   }
 }

@@ -31,7 +31,7 @@ final gammaDistributionModel = ContinuousDistributionModel(
     DistributionParameter(
       'scale',
       'Skala (θ)',
-      'Przeciętny czas na wystąpienie pojedynczego zdarzenia. θ=21 oznacza, że zdarzenie występuje raz na jedną jednostkę czasu. Odwrotnością skali (θ) jest tempo zdarzeń (λ), które występuje jako parametr w rozkładzie wykładniczym.',
+      'Przeciętny czas na wystąpienie pojedynczego zdarzenia. θ=1 oznacza, że zdarzenie występuje raz na jedną jednostkę czasu. Odwrotnością skali (θ) jest tempo zdarzeń (λ), które występuje jako parametr w rozkładzie wykładniczym.',
       min: 0.0001,
       max: 100000,
       defaultValue: 1.0,

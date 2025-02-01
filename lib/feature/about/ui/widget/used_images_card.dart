@@ -29,14 +29,15 @@ class UsedImagesCard extends StatelessWidget {
         textStyle: Theme.of(context).textTheme.bodyMedium,
         linkStyle: Theme.of(
           context,
-        ).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.tertiary),
+        ).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.secondary),
         text: formattedText,
       );
     }
 
     return AboutPageCard(
       title: 'Zdjęcia',
-      child: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 15),
         child: SuperBulletList(
           separator: Gap(3),
           style: BulletStyle.dash,
@@ -94,6 +95,9 @@ class UsedImagesCard extends StatelessWidget {
             ),
             linkSpan(
               'Stpasha, domena publiczna, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Negbinomial.gif)',
+            ),
+            linkSpan(
+              'Autor nieznany, domena publiczna, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Zipf_distribution_PMF.png)',
             ),
           ],
         ),

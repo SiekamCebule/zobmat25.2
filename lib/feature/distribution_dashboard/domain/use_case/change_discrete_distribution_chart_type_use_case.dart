@@ -1,14 +1,12 @@
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard.dart';
 
 class ChangeDiscreteDistributionChartTypeUseCase {
-  const ChangeDiscreteDistributionChartTypeUseCase({
-    required this.distributionDashboardRepository,
-  });
+  const ChangeDiscreteDistributionChartTypeUseCase({required this.distributionDashboard});
 
-  final DistributionDashboardRepository distributionDashboardRepository;
+  final DistributionDashboard distributionDashboard;
 
   Future<void> call(DiscreteDistributionChartType chartType) async {
-    await distributionDashboardRepository.setDiscreteChartType(chartType);
+    await distributionDashboard.setDiscreteChartType(chartType);
   }
 }

@@ -42,20 +42,15 @@ class DrawedNumbersDialog extends StatelessWidget {
       drawedNumbersWidget = Center(child: CircularProgressIndicator());
     }
 
-    return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 500, maxHeight: 400),
-        child: AlertDialog(
-          title: Text('Wylosowane liczby'),
-          content: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [Expanded(child: drawedNumbersWidget)],
-          ),
-          actions: [
-            TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('Ok')),
-          ],
-        ),
+    return AlertDialog(
+      title: Text('Wylosowane liczby'),
+      content: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [Expanded(child: drawedNumbersWidget)],
       ),
+      actions: [
+        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('Ok')),
+      ],
     );
   }
 }

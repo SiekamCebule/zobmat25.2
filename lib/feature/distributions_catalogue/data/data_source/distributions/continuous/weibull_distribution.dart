@@ -27,7 +27,7 @@ final weibullDistributionModel = ContinuousDistributionModel(
     DistributionParameter(
       'shape',
       'Kształt (k)',
-      'Określa sposób zachowania prawdopodobieństwa.\nDla k<1, ryzyko awarii spada w czasie (tak jakby obiekt psuł się przez ewentualne wady wrodzone, a nie przez starzenie się).\nDla k=1 (jest to rozkład wykładniczy), ryzyko jest stałe (tak jakby psucie się było procesem w pełni losowym).\nDla k=2 (jest to rozkład Rayleigha), ryzyko liniowo wzrasta.\nDla k>1, ryzyko rośnie z czasem (tak, jakby zużywały się części, albo jakby człowiek się starzał).',
+      'Określa sposób zachowania prawdopodobieństwa.\nDla k<1, ryzyko awarii spada w czasie (tak jakby obiekt psuł się przez ewentualne wady wrodzone. Jeśli przeżyje początek, żyje długo).\nDla k=1 (jest to rozkład wykładniczy), ryzyko jest stałe (tak jakby psucie się było procesem w pełni losowym).\nDla k=2 (jest to rozkład Rayleigha), ryzyko liniowo wzrasta.\nDla k>1, ryzyko rośnie z czasem (tak, jakby zużywały się części, albo jakby człowiek się starzał).',
       min: 0.001,
       max: 100000,
       defaultValue: 1.0,

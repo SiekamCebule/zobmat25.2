@@ -1,12 +1,13 @@
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_analysis_setup.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis/distribution_analysis.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis/setup/distribution_analysis_setup.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_knowledge_view_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_params_setup.dart';
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 
-class InMemoryDistributionDashboardRepository implements DistributionDashboardRepository {
+class InMemoryDistributionDashboardRepository implements DistributionDashboard {
   InMemoryDistributionDashboardRepository({
     required Distribution? initialDistribution,
     required ContinuousDistributionChartType initialContinuousChartType,
@@ -27,6 +28,7 @@ class InMemoryDistributionDashboardRepository implements DistributionDashboardRe
   DistributionKnowledgeViewType _knowledgeViewType;
   DistributionParamsSetup? _paramsSetup;
   DistributionAnalysisSetup? _analysisSetup;
+  DistributionAnalysis? _analysis;
 
   @override
   Future<Distribution?> getSelectedDistribution() async => _distribution;
@@ -74,4 +76,10 @@ class InMemoryDistributionDashboardRepository implements DistributionDashboardRe
   @override
   Future<void> setAnalysisSetup(DistributionAnalysisSetup analysisSetup) async =>
       _analysisSetup = analysisSetup;
+
+  @override
+  Future<DistributionAnalysis?> getAnalysis() async => _analysis;
+
+  @override
+  Future<void> setAnalysis(DistributionAnalysis? analysis) async => _analysis = analysis;
 }

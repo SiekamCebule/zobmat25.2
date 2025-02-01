@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     final dashboardState = context.watch<DistributionsCatalogueCubit>().state;
     var distributionsCount = 24;
     if (dashboardState is DistributionsCatalogueAvailable) {
-      distributionsCount = dashboardState.distributions.length;
+      distributionsCount = dashboardState.allDistributions.length;
     }
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
             colors: [
               Theme.of(context).colorScheme.primary,
               Theme.of(context).colorScheme.secondary,
-              //Theme.of(context).colorScheme.tertiary,
             ],
           ),
           Gap(30),
@@ -139,11 +138,11 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Gap(30),
+          Gap(15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Tooltip(
+              /* Tooltip(
                 message: 'Jeszcze nad tym pracujemy...',
                 child: OutlinedButton(
                   style: OutlinedButton.styleFrom(
@@ -155,7 +154,8 @@ class _HomePageState extends State<HomePage> {
                   child: Text('Ale... czym w ogóle są te rozkłady?'),
                 ),
               ),
-              Gap(20),
+              Gap(20),*/
+              Gap(350),
               FilledButton(
                 style: FilledButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),

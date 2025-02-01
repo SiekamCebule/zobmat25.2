@@ -51,12 +51,16 @@ class AboutPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Row(
-                      children: [
-                        Expanded(child: BibliographyCard()),
-                        Gap(10),
-                        Expanded(child: UsedImagesCard()),
-                      ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: IntrinsicHeight(child: BibliographyCard())),
+                          Gap(10),
+                          Expanded(child: IntrinsicHeight(child: UsedImagesCard())),
+                        ],
+                      ),
                     ),
                   ],
                 ),

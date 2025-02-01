@@ -33,27 +33,32 @@ class UsedTechnologiesCard extends StatelessWidget {
               gap: 8,
               separator: Gap(3),
               items: [
-                hyperLink('[fl_chart](https://pub.dev/packages/fl_chart)'),
-                hyperLink('[flutter_bloc](https://pub.dev/packages/flutter_bloc)'),
+                hyperLink('[fl_chart](https://pub.dev/packages/fl_chart) (wykresy)'),
                 hyperLink(
-                  '[flex_color_scheme](https://pub.dev/packages/flex_color_scheme)',
+                  '[flutter_bloc](https://pub.dev/packages/flutter_bloc) (tzw. state management)',
                 ),
                 hyperLink(
-                  '[flutter_math_fork](https://pub.dev/packages/flutter_math_fork)',
+                  '[flex_color_scheme](https://pub.dev/packages/flex_color_scheme) (schematy kolorów)',
                 ),
-                hyperLink('[hyper_link](https://pub.dev/packages/hyper_link)'),
-                hyperLink('[equatable](https://pub.dev/packages/equatable)'),
                 hyperLink(
-                  '[shared_preferences](https://pub.dev/packages/shared_preferences)',
+                  '[flutter_math_fork](https://pub.dev/packages/flutter_math_fork) (wyświetlanie wzorów matematycznych w LaTeX)',
                 ),
-                hyperLink('[rxdart](https://pub.dev/packages/rxdart)'),
+                hyperLink(
+                  '[hyper_link](https://pub.dev/packages/hyper_link) (hiperłącza)',
+                ),
+                hyperLink(
+                  '[equatable](https://pub.dev/packages/equatable) (pomoc w pisaniu kodu)',
+                ),
+                hyperLink(
+                  '[shared_preferences](https://pub.dev/packages/shared_preferences) (zapisywanie danych na urządzeniu)',
+                ),
               ],
               style: BulletStyle.dash,
             ),
           ),
           Gap(5),
           hyperLink(
-            'Dużą rolę w pracy nad aplikacją odegrał [ChatGPT](https://openai.com/chatgpt/overview/), którego wykorzystałem do nauki teorii i do pracy programistycznej (tworzenie funkcji matematycznych w kodzie, ekran ładowania w HTML). Opisy rozkładów tworzyłem samemu, po uprzednim zrozumieniu, jak dany rozkład działa.',
+            'Dużą rolę w pracy nad aplikacją odegrał [ChatGPT](https://openai.com/chatgpt/overview/), którego wykorzystałem do nauki teorii i do pracy programistycznej (tworzenie funkcji matematycznych w kodzie, ekran ładowania w HTML). Opisy rozkładów tworzyłem raczej samemu, po podstawowym zrozumieniu, jak dany rozkład działa.',
           ),
           Gap(15),
           Row(

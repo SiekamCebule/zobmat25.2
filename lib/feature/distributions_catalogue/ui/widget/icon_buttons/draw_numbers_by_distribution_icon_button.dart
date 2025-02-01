@@ -24,7 +24,12 @@ class DrawNumbersByDistributionIconButton extends StatelessWidget {
                   builder: (context) {
                     return BlocProvider.value(
                       value: dashboardCubit,
-                      child: DrawedNumbersDialog(),
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(maxHeight: 500),
+                          child: DrawedNumbersDialog(),
+                        ),
+                      ),
                     );
                   },
                 );

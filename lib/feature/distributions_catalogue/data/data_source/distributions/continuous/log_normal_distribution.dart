@@ -21,8 +21,8 @@ final logNormalDistributionModel = ContinuousDistributionModel(
       'mean',
       'Średnia (μ)',
       '"Przesuwa" rozkład w lewo (dla wartości ujemnych) lub w prawo (dla wartości dodatnich).',
-      min: -100000,
-      max: 100000,
+      min: -10,
+      max: 8,
       defaultValue: 0.0,
     ),
     DistributionParameter(
@@ -38,7 +38,7 @@ final logNormalDistributionModel = ContinuousDistributionModel(
     components: [
       DistributionDescriptionParagraph(
         text:
-            'Zmienna losowa z tego rozkładu pochodzi z odpowiedniego przekształcenia wartości z rozkładu normalnego. Rozkład log-normalny ma tylko wartości dodatnie, a ogon rozkładu jest dosyć duży.\nRozkład log-normalny jest skalowalny', // TODO !
+            'Zmienna losowa z tego rozkładu pochodzi z odpowiedniego przekształcenia wartości z rozkładu normalnego. Rozkład log-normalny ma tylko wartości dodatnie, a ogon rozkładu jest dosyć duży.',
       ),
       DistributionDescriptionMathExpression(
         title: 'Gęstość prawdopodobieństwa',

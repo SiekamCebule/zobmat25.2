@@ -154,14 +154,6 @@ num tStudentDistributionInverseCdf(num p, DistributionParamsSetup params) {
 }
 
 (num, num) tStudentDistributionRangeGetter(DistributionParamsSetup params) {
-  // final df = params.getValue('degrees_of_freedom').toDouble();
-  // late final double prob;
-  // if (df <= 2.0) {
-  //   prob = 0.00001;
-  // } else {
-  //   prob = 0.00001;
-  // }
-
   const prob = 0.00001;
 
   return (

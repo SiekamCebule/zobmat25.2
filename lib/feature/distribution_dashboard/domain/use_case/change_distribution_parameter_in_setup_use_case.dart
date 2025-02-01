@@ -1,15 +1,13 @@
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_parameter.dart';
 
 class ChangeDistributionParameterInSetupUseCase {
-  const ChangeDistributionParameterInSetupUseCase({
-    required this.distributionDashboardRepository,
-  });
+  const ChangeDistributionParameterInSetupUseCase({required this.distributionDashboard});
 
-  final DistributionDashboardRepository distributionDashboardRepository;
+  final DistributionDashboard distributionDashboard;
 
   Future<void> call(DistributionParameter parameter, {required num value}) async {
-    final paramsSetup = await distributionDashboardRepository.getParamsSetup();
+    final paramsSetup = await distributionDashboard.getParamsSetup();
     if (paramsSetup == null) {
       throw StateError(
         'Cannot change distribution parameters setup, because params have not been initialized',
@@ -18,6 +16,6 @@ class ChangeDistributionParameterInSetupUseCase {
     final newParamsSetup = paramsSetup.copyWith(
       values: Map.of(paramsSetup.values)..[parameter] = value,
     );
-    await distributionDashboardRepository.setParamsSetup(newParamsSetup);
+    await distributionDashboard.setParamsSetup(newParamsSetup);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
 
 ThemeData lightPurpleTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
@@ -32,6 +33,12 @@ ThemeData lightPurpleTheme({required TextTheme textTheme}) {
       navigationRailLabelType: NavigationRailLabelType.all,
       defaultRadius: 22,
       cardElevation: 0,
+      inputDecoratorRadius: 14,
+      inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
+      inputDecoratorFocusedBorderWidth: 0.5,
+      inputDecoratorBorderWidth: 0.5,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(),
     tones: FlexSchemeVariant.material
@@ -39,6 +46,14 @@ ThemeData lightPurpleTheme({required TextTheme textTheme}) {
         .copyWith(primaryContainerTone: 90),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(211, 224, 233, 1),
+        continuousForeground: Color.fromRGBO(25, 40, 53, 1),
+        discreteBackground: Color.fromRGBO(219, 235, 220, 1),
+        discreteForeground: Color.fromRGBO(29, 48, 30, 1),
+      ),
+    ],
   );
 }
 
@@ -73,6 +88,12 @@ ThemeData darkPurpleTheme({required TextTheme textTheme}) {
       navigationRailLabelType: NavigationRailLabelType.all,
       defaultRadius: 22,
       cardElevation: 0,
+      inputDecoratorRadius: 14,
+      inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
+      inputDecoratorFocusedBorderWidth: 0.5,
+      inputDecoratorBorderWidth: 0.5,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(),
     tones: FlexSchemeVariant.material
@@ -80,5 +101,13 @@ ThemeData darkPurpleTheme({required TextTheme textTheme}) {
         .copyWith(primaryContainerTone: 21),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(25, 40, 53, 1),
+        continuousForeground: Color.fromRGBO(211, 224, 233, 1),
+        discreteBackground: Color.fromRGBO(29, 48, 30, 1),
+        discreteForeground: Color.fromRGBO(219, 235, 220, 1),
+      ),
+    ],
   );
 }

@@ -19,15 +19,15 @@ final paretoDistributionModel = ContinuousDistributionModel(
     DistributionParameter(
       'scale',
       'Skala (x\u2098)',
-      'Wpływa na rozciągnięcie lub ściśnięcie rozkładu na osi czasu. Wyższe λ oznacza dłuższe oczekiwanie na zdarzenie (przesuwa wartości w prawo), a niższe λ skraca czas oczekiwania (przesuwa wartości w lewo)',
+      '"Rozciąga" lub "zawęża" rozkład, przez co wartości są mniejsze lub większe, bez zmiany kształtu rozkładu.',
       min: 0.0001,
       max: 100000,
       defaultValue: 1.0,
     ),
     DistributionParameter(
       'shape',
-      'Kształt (α)',
-      'Określa sposób zachowania prawdopodobieństwa.\nDla k<1, ryzyko awarii spada w czasie.\nDla k=1 (jest to rozkład wykładniczy), ryzyko jest stałe.\nDla k=2 (jest to rozkład Rayleigha), ryzyko liniowo wzrasta.\nDla k>1, ryzyko rośnie z czasem (tak, jakby zużywały się części, albo jakby człowiek się starzał).',
+      'Kształt (k)',
+      'Parametr kształtu (k) wpływa na "dominację" małych wartości. Jeśli zwiększymy k, mniejsze wartości będą jeszcze bardziej dominujące. Jeśli zmniejszymy k, będzie więcej wysokich wartości (jakby więcej osób było bogatych).',
       min: 0.0001,
       max: 100000,
       defaultValue: 1.0,
@@ -37,7 +37,8 @@ final paretoDistributionModel = ContinuousDistributionModel(
     components: [
       DistributionDescriptionParagraph(
         text:
-            'Rozkład Weibulla jest wszechstronnym rozkładem prawdopodobieństwa, który modeluje czas oczekiwania na zdarzenia (podobnie jak rozkład gamma i rozkład wykładniczy).\nWażną rolę odgrywa w nim parametr kształtu (k), który określa zachowanie prawdopodobieństwa (spadające/rosnące/stałe). Kliknij ikonkę pomocy przy parametrze, aby lepiej go zrozumieć.\nParametr skali (λ) wydłuża lub skraca  typowy czas oczekiwania na zdarzenie.',
+            'Możliwe, że słyszałeś o [zasadzie Pareta](https://pl.wikipedia.org/wiki/Zasada_Pareta). Opisuje ona sytuację, w której np. 80% bogactwa należy do 20% ludzi, lub 20% decyzji powoduje 80% skutków. Zasada ta jest stosowana m.in. w socjologii, w ustalaniu priorytetów i w biznesie.\n\nRozkład Pareta działa na identycznej zasadzie. Parametr kształtu (k) modyfikuje "dominację" małych wartości - im wyższe k, tym nasze "80 procent" jest jeszcze większe. Za to małe k zwiększa szansę na skrajne wartości ("bogactwo" staje się powszechniejsze wśród ludności).',
+        containsMarkdownLinks: true,
       ),
       DistributionDescriptionMathExpression(
         title: 'Gęstość prawdopodobieństwa',
@@ -72,7 +73,7 @@ final paretoDistributionModel = ContinuousDistributionModel(
 
       DistributionDescriptionParagraph(
         text:
-            'Rozkład Weibulla jest powszechnie stosowany w analizie niezawodności i czasu życia. Dla k<1 opisuje awarie wynikające z wad produkcyjnych, dla k=1 opisuje losowe awarie, a dla k>1 opisuje awarie związane ze starzeniem/zużyciem.\nJest używany w medycynie, inżynierii, prognozie pogody, analizie spadku produkcji, i nie tylko. [Kliknij tutaj](https://en.wikipedia.org/wiki/Weibull_distribution#Applications), aby otworzyć długą listę zastosowań tego rozkładu (angielska wikipedia).',
+            'W rozkład Pareta układają się m.in. wielkości meteorytów, rozmiary osad ludzkich, wielkości plików przesyłane protokołem TCP, wielkości ziaren piasku i czas spędzony w poszczególnych grach przez użytkownika na Steam.',
         containsMarkdownLinks: true,
       ),
     ],

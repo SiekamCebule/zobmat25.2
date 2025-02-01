@@ -49,7 +49,7 @@ class DistributionDescriptionTextSpanView extends StatelessWidget {
                   text: textComponent.text,
                   textStyle: textStyle,
                   linkStyle: textStyle.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               );
@@ -60,7 +60,7 @@ class DistributionDescriptionTextSpanView extends StatelessWidget {
                 child: HyperLink(
                   text: '[${textComponent.text}](${textComponent.websiteUrl})',
                   linkStyle: textStyle.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               );

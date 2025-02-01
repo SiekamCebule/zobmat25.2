@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
 
 ThemeData lightBlueTheme({required TextTheme textTheme}) {
   return FlexThemeData.light(
@@ -25,17 +26,31 @@ ThemeData lightBlueTheme({required TextTheme textTheme}) {
       tintedDisabledControls: true,
       useM2StyleDividerInM3: true,
       defaultRadius: 8.0,
-      cardElevation: 2.5,
+      cardElevation: 2,
       inputDecoratorIsFilled: true,
       inputDecoratorBorderType: FlexInputBorderType.outline,
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      inputDecoratorRadius: 6,
+      inputDecoratorBorderSchemeColor: SchemeColor.primary,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHighest,
+      inputDecoratorFocusedBorderWidth: 0.75,
+      inputDecoratorBorderWidth: 0.75,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(useSecondary: true, useTertiary: true),
     variant: FlexSchemeVariant.rainbow,
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(211, 233, 224, 1),
+        continuousForeground: Color.fromRGBO(25, 53, 42, 1),
+        discreteBackground: Color.fromRGBO(228, 235, 219, 1),
+        discreteForeground: Color.fromRGBO(42, 48, 29, 1),
+      ),
+    ],
   );
 }
 
@@ -63,16 +78,30 @@ ThemeData darkBlueTheme({required TextTheme textTheme}) {
       blendOnColors: true,
       useM2StyleDividerInM3: true,
       defaultRadius: 8.0,
-      cardElevation: 2.5,
+      cardElevation: 2,
       inputDecoratorIsFilled: true,
       inputDecoratorBorderType: FlexInputBorderType.outline,
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      inputDecoratorRadius: 6,
+      inputDecoratorBorderSchemeColor: SchemeColor.primary,
+      inputDecoratorSchemeColor: SchemeColor.surfaceContainerHighest,
+      inputDecoratorFocusedBorderWidth: 0.75,
+      inputDecoratorBorderWidth: 0.75,
+      inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(useSecondary: true, useTertiary: true),
     variant: FlexSchemeVariant.rainbow,
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+    extensions: [
+      DistributionChipColors(
+        continuousBackground: Color.fromRGBO(25, 53, 42, 1),
+        continuousForeground: Color.fromRGBO(211, 233, 224, 1),
+        discreteBackground: Color.fromRGBO(42, 48, 29, 1),
+        discreteForeground: Color.fromRGBO(228, 235, 219, 1),
+      ),
+    ],
   );
 }

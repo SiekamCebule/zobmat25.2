@@ -62,7 +62,7 @@ final exponentialDistributionModel = ContinuousDistributionModel(
       DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = 0'),
       DistributionDescriptionParagraph(
         text:
-            'Rozkład wykładniczy pozwala przewidzieć czas do awarii, czas na połączenie telefoniczne w call center, czy czas między mutacjami genetycznymi. Jest też wykorszystywany w fizyce i w hydrologii. Uogólnieniem tego rozkładu jest rozkład gamma, który jest dostępny na stronie.',
+            'Rozkład wykładniczy pozwala przewidzieć czas do awarii, czas na połączenie telefoniczne w call center, czy czas między mutacjami genetycznymi. Jest też wykorzystywany w fizyce i w hydrologii. Uogólnieniem tego rozkładu jest rozkład gamma, który również jest dostępny w katalogu.',
       ),
     ],
   ),

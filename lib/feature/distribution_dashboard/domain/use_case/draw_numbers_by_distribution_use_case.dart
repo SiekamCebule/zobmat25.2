@@ -1,20 +1,19 @@
 import 'dart:math';
 
-import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard_repository.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/repository/distribution_dashboard.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/continuous_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/discrete_distribution.dart';
 import 'package:quiver/iterables.dart' as quiver;
 
 class DrawNumbersByDistributionUseCase {
-  const DrawNumbersByDistributionUseCase({required this.distributionDashboardRepository});
+  const DrawNumbersByDistributionUseCase({required this.distributionDashboard});
 
-  final DistributionDashboardRepository distributionDashboardRepository;
+  final DistributionDashboard distributionDashboard;
 
   Future<List<num>> call({required int count}) async {
-    final distribution =
-        (await distributionDashboardRepository.getSelectedDistribution())!;
+    final distribution = (await distributionDashboard.getSelectedDistribution())!;
     final random = Random();
-    final paramsSetup = (await distributionDashboardRepository.getParamsSetup())!;
+    final paramsSetup = (await distributionDashboard.getParamsSetup())!;
 
     final list = <num>[];
     if (distribution is ContinuousDistribution) {

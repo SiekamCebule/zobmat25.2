@@ -15,13 +15,14 @@ class BibliographyCard extends StatelessWidget {
         data,
         linkStyle: Theme.of(
           context,
-        ).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.tertiary),
+        ).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.secondary),
       );
     }
 
     return AboutPageCard(
       title: 'Bibliografia',
-      child: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 15),
         child: SuperBulletList(
           separator: Gap(3),
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +56,7 @@ class BibliographyCard extends StatelessWidget {
             ),
             link('https://en.wikipedia.org/wiki/Log-normal_distribution'),
             link('https://pl.wikipedia.org/wiki/Rozk%C5%82ad_Weibulla'),
+            link('https://en.wikipedia.org/wiki/Pareto_distribution'),
             link('https://pl.wikipedia.org/wiki/Pr%C3%B3ba_Bernoulliego'),
             link('https://pl.wikipedia.org/wiki/Proces_Bernoulliego'),
             link('https://www.investopedia.com/terms/b/binomialdistribution.asp'),
@@ -66,6 +68,7 @@ class BibliographyCard extends StatelessWidget {
             link(
               'https://www.geeksforgeeks.org/negative-binomial-distribution-properties-applications-and-examples/',
             ),
+            link('https://en.wikipedia.org/wiki/Zipf%27s_law#Occurrences'),
           ],
         ),
       ),

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:zobmat25_2/config/distribution_image_urls.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_type_label_widget.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/distribution_type_chip.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
 
@@ -69,7 +69,7 @@ class DistributionNavigationCard extends StatelessWidget {
                     ),
                   ),
                   Gap(5),
-                  DistributionTypeLabelWidget(distributionType: distribution.type),
+                  DistributionTypeChip(distributionType: distribution.type),
                   Gap(5),
                 ],
               ),

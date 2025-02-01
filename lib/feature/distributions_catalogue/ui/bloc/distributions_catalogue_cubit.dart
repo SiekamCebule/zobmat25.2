@@ -2,18 +2,21 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_subtypes/distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_filter.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_all_distributions_use_case.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distribution_filters_use_case.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distributions_use_case.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_filtered_distributions_use_case.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/toggle_distributions_filter_use_case.dart';
 
 class DistributionsCatalogueCubit extends Cubit<DistributionsCatalogueState> {
   DistributionsCatalogueCubit({
-    required this.getDistributionsUseCase,
+    required this.getAllDistributionsUseCase,
+    required this.getFilteredDistributionsUseCase,
     required this.getDistributionFiltersUseCase,
     required this.toggleDistributionsFilterUseCase,
   }) : super(DistributionsCatalogueInitial());
 
-  final GetDistributionsUseCase getDistributionsUseCase;
+  final GetAllDistributionsUseCase getAllDistributionsUseCase;
+  final GetFilteredDistributionsUseCase getFilteredDistributionsUseCase;
   final GetDistributionFiltersUseCase getDistributionFiltersUseCase;
   final ToggleDistributionsFilterUseCase toggleDistributionsFilterUseCase;
 
@@ -22,7 +25,8 @@ class DistributionsCatalogueCubit extends Cubit<DistributionsCatalogueState> {
     emit(
       DistributionsCatalogueAvailable(
         filters: filters,
-        distributions: await getDistributionsUseCase(),
+        filteredDistributions: await getFilteredDistributionsUseCase(),
+        allDistributions: await getAllDistributionsUseCase(),
       ),
     );
   }
@@ -32,7 +36,8 @@ class DistributionsCatalogueCubit extends Cubit<DistributionsCatalogueState> {
     emit(
       DistributionsCatalogueAvailable(
         filters: await getDistributionFiltersUseCase(),
-        distributions: await getDistributionsUseCase(),
+        filteredDistributions: await getFilteredDistributionsUseCase(),
+        allDistributions: await getAllDistributionsUseCase(),
       ),
     );
   }
@@ -52,12 +57,14 @@ class DistributionsCatalogueInitial extends DistributionsCatalogueState {
 class DistributionsCatalogueAvailable extends DistributionsCatalogueState {
   const DistributionsCatalogueAvailable({
     required this.filters,
-    required this.distributions,
+    required this.filteredDistributions,
+    required this.allDistributions,
   });
 
   final Set<DistributionFilter> filters;
-  final List<Distribution> distributions;
+  final List<Distribution> filteredDistributions;
+  final List<Distribution> allDistributions;
 
   @override
-  List<Object?> get props => [filters, distributions];
+  List<Object?> get props => [filters, filteredDistributions, allDistributions];
 }

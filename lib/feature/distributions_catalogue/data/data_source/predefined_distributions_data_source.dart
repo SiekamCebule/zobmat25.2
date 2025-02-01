@@ -15,6 +15,7 @@ import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/dist
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/hypergeometric_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/pascal_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/poisson_distribution.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/distributions/discrete/zipf_distribution.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/model/distribution_model.dart';
 
 abstract interface class PredefinedDistributionsDataSource {
@@ -45,6 +46,7 @@ class PredefinedDistributionsDataSourceImpl implements PredefinedDistributionsDa
       hypergeometricDistributionModel,
       poissonDistributionModel,
       pascalDistributionModel,
+      zipfDistributionModel,
     ];
   }
 }

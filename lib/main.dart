@@ -7,24 +7,30 @@ import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/distribution_knowledge_view_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_continuous_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_discrete_distribution_chart_type_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_analysis_parameter_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_knowledge_view_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/change_distribution_parameter_in_setup_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/clear_distribution_analysis_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/draw_numbers_by_distribution_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_continuous_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_discrete_distribution_chart_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_analysis_setup_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_analysis_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_knowledge_view_type_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_distribution_params_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/get_selected_distribution_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/initialize_distribution_analysis_setup_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/toggle_distribution_selection_use_case.dart';
+import 'package:zobmat25_2/feature/distribution_dashboard/domain/use_case/update_distribution_analysis_use_case.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distribution_functions_data_source.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/data_source/predefined_distributions_data_source.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/repository/in_memory_distribution_filters_repository.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/data/repository/predefined_distributions_repository.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/entity/distribution_filter.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_all_distributions_use_case.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distribution_filters_use_case.dart';
-import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_distributions_use_case.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/get_filtered_distributions_use_case.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/domain/use_case/toggle_distributions_filter_use_case.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/bloc/distributions_catalogue_cubit.dart';
 import 'package:zobmat25_2/feature/navigation/data/data_source/in_memory_navigation_data_source.dart';
@@ -47,7 +53,7 @@ import 'package:zobmat25_2/feature/theme/ui/flutter_theme_creator.dart';
 void main() async {
   final themeRepository = CachedThemeRepository(
     preferences: await SharedPreferences.getInstance(),
-    defaultColorScheme: AppColorScheme.orange,
+    defaultColorScheme: AppColorScheme.green,
     defaultThemeMode: AppThemeMode.dark,
   );
   runApp(
@@ -91,7 +97,7 @@ class App extends StatelessWidget {
     final distributionFiltersRepository = InMemoryDistributionFiltersRepository(
       initialFilters: {DistributionFilter.continuous, DistributionFilter.discrete},
     );
-    final distributionDashboardRepository = InMemoryDistributionDashboardRepository(
+    final distributionDashboard = InMemoryDistributionDashboardRepository(
       initialDistribution: null,
       initialContinuousChartType: ContinuousDistributionChartType.pdf,
       initialDiscreteChartType: DiscreteDistributionChartType.pmf,
@@ -120,7 +126,10 @@ class App extends StatelessWidget {
           BlocProvider(
             create:
                 (context) => DistributionsCatalogueCubit(
-                  getDistributionsUseCase: GetDistributionsUseCase(
+                  getAllDistributionsUseCase: GetAllDistributionsUseCase(
+                    distributionsRepository: distributionsRepository,
+                  ),
+                  getFilteredDistributionsUseCase: GetFilteredDistributionsUseCase(
                     distributionsRepository: distributionsRepository,
                     distributionFiltersRepository: distributionFiltersRepository,
                   ),
@@ -137,48 +146,65 @@ class App extends StatelessWidget {
             create:
                 (context) => DistributionDashboardCubit(
                   getSelectedDistributionUseCase: GetSelectedDistributionUseCase(
-                    distributionDashboardRepository: distributionDashboardRepository,
+                    distributionDashboard: distributionDashboard,
                   ),
                   toggleDistributionSelectionUseCase: ToggleDistributionSelectionUseCase(
-                    distributionDashboardRepository: distributionDashboardRepository,
+                    distributionDashboard: distributionDashboard,
                   ),
                   getContinuousDistributionChartTypeUseCase:
                       GetContinuousDistributionChartTypeUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   changeContinuousDistributionChartTypeUseCase:
                       ChangeContinuousDistributionChartTypeUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   getDiscreteDistributionChartTypeUseCase:
                       GetDiscreteDistributionChartTypeUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   changeDiscreteDistributionChartTypeUseCase:
                       ChangeDiscreteDistributionChartTypeUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   getDistributionKnowledgeViewTypeUseCase:
                       GetDistributionKnowledgeViewTypeUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   changeDistributionKnowledgeViewTypeUseCase:
                       ChangeDistributionKnowledgeViewTypeUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   getDistributionParamsSetupUseCase: GetDistributionParamsSetupUseCase(
-                    distributionDashboardRepository: distributionDashboardRepository,
+                    distributionDashboard: distributionDashboard,
                   ),
                   changeDistributionParameterInSetupUseCase:
                       ChangeDistributionParameterInSetupUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
+                      ),
+                  initializeDistributionAnalysisSetupUseCase:
+                      InitializeDistributionAnalysisSetupUseCase(
+                        distributionDashboard: distributionDashboard,
                       ),
                   getDistributionAnalysisSetupUseCase:
                       GetDistributionAnalysisSetupUseCase(
-                        distributionDashboardRepository: distributionDashboardRepository,
+                        distributionDashboard: distributionDashboard,
                       ),
                   drawNumbersByDistributionUseCase: DrawNumbersByDistributionUseCase(
-                    distributionDashboardRepository: distributionDashboardRepository,
+                    distributionDashboard: distributionDashboard,
+                  ),
+                  clearDistributionAnalysisUseCase: ClearDistributionAnalysisUseCase(
+                    distributionDashboard: distributionDashboard,
+                  ),
+                  getDistributionAnalysisUseCase: GetDistributionAnalysisUseCase(
+                    distributionDashboard: distributionDashboard,
+                  ),
+                  changeDistributionAnalysisParameterUseCase:
+                      ChangeDistributionAnalysisParameterUseCase(
+                        distributionDashboard: distributionDashboard,
+                      ),
+                  updateDistributionAnalysisUseCase: UpdateDistributionAnalysisUseCase(
+                    distributionDashboard: distributionDashboard,
                   ),
                 )..initialize(),
           ),
