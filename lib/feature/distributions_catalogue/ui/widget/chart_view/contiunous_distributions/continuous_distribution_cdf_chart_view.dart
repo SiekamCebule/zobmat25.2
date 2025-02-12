@@ -24,22 +24,20 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
     }
 
     const boundary = 0.0005;
-    final minX =
-        findQuantile(
-          cdf: distribution.functions.cdf,
-          params: dashboardState.paramsSetup,
-          targetProbability: boundary,
-          lowerBound: -1000000,
-          upperBound: 1000000,
-        ).toDouble();
-    final maxX =
-        findQuantile(
-          cdf: distribution.functions.cdf,
-          params: dashboardState.paramsSetup,
-          targetProbability: 1 - boundary,
-          lowerBound: -1000000,
-          upperBound: 1000000,
-        ).toDouble();
+    final minX = findQuantile(
+      cdf: distribution.functions.cdf,
+      params: dashboardState.paramsSetup,
+      targetProbability: boundary,
+      lowerBound: -1000000,
+      upperBound: 1000000,
+    ).toDouble();
+    final maxX = findQuantile(
+      cdf: distribution.functions.cdf,
+      params: dashboardState.paramsSetup,
+      targetProbability: 1 - boundary,
+      lowerBound: -1000000,
+      upperBound: 1000000,
+    ).toDouble();
 
     final pixelDensity =
         MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
@@ -61,7 +59,6 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
             dotData: FlDotData(show: false),
           ),
         ],
-
         gridData: FlGridData(
           drawHorizontalLine: true,
           drawVerticalLine: true,
@@ -97,7 +94,7 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
             sideTitles: SideTitles(
               showTitles: true,
               interval: (maxX - minX) / 7,
-              reservedSize: 28,
+              reservedSize: 35,
               minIncluded: false,
               maxIncluded: false,
             ),

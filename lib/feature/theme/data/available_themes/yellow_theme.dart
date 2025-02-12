@@ -1,12 +1,11 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
+import 'package:zobmat25_2/feature/theme/ui/my_app_flex_theme_config.dart';
 
-ThemeData lightYellowTheme({required TextTheme textTheme}) {
-  return FlexThemeData.light(
+AppFlexThemeConfig lightYellowTheme({required TextTheme textTheme}) {
+  return AppFlexThemeConfig(
     colors: const FlexSchemeColor(
-      // Custom colors
       primary: Color(0xFF626100),
       primaryContainer: Color(0xFF2A5EA7),
       primaryLightRef: Color(0xFF626100),
@@ -34,6 +33,7 @@ ThemeData lightYellowTheme({required TextTheme textTheme}) {
       navigationRailLabelType: NavigationRailLabelType.all,
       cardElevation: 0,
       inputDecoratorRadius: 8,
+      filledButtonRadius: 11,
       inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
       inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
       inputDecoratorFocusedBorderWidth: 0.1,
@@ -43,26 +43,21 @@ ThemeData lightYellowTheme({required TextTheme textTheme}) {
       inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(useExpressiveOnContainerColors: false),
-    tones: FlexSchemeVariant.soft
+    defaultFlexTones: FlexSchemeVariant.soft
         .tones(Brightness.light)
         .copyWith(secondaryContainerTone: 94),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
-    extensions: [
-      DistributionChipColors(
-        continuousBackground: Color.fromRGBO(245, 224, 209, 1),
-        continuousForeground: Color.fromRGBO(53, 43, 25, 1),
-        discreteBackground: Color.fromRGBO(222, 241, 227, 1),
-        discreteForeground: Color.fromRGBO(29, 48, 33, 1),
-      ),
-    ],
+    chipColors: DistributionChipColors(
+      continuousBackground: Color.fromRGBO(245, 224, 209, 1),
+      continuousForeground: Color.fromRGBO(53, 43, 25, 1),
+      discreteBackground: Color.fromRGBO(222, 241, 227, 1),
+      discreteForeground: Color.fromRGBO(29, 48, 33, 1),
+    ),
   );
 }
 
-ThemeData darkYellowTheme({required TextTheme textTheme}) {
-  return FlexThemeData.dark(
+AppFlexThemeConfig darkYellowTheme({required TextTheme textTheme}) {
+  return AppFlexThemeConfig(
     colors: const FlexSchemeColor(
-      // Custom colors
       primary: Color(0xFFCDCC56),
       primaryContainer: Color(0xFF203D19),
       primaryLightRef: Color(0xFF626100),
@@ -91,6 +86,7 @@ ThemeData darkYellowTheme({required TextTheme textTheme}) {
       navigationRailLabelType: NavigationRailLabelType.all,
       cardElevation: 0,
       inputDecoratorRadius: 8,
+      filledButtonRadius: 11,
       inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
       inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
       inputDecoratorFocusedBorderWidth: 0.1,
@@ -100,16 +96,12 @@ ThemeData darkYellowTheme({required TextTheme textTheme}) {
       inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(),
-    tones: FlexSchemeVariant.soft.tones(Brightness.dark),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
-    extensions: [
-      DistributionChipColors(
-        continuousBackground: Color.fromRGBO(53, 43, 25, 1),
-        continuousForeground: Color.fromRGBO(245, 224, 209, 1),
-        discreteForeground: Color.fromRGBO(222, 241, 227, 1),
-        discreteBackground: Color.fromRGBO(29, 48, 33, 1),
-      ),
-    ],
+    defaultFlexTones: FlexSchemeVariant.soft.tones(Brightness.dark),
+    chipColors: DistributionChipColors(
+      continuousBackground: Color.fromRGBO(53, 43, 25, 1),
+      continuousForeground: Color.fromRGBO(245, 224, 209, 1),
+      discreteForeground: Color.fromRGBO(222, 241, 227, 1),
+      discreteBackground: Color.fromRGBO(29, 48, 33, 1),
+    ),
   );
 }

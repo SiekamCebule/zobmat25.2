@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.12.0"
+  bidirectional_listview:
+    dependency: "direct main"
+    description:
+      name: bidirectional_listview
+      sha256: "8fc17c8dd5f39d37afa945d922d8af339fc64c2f8c4dde0da71e182d00887f8e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   bloc:
     dependency: transitive
     description:
@@ -369,7 +377,7 @@ packages:
     source: hosted
     version: "2.1.8"
   provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: provider
       sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c

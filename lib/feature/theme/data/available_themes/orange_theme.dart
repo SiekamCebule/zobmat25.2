@@ -1,6 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
 import 'package:zobmat25_2/feature/theme/ui/my_app_flex_theme_config.dart';
 
@@ -34,6 +33,7 @@ AppFlexThemeConfig lightOrangeTheme({required TextTheme textTheme}) {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      filledButtonRadius: 12,
       inputDecoratorRadius: 10,
       inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
       inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
@@ -86,6 +86,7 @@ AppFlexThemeConfig darkOrangeTheme({required TextTheme textTheme}) {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      filledButtonRadius: 12,
       inputDecoratorRadius: 10,
       inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
       inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,

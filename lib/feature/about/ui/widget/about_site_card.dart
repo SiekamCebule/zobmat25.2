@@ -26,8 +26,8 @@ class AboutSiteCard extends StatelessWidget {
                 'Powyższa strona powstała na [XVII edycję konkursu "Zobaczyć Matematykę" organizowanego przez AGH w Krakowie](https://www.zobaczycmatematyke.agh.edu.pl/aktualnosci/detail?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=841&cHash=d69b5e66cdfeddbe9bdabb12e4fe657f). Co na niej znajdziesz?',
             textStyle: Theme.of(context).textTheme.bodyMedium,
             linkStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-            ),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
           Gap(4),
           Padding(
@@ -41,19 +41,22 @@ class AboutSiteCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text(
-                  'Przystępny opis dla każdego z rozkładów i odnośniki do ważnych pojęć',
+                  'Opis każdego z rozkładów i odnośniki do powiązanych pojęć',
                 ),
                 Text('Wykresy funkcji gęstości i dystrybuanty dla rozkładów ciągłych'),
                 Text('Wykresy funkcji masy i dystrybuanty dla rozkładów dyskretnych'),
                 Text(
                   'Możliwość obliczenia prawdopodobieństwa, że zmienna losowa znajdzie się w danym przedziale lub że przyjmie określoną wartość',
                 ),
-                Text('Możliwość zmiany parametrów rozkładu'),
+                Text(
+                    'Możliwość zmiany parametrów rozkładu (przez co zmienia się również wykres)'),
                 Text(
                   'Automatyczne obliczanie właściwości rozkładu: średniej, wariancji, odchylenia standardowego, mody i mediany',
                 ),
-                Text('Możliwość wylosowania 10 liczb losowych według wybranego rozkładu'),
+                Text('Możliwość wylosowania liczb losowych według rozkładu'),
                 Text('12 wyglądów strony (6 motywów kolorów i tryb jasny/ciemny)'),
+                Text(
+                    'Tryb dostępności, ułatwiajacy korzystanie ze strony osobom z niepełnosprawnościami')
               ],
               style: BulletStyle.dash,
             ),

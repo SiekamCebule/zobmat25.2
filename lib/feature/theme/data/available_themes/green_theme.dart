@@ -1,12 +1,11 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/distribution_chip_colors.dart';
+import 'package:zobmat25_2/feature/theme/ui/my_app_flex_theme_config.dart';
 
-ThemeData lightGreenTheme({required TextTheme textTheme}) {
-  return FlexThemeData.light(
+AppFlexThemeConfig lightGreenTheme({required TextTheme textTheme}) {
+  return AppFlexThemeConfig(
     colors: const FlexSchemeColor(
-      // Custom colors
       primary: Color(0xFF406835),
       primaryContainer: Color(0xFFC5FEB2),
       primaryLightRef: Color(0xFF406835),
@@ -35,6 +34,7 @@ ThemeData lightGreenTheme({required TextTheme textTheme}) {
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
       inputDecoratorRadius: 8,
+      filledButtonRadius: 12,
       inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
       inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
       inputDecoratorFocusedBorderWidth: 0.35,
@@ -46,24 +46,19 @@ ThemeData lightGreenTheme({required TextTheme textTheme}) {
       keepPrimaryContainer: true,
       useExpressiveOnContainerColors: false,
     ),
-    tones: FlexSchemeVariant.material.tones(Brightness.light),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
-    extensions: [
-      DistributionChipColors(
-        continuousBackground: Color.fromRGBO(232, 233, 211, 1),
-        continuousForeground: Color.fromRGBO(53, 53, 25, 1),
-        discreteBackground: Color.fromRGBO(219, 235, 234, 1),
-        discreteForeground: Color.fromRGBO(29, 48, 45, 1),
-      ),
-    ],
+    defaultFlexTones: FlexSchemeVariant.material.tones(Brightness.light),
+    chipColors: DistributionChipColors(
+      continuousBackground: Color.fromRGBO(232, 233, 211, 1),
+      continuousForeground: Color.fromRGBO(53, 53, 25, 1),
+      discreteBackground: Color.fromRGBO(219, 235, 234, 1),
+      discreteForeground: Color.fromRGBO(29, 48, 45, 1),
+    ),
   );
 }
 
-ThemeData darkGreenTheme({required TextTheme textTheme}) {
-  return FlexThemeData.dark(
+AppFlexThemeConfig darkGreenTheme({required TextTheme textTheme}) {
+  return AppFlexThemeConfig(
     colors: const FlexSchemeColor(
-      // Custom colors
       primary: Color(0xFFD0BCFF),
       primaryContainer: Color(0xFF1A3214),
       primaryLightRef: Color(0xFF406835),
@@ -92,6 +87,7 @@ ThemeData darkGreenTheme({required TextTheme textTheme}) {
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
       inputDecoratorRadius: 8,
+      filledButtonRadius: 12,
       inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
       inputDecoratorSchemeColor: SchemeColor.surfaceContainerHigh,
       inputDecoratorFocusedBorderWidth: 0.35,
@@ -99,16 +95,12 @@ ThemeData darkGreenTheme({required TextTheme textTheme}) {
       inputCursorSchemeColor: SchemeColor.secondary,
     ),
     keyColors: const FlexKeyColors(useTertiary: true, keepPrimaryContainer: true),
-    tones: FlexSchemeVariant.material.tones(Brightness.dark),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
-    extensions: [
-      DistributionChipColors(
-        continuousBackground: Color.fromRGBO(53, 53, 25, 1),
-        continuousForeground: Color.fromRGBO(232, 233, 211, 1),
-        discreteBackground: Color.fromRGBO(29, 48, 45, 1),
-        discreteForeground: Color.fromRGBO(219, 235, 234, 1),
-      ),
-    ],
+    defaultFlexTones: FlexSchemeVariant.material.tones(Brightness.dark),
+    chipColors: DistributionChipColors(
+      continuousBackground: Color.fromRGBO(53, 53, 25, 1),
+      continuousForeground: Color.fromRGBO(232, 233, 211, 1),
+      discreteBackground: Color.fromRGBO(29, 48, 45, 1),
+      discreteForeground: Color.fromRGBO(219, 235, 234, 1),
+    ),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_accessibility_mode.dart';
 import 'package:zobmat25_2/feature/theme/ui/my_app_flex_theme_config.dart';
@@ -20,15 +21,14 @@ class AccessibilityFlexThemeCreator {
     required AppAccessibilityMode accessibilityMode,
     required AppFlexThemeConfig flexThemeConfig,
   }) {
-    final accessibilityOn =
-        accessibilityMode == AppAccessibilityMode.on ? true : false;
-    return brightness == AccessibilityThemeCreatorBrightness.light
+    const defaultUsedColors = 6; // default calue is 6
+    final accessibilityOn = accessibilityMode == AppAccessibilityMode.on ? true : false;
+    var themeData = brightness == AccessibilityThemeCreatorBrightness.light
         ? FlexThemeData.light(
             colors: flexThemeConfig.colors,
-            surfaceMode: accessibilityOn
-                ? FlexSurfaceMode.level
-                : flexThemeConfig.surfaceMode,
-            usedColors: flexThemeConfig.usedColors,
+            surfaceMode:
+                accessibilityOn ? FlexSurfaceMode.level : flexThemeConfig.surfaceMode,
+            usedColors: flexThemeConfig.usedColors ?? defaultUsedColors,
             textTheme: accessibilityOn
                 ? flexThemeConfig.textTheme.apply(fontSizeFactor: 1.2)
                 : flexThemeConfig.textTheme,
@@ -66,10 +66,8 @@ class AccessibilityFlexThemeCreator {
                     navigationBarIndicatorRadius: 0,
                     tabBarIndicatorTopRadius: 0,
                     drawerIndicatorRadius: 0,
-                    inputDecoratorBorderSchemeColor:
-                        SchemeColor.onSurfaceVariant,
-                    inputDecoratorSchemeColor:
-                        SchemeColor.surfaceContainerLowest,
+                    inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+                    inputDecoratorSchemeColor: SchemeColor.surfaceContainerLowest,
                     inputDecoratorFocusedBorderWidth: 2,
                     inputDecoratorBorderWidth: 2,
                     inputCursorSchemeColor: SchemeColor.primary,
@@ -80,17 +78,21 @@ class AccessibilityFlexThemeCreator {
                 : FlexColorScheme.comfortablePlatformDensity,
             keyColors: flexThemeConfig.keyColors,
             tones: accessibilityOn
-                ? FlexTones.ultraContrast(brightness.toFlutterBrightness())
+                ? (flexThemeConfig.schemeVariant == null
+                    ? FlexTones.ultraContrast(brightness.toFlutterBrightness())
+                    : null)
                 : flexThemeConfig.defaultFlexTones,
             extensions: [
-                flexThemeConfig.chipColors,
-              ])
+              flexThemeConfig.chipColors,
+            ],
+            variant: flexThemeConfig.schemeVariant,
+            cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+          )
         : FlexThemeData.dark(
             colors: flexThemeConfig.colors,
-            surfaceMode: accessibilityOn
-                ? FlexSurfaceMode.level
-                : flexThemeConfig.surfaceMode,
-            usedColors: flexThemeConfig.usedColors,
+            surfaceMode:
+                accessibilityOn ? FlexSurfaceMode.level : flexThemeConfig.surfaceMode,
+            usedColors: flexThemeConfig.usedColors ?? defaultUsedColors,
             textTheme: accessibilityOn
                 ? flexThemeConfig.textTheme.apply(fontSizeFactor: 1.2)
                 : flexThemeConfig.textTheme,
@@ -128,10 +130,8 @@ class AccessibilityFlexThemeCreator {
                     navigationBarIndicatorRadius: 0,
                     tabBarIndicatorTopRadius: 0,
                     drawerIndicatorRadius: 0,
-                    inputDecoratorBorderSchemeColor:
-                        SchemeColor.onSurfaceVariant,
-                    inputDecoratorSchemeColor:
-                        SchemeColor.surfaceContainerLowest,
+                    inputDecoratorBorderSchemeColor: SchemeColor.onSurfaceVariant,
+                    inputDecoratorSchemeColor: SchemeColor.surfaceContainerLowest,
                     inputDecoratorFocusedBorderWidth: 2,
                     inputDecoratorBorderWidth: 2,
                     inputCursorSchemeColor: SchemeColor.primary,
@@ -145,7 +145,14 @@ class AccessibilityFlexThemeCreator {
                 ? FlexTones.ultraContrast(brightness.toFlutterBrightness())
                 : flexThemeConfig.defaultFlexTones,
             extensions: [
-                flexThemeConfig.chipColors,
-              ]);
+              flexThemeConfig.chipColors,
+            ],
+            cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
+          );
+
+    themeData = themeData.copyWith(
+        iconButtonTheme: IconButtonThemeData(
+            style: IconButton.styleFrom(iconSize: accessibilityOn ? 28 : null)));
+    return themeData;
   }
 }

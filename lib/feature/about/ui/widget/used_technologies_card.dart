@@ -50,7 +50,7 @@ class UsedTechnologiesCard extends StatelessWidget {
                   '[equatable](https://pub.dev/packages/equatable) (pomoc w pisaniu kodu)',
                 ),
                 hyperLink(
-                  '[shared_preferences](https://pub.dev/packages/shared_preferences) (zapisywanie danych na urządzeniu)',
+                  '[shared_preferences](https://pub.dev/packages/shared_preferences) (zapisywanie danych na urządzeniu, dzięki któremu motyw nie resetuje się po odświeżeniu strony)',
                 ),
               ],
               style: BulletStyle.dash,
@@ -58,11 +58,12 @@ class UsedTechnologiesCard extends StatelessWidget {
           ),
           Gap(5),
           hyperLink(
-            'Dużą rolę w pracy nad aplikacją odegrał [ChatGPT](https://openai.com/chatgpt/overview/), którego wykorzystałem do nauki teorii i do pracy programistycznej (tworzenie funkcji matematycznych w kodzie, ekran ładowania w HTML). Opisy rozkładów tworzyłem raczej samemu, po podstawowym zrozumieniu, jak dany rozkład działa.',
+            'Dużą rolę w pracy nad aplikacją odegrał [ChatGPT](https://openai.com/chatgpt/overview/), którego wykorzystałem do nauki teorii i do pracy programistycznej (tworzenie funkcji matematycznych w kodzie, ekran ładowania w HTML). Opisy tworzyłem raczej samemu, po zrozumieniu działania danego rozkładu.',
           ),
           Gap(15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
+            runSpacing: 10,
+            spacing: 10,
             children: [
               FilledButton.tonal(
                 style: FilledButton.styleFrom(
@@ -77,7 +78,6 @@ class UsedTechnologiesCard extends StatelessWidget {
                 },
                 child: Text('Pokaż wszystkie wykorzystane biblioteki'),
               ),
-              Gap(12),
               FilledButton.tonal(
                 style: FilledButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondaryContainer,

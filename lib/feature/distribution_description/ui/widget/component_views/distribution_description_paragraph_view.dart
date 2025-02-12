@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hyperlink/hyperlink.dart';
 import 'package:link_text/link_text.dart';
 import 'package:zobmat25_2/config/distribution_description_text_components_rendering_params.dart';
@@ -16,25 +17,27 @@ class DistributionDescriptionParagraphView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final renderingParams =
+        context.watch<DistributionDescriptionTextComponentsRenderingParams>();
+
     late Widget body;
     final textStyle = TextStyle(
-      fontSize: DistributionDescriptionTextComponentsRenderingParams.fontSize(paragraph),
-      fontFamily: DistributionDescriptionTextComponentsRenderingParams.fontFamily(
+      fontSize: renderingParams.fontSize(paragraph),
+      fontFamily: renderingParams.fontFamily(
         paragraph,
       ),
-      fontWeight: DistributionDescriptionTextComponentsRenderingParams.fontWeight(
+      fontWeight: renderingParams.fontWeight(
         paragraph,
       ),
-      fontStyle: DistributionDescriptionTextComponentsRenderingParams.fontStyle(
+      fontStyle: renderingParams.fontStyle(
         paragraph,
       ),
-      color: DistributionDescriptionTextComponentsRenderingParams.color(
+      color: renderingParams.color(
         paragraph,
         colorScheme: Theme.of(context).colorScheme,
       ),
-      letterSpacing: DistributionDescriptionTextComponentsRenderingParams.letterSpacing(),
-      wordSpacing: DistributionDescriptionTextComponentsRenderingParams.wordSpacing(),
-      height: DistributionDescriptionTextComponentsRenderingParams.height(),
+      letterSpacing: renderingParams.wordSpacing(),
+      height: renderingParams.height(),
     );
     if (paragraph.containsMarkdownLinks) {
       body = HyperLink(
@@ -48,7 +51,7 @@ class DistributionDescriptionParagraphView extends StatelessWidget {
     } else if (paragraph.websiteUrl == null) {
       body = SelectableText(
         paragraph.text,
-        textAlign: DistributionDescriptionTextComponentsRenderingParams.textAlign(
+        textAlign: renderingParams.textAlign(
           paragraph,
         ),
         style: textStyle,

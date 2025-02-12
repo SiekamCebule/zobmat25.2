@@ -16,25 +16,30 @@ class DistributionDescriptionMathExpressionView extends StatelessWidget {
     };
     final latexWidget = SelectableMath.tex(expression.data, mathStyle: mathStyle);
     if (expression.title != null) {
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Gap(5),
-            SelectableText(
-              expression.title!,
-              style: Theme.of(context).textTheme.titleMedium,
-              textAlign: TextAlign.center,
-            ),
-            Gap(5),
-            latexWidget,
-            Gap(5),
-          ],
+      return FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Gap(5),
+              SelectableText(
+                expression.title!,
+                style: Theme.of(context).textTheme.titleMedium,
+                textAlign: TextAlign.center,
+              ),
+              Gap(5),
+              latexWidget,
+              Gap(5),
+            ],
+          ),
         ),
       );
     } else {
-      return Padding(padding: EdgeInsets.only(bottom: 15), child: latexWidget);
+      return FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Padding(padding: EdgeInsets.only(bottom: 15), child: latexWidget));
     }
   }
 }

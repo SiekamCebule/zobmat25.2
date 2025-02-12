@@ -62,7 +62,7 @@ final cauchyDistributionModel = ContinuousDistributionModel(
       DistributionDescriptionMathExpression(title: 'Moda', data: r'Mo = x_0'),
       DistributionDescriptionParagraph(
         text:
-            'Mimo że znaczaco różni się od innych rozkładów, jest wykorzystywany w hydrologii (maksymalne jednodniowe opady deszczu), w fizyce jądrowej, w spektroskopii, w mechanice kwantowej, [w biologii](https://stats.stackexchange.com/a/436727). Został nawet użyty do modelowania zmian umiejętności skoczków narciarskich w grze [SJ Manager](https://github.com/SiekamCebule/sj-manager).',
+            'Mimo że znaczaco różni się od innych rozkładów, jest wykorzystywany w hydrologii (maksymalne jednodniowe opady deszczu), w fizyce jądrowej, w spektroskopii, w mechanice kwantowej, [w biologii](https://stats.stackexchange.com/a/436727). Został nawet użyty do [modelowania zmian umiejętności skoczków narciarskich](https://github.com/SiekamCebule/sj-manager/blob/93a374ded1cfe2186139fb28b05e20f2d2f7fa44/lib/features/career_mode/subfeatures/training/domain/training_engine/jumper_training_engine.dart#L67) w grze [SJ Manager](https://github.com/SiekamCebule/sj-manager).',
         containsMarkdownLinks: true,
       ),
     ],

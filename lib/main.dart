@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zobmat25_2/config/distribution_description_text_components_rendering_params.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/data/repository/in_memory_distribution_dashboard_repository.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/continuous_distribution_chart_type.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/discrete_distribution_chart_type.dart';
@@ -54,24 +56,23 @@ import 'package:zobmat25_2/feature/theme/ui/flutter_theme_creator.dart';
 
 void main() async {
   final themeRepository = CachedThemeRepository(
-    preferences: await SharedPreferences.getInstance(),
-    defaultColorScheme: AppColorScheme.green,
-    defaultThemeMode: AppThemeMode.dark,
-    defaultAccessibilityMode: AppAccessibilityMode.off
-  );
+      preferences: await SharedPreferences.getInstance(),
+      defaultColorScheme: AppColorScheme.green,
+      defaultThemeMode: AppThemeMode.dark,
+      defaultAccessibilityMode: AppAccessibilityMode.off);
   runApp(
     BlocProvider(
-      create:
-          (context) => ThemeCubit(
-            getAppThemeUseCase: GetAppThemeUseCase(themeRepository: themeRepository),
-            toggleThemeModeUseCase: ToggleThemeModeUseCase(
-              themeRepository: themeRepository,
-            ),
-            changeAppColorSchemeUseCase: ChangeAppColorSchemeUseCase(
-              themeRepository: themeRepository,
-            ),
-            toggleAppAccessibilityModeUseCase: ToggleAppAccessibilityMode(themeRepository: themeRepository),
-          )..initialize(),
+      create: (context) => ThemeCubit(
+        getAppThemeUseCase: GetAppThemeUseCase(themeRepository: themeRepository),
+        toggleThemeModeUseCase: ToggleThemeModeUseCase(
+          themeRepository: themeRepository,
+        ),
+        changeAppColorSchemeUseCase: ChangeAppColorSchemeUseCase(
+          themeRepository: themeRepository,
+        ),
+        toggleAppAccessibilityModeUseCase:
+            ToggleAppAccessibilityMode(themeRepository: themeRepository),
+      )..initialize(),
       child: const App(),
     ),
   );
@@ -114,106 +115,121 @@ class App extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create:
-                (context) => NavigationCubit(
-                  goToNavigationEntryUseCase: GoToNavigationEntryUseCase(
-                    navigationRepository: navigationRepository,
-                  ),
-                  goToNavigationEntryIndexUseCase: GoToNavigationEntryIndexUseCase(
-                    navigationRepository: navigationRepository,
-                  ),
-                  getNavigationEntryUseCase: GetNavigationEntryUseCase(
-                    navigationRepository: navigationRepository,
-                  ),
-                )..initialize(),
+            create: (context) => NavigationCubit(
+              goToNavigationEntryUseCase: GoToNavigationEntryUseCase(
+                navigationRepository: navigationRepository,
+              ),
+              goToNavigationEntryIndexUseCase: GoToNavigationEntryIndexUseCase(
+                navigationRepository: navigationRepository,
+              ),
+              getNavigationEntryUseCase: GetNavigationEntryUseCase(
+                navigationRepository: navigationRepository,
+              ),
+            )..initialize(),
           ),
           BlocProvider(
-            create:
-                (context) => DistributionsCatalogueCubit(
-                  getAllDistributionsUseCase: GetAllDistributionsUseCase(
-                    distributionsRepository: distributionsRepository,
-                  ),
-                  getFilteredDistributionsUseCase: GetFilteredDistributionsUseCase(
-                    distributionsRepository: distributionsRepository,
-                    distributionFiltersRepository: distributionFiltersRepository,
-                  ),
-                  getDistributionFiltersUseCase: GetDistributionFiltersUseCase(
-                    distributionFiltersRepository: distributionFiltersRepository,
-                  ),
-                  toggleDistributionsFilterUseCase: ToggleDistributionsFilterUseCase(
-                    distributionsRepository: distributionsRepository,
-                    distributionFiltersRepository: distributionFiltersRepository,
-                  ),
-                )..initialize(),
+            create: (context) => DistributionsCatalogueCubit(
+              getAllDistributionsUseCase: GetAllDistributionsUseCase(
+                distributionsRepository: distributionsRepository,
+              ),
+              getFilteredDistributionsUseCase: GetFilteredDistributionsUseCase(
+                distributionsRepository: distributionsRepository,
+                distributionFiltersRepository: distributionFiltersRepository,
+              ),
+              getDistributionFiltersUseCase: GetDistributionFiltersUseCase(
+                distributionFiltersRepository: distributionFiltersRepository,
+              ),
+              toggleDistributionsFilterUseCase: ToggleDistributionsFilterUseCase(
+                distributionsRepository: distributionsRepository,
+                distributionFiltersRepository: distributionFiltersRepository,
+              ),
+            )..initialize(),
           ),
           BlocProvider(
-            create:
-                (context) => DistributionDashboardCubit(
-                  getSelectedDistributionUseCase: GetSelectedDistributionUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                  toggleDistributionSelectionUseCase: ToggleDistributionSelectionUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                  getContinuousDistributionChartTypeUseCase:
-                      GetContinuousDistributionChartTypeUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  changeContinuousDistributionChartTypeUseCase:
-                      ChangeContinuousDistributionChartTypeUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  getDiscreteDistributionChartTypeUseCase:
-                      GetDiscreteDistributionChartTypeUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  changeDiscreteDistributionChartTypeUseCase:
-                      ChangeDiscreteDistributionChartTypeUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  getDistributionKnowledgeViewTypeUseCase:
-                      GetDistributionKnowledgeViewTypeUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  changeDistributionKnowledgeViewTypeUseCase:
-                      ChangeDistributionKnowledgeViewTypeUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  getDistributionParamsSetupUseCase: GetDistributionParamsSetupUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                  changeDistributionParameterInSetupUseCase:
-                      ChangeDistributionParameterInSetupUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  initializeDistributionAnalysisSetupUseCase:
-                      InitializeDistributionAnalysisSetupUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  getDistributionAnalysisSetupUseCase:
-                      GetDistributionAnalysisSetupUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  drawNumbersByDistributionUseCase: DrawNumbersByDistributionUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                  clearDistributionAnalysisUseCase: ClearDistributionAnalysisUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                  getDistributionAnalysisUseCase: GetDistributionAnalysisUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                  changeDistributionAnalysisParameterUseCase:
-                      ChangeDistributionAnalysisParameterUseCase(
-                        distributionDashboard: distributionDashboard,
-                      ),
-                  updateDistributionAnalysisUseCase: UpdateDistributionAnalysisUseCase(
-                    distributionDashboard: distributionDashboard,
-                  ),
-                )..initialize(),
+            create: (context) => DistributionDashboardCubit(
+              getSelectedDistributionUseCase: GetSelectedDistributionUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              toggleDistributionSelectionUseCase: ToggleDistributionSelectionUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              getContinuousDistributionChartTypeUseCase:
+                  GetContinuousDistributionChartTypeUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              changeContinuousDistributionChartTypeUseCase:
+                  ChangeContinuousDistributionChartTypeUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              getDiscreteDistributionChartTypeUseCase:
+                  GetDiscreteDistributionChartTypeUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              changeDiscreteDistributionChartTypeUseCase:
+                  ChangeDiscreteDistributionChartTypeUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              getDistributionKnowledgeViewTypeUseCase:
+                  GetDistributionKnowledgeViewTypeUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              changeDistributionKnowledgeViewTypeUseCase:
+                  ChangeDistributionKnowledgeViewTypeUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              getDistributionParamsSetupUseCase: GetDistributionParamsSetupUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              changeDistributionParameterInSetupUseCase:
+                  ChangeDistributionParameterInSetupUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              initializeDistributionAnalysisSetupUseCase:
+                  InitializeDistributionAnalysisSetupUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              getDistributionAnalysisSetupUseCase: GetDistributionAnalysisSetupUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              drawNumbersByDistributionUseCase: DrawNumbersByDistributionUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              clearDistributionAnalysisUseCase: ClearDistributionAnalysisUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              getDistributionAnalysisUseCase: GetDistributionAnalysisUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              changeDistributionAnalysisParameterUseCase:
+                  ChangeDistributionAnalysisParameterUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+              updateDistributionAnalysisUseCase: UpdateDistributionAnalysisUseCase(
+                distributionDashboard: distributionDashboard,
+              ),
+            )..initialize(),
           ),
         ],
-        child: DynamicPage(),
+        child: MultiProvider(providers: [
+          ProxyProvider<ThemeCubit, DistributionDescriptionTextComponentsRenderingParams>(
+            lazy: false,
+            update: (context, themeCubit, renderingParams) {
+              late double textScaleFactor;
+              final themeState = themeCubit.state;
+              if (themeState is ThemeInitial) {
+                textScaleFactor = 1.0;
+              } else if (themeState is ThemeAvaiable) {
+                if (themeState.theme.accessibilityMode == AppAccessibilityMode.on) {
+                  textScaleFactor = 1.2;
+                } else {
+                  textScaleFactor = 1.0;
+                }
+              }
+              return DistributionDescriptionTextComponentsRenderingParams(
+                  textScaleFactor: textScaleFactor);
+            },
+          ),
+        ], child: DynamicPage()),
       ),
     );
   }

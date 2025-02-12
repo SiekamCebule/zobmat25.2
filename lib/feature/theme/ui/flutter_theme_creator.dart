@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/blue_theme.dart';
-import 'package:zobmat25_2/feature/theme/data/available_themes/experimental_accessibility_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/green_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/purple_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/orange_theme.dart';
@@ -20,37 +19,27 @@ class FlutterThemeCreator {
     _appTheme = appTheme;
     final textTheme = _getTextTheme();
 
-    return AccessibilityFlexThemeCreator().create(
+    _themeData = AccessibilityFlexThemeCreator().create(
         brightness: appTheme.themeMode.toAccessibilityCreatorBrightness(),
         accessibilityMode: appTheme.accessibilityMode,
-        flexThemeConfig: switch(appTheme.themeMode) {
-          AppThemeMode.light => switch(appTheme.colorScheme) {
-            AppColorScheme.orange => lightOrangeTheme(textTheme: textTheme),
-            _ => throw UnimplementedError(),
-          },
-          _ => throw UnimplementedError(), 
+        flexThemeConfig: switch (appTheme.themeMode) {
+          AppThemeMode.light => switch (appTheme.colorScheme) {
+              AppColorScheme.orange => lightOrangeTheme(textTheme: textTheme),
+              AppColorScheme.green => lightGreenTheme(textTheme: textTheme),
+              AppColorScheme.purple => lightPurpleTheme(textTheme: textTheme),
+              AppColorScheme.blue => lightBlueTheme(textTheme: textTheme),
+              AppColorScheme.yellow => lightYellowTheme(textTheme: textTheme),
+              AppColorScheme.monochrome => lightMonochromeTheme(textTheme: textTheme),
+            },
+          AppThemeMode.dark => switch (appTheme.colorScheme) {
+              AppColorScheme.orange => darkOrangeTheme(textTheme: textTheme),
+              AppColorScheme.green => darkGreenTheme(textTheme: textTheme),
+              AppColorScheme.purple => darkPurpleTheme(textTheme: textTheme),
+              AppColorScheme.blue => darkBlueTheme(textTheme: textTheme),
+              AppColorScheme.yellow => darkYellowTheme(textTheme: textTheme),
+              AppColorScheme.monochrome => darkMonochromeTheme(textTheme: textTheme),
+            },
         });
-    if (appTheme.accessibilityMode == AppAccessibilityMode.on) {
-      return experimentalAccessibilityTheme(textTheme: textTheme);
-    } else if (appTheme.themeMode == AppThemeMode.light) {
-      _themeData = switch (appTheme.colorScheme) {
-        AppColorScheme.orange => lightOrangeTheme(textTheme: textTheme),
-        AppColorScheme.green => lightGreenTheme(textTheme: textTheme),
-        AppColorScheme.purple => lightPurpleTheme(textTheme: textTheme),
-        AppColorScheme.blue => lightBlueTheme(textTheme: textTheme),
-        AppColorScheme.yellow => lightYellowTheme(textTheme: textTheme),
-        AppColorScheme.monochrome => lightMonochromeTheme(textTheme: textTheme),
-      };
-    } else {
-      _themeData = switch (appTheme.colorScheme) {
-        AppColorScheme.orange => darkOrangeTheme(textTheme: textTheme),
-        AppColorScheme.green => darkGreenTheme(textTheme: textTheme),
-        AppColorScheme.purple => darkPurpleTheme(textTheme: textTheme),
-        AppColorScheme.blue => darkBlueTheme(textTheme: textTheme),
-        AppColorScheme.yellow => darkYellowTheme(textTheme: textTheme),
-        AppColorScheme.monochrome => darkMonochromeTheme(textTheme: textTheme),
-      };
-    }
     return _themeData;
   }
 

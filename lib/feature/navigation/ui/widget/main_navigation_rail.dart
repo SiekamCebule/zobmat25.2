@@ -79,45 +79,37 @@ class MainNavigationRail extends StatelessWidget {
                       items: [
                         PopupMenuItem(
                           child: Text('Zieleń'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                          onTap: () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.green,
                               ),
                         ),
                         PopupMenuItem(
                           child: Text('Błękit'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                          onTap: () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.blue,
                               ),
                         ),
                         PopupMenuItem(
                           child: Text('Żółć'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                          onTap: () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.yellow,
                               ),
                         ),
                         PopupMenuItem(
                           child: Text('Fiolet'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                          onTap: () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.purple,
                               ),
                         ),
-
                         PopupMenuItem(
                           child: Text('Pomarańcz'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                          onTap: () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.orange,
                               ),
                         ),
-
                         PopupMenuItem(
                           child: Text('Czerń i biel'),
-                          onTap:
-                              () => context.read<ThemeCubit>().changeAppColorScheme(
+                          onTap: () => context.read<ThemeCubit>().changeAppColorScheme(
                                 AppColorScheme.monochrome,
                               ),
                         ),
@@ -130,10 +122,9 @@ class MainNavigationRail extends StatelessWidget {
             ),
             Gap(15),
             IconButton.outlined(
-              tooltip:
-                  themeState.theme.themeMode == AppThemeMode.light
-                      ? 'Włącz tryb ciemny'
-                      : 'Włącz tryb jasny',
+              tooltip: themeState.theme.themeMode == AppThemeMode.light
+                  ? 'Włącz tryb ciemny'
+                  : 'Włącz tryb jasny',
               onPressed: () {
                 context.read<ThemeCubit>().toggleThemeMode();
               },
@@ -145,10 +136,10 @@ class MainNavigationRail extends StatelessWidget {
             ),
             Gap(15),
             IconButton.outlined(
-              tooltip:
-                  themeState.theme.accessibilityMode == AppAccessibilityMode.off
-                      ? 'Włącz tryb dostępności'
-                      : 'Wyłącz tryb dostępności',
+              isSelected: themeState.theme.accessibilityMode == AppAccessibilityMode.on,
+              tooltip: themeState.theme.accessibilityMode == AppAccessibilityMode.off
+                  ? 'Włącz tryb dostępności'
+                  : 'Wyłącz tryb dostępności',
               onPressed: () {
                 context.read<ThemeCubit>().toggleAppAccessibilityMode();
               },
@@ -157,7 +148,6 @@ class MainNavigationRail extends StatelessWidget {
               ),
             ),
           ],
-
           const Gap(20),
         ],
       ),

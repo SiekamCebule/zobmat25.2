@@ -25,135 +25,143 @@ class _HomePageState extends State<HomePage> {
     }
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Gap(70),
-          Text(
-            'Czy chcesz dowiedzieć się czegoś',
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center,
-          ),
-          GradientText(
-            'o rozkładach prawdopodobieństwa?',
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center,
-            gradientType: GradientType.linear,
-            colors: [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.secondary,
-            ],
-          ),
-          Gap(30),
-          ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 580),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      body: SizedBox.expand(
+        child: FittedBox(
+          alignment: Alignment.topCenter,
+          fit: BoxFit.scaleDown,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Gap(70),
+              Text(
+                'Czy chcesz dowiedzieć się czegoś',
+                style: Theme.of(context).textTheme.displayMedium,
+                textAlign: TextAlign.center,
+              ),
+              GradientText(
+                'o rozkładach prawdopodobieństwa?',
+                style: Theme.of(context).textTheme.displayMedium,
+                textAlign: TextAlign.center,
+                gradientType: GradientType.linear,
+                colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.secondary,
+                ],
+              ),
+              Gap(30),
+              ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 580),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Co znajdziesz na stronie?',
-                            style: Theme.of(
-                              context,
-                            ).textTheme.titleMedium!.copyWith(fontSize: 18),
-                            textAlign: TextAlign.center,
-                          ),
-                          Gap(10),
-                          SuperBulletList(
-                            style: BulletStyle.dash,
-                            crossAxisMargin: 0,
-                            gap: 8,
-                            separator: Gap(10),
-                            items: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
                               Text(
-                                'Opisy $distributionsCount rozkładów prawdopodobieństwa, a także ich zastosowania',
+                                'Co znajdziesz na stronie?',
+                                style: Theme.of(
+                                  context,
+                                )
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(fontWeight: FontWeight.w600),
+                                textAlign: TextAlign.center,
                               ),
-                              Text(
-                                'Wykresy funkcji gęstości i funkcji rozkładu skumulowanego',
-                              ),
-                              Text('Możliwość wylosowania liczb wg rozkładu'),
-                              Text('Odnośniki do stron internetowych, mogące posłużyć do zgłębienia używanych pojęć'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Gap(20),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Czego nie znajdziesz na stronie?',
-                            style: Theme.of(
-                              context,
-                            ).textTheme.titleMedium!.copyWith(fontSize: 18),
-                            textAlign: TextAlign.center,
-                          ),
-                          Gap(10),
-                          SuperBulletList(
-                            style: BulletStyle.dash,
-                            crossAxisMargin: 0,
-                            gap: 8,
-                            separator: Gap(10),
-                            items: [
-                              Text.rich(TextSpan(children: [
-                                TextSpan(text: 'Bardziej zaawansowanych zagadnień, takich jak: kurtoza, skośność rozkładu, funkcja tworząca momenty i entropia'),
-                              ])),
-                              Text(
-                                'Doskonałych wykresów funkcji gęstości (często "wariują" one przy skrajnych wartościach parametrów)',
+                              Gap(10),
+                              SuperBulletList(
+                                style: BulletStyle.dash,
+                                crossAxisMargin: 0,
+                                gap: 8,
+                                separator: Gap(10),
+                                items: [
+                                  Text(
+                                    'Opisy $distributionsCount rozkładów prawdopodobieństwa, a także ich zastosowania',
+                                  ),
+                                  Text(
+                                    'Wykresy funkcji gęstości i funkcji rozkładu skumulowanego',
+                                  ),
+                                  Text('Możliwość wylosowania liczb wg rozkładu'),
+                                  Text(
+                                      'Odnośniki do stron internetowych, mogące posłużyć do zgłębienia używanych pojęć'),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        Gap(20),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Czego nie znajdziesz na stronie?',
+                                style: Theme.of(
+                                  context,
+                                )
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(fontWeight: FontWeight.w600),
+                                textAlign: TextAlign.center,
+                              ),
+                              Gap(10),
+                              SuperBulletList(
+                                style: BulletStyle.dash,
+                                crossAxisMargin: 0,
+                                gap: 8,
+                                separator: Gap(10),
+                                items: [
+                                  Text.rich(TextSpan(children: [
+                                    TextSpan(
+                                        text:
+                                            'Bardziej zaawansowanych zagadnień, takich jak: kurtoza, skośność rozkładu, funkcja tworząca momenty i entropia'),
+                                  ])),
+                                  Text(
+                                    'Wszystkich odkrytych rozkładów prawdopodobieństwa (jest ich naprawdę wiele!)',
+                                  ),
+                                  Text(
+                                    'Doskonałych wykresów funkcji gęstości (często "wariują" one przy skrajnych wartościach parametrów)',
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
-          ),
-          Gap(15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              /*Tooltip(
-                message: 'Jeszcze nad tym pracujemy...',
-                child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),
-                    shape: StadiumBorder(),
+              ),
+              Gap(15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Gap(350),
+                  FilledButton(
+                    style: FilledButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),
+                      //shape: StadiumBorder(),
+                      //shape:
+                      //   RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    ),
+                    onPressed: () {
+                      context.read<NavigationCubit>().goTo(
+                            NavigationEntry.distributionsCatalogue,
+                          );
+                    },
+                    child: Text('Przejdź do katalogu'),
                   ),
-                  onPressed: null, // TODO
-
-                  child: Text('Ale... czym w ogóle są te rozkłady?'),
-                ),
+                ],
               ),
-              Gap(20),*/
-              Gap(350),
-              FilledButton(
-                style: FilledButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 35),
-                  shape: StadiumBorder(),
-                ),
-                onPressed: () {
-                  context.read<NavigationCubit>().goTo(
-                        NavigationEntry.distributionsCatalogue,
-                      );
-                },
-                child: Text('Przejdź do katalogu'),
-              ),
+              Gap(15),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

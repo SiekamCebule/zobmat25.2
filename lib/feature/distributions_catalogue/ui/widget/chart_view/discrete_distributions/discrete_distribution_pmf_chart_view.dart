@@ -12,9 +12,8 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dashboardState =
-        context.watch<DistributionDashboardCubit>().state
-            as DistributionDashboardDistributionSelected;
+    final dashboardState = context.watch<DistributionDashboardCubit>().state
+        as DistributionDashboardDistributionSelected;
 
     num pmf(int k) {
       return distribution.functions.pmf(k, dashboardState.paramsSetup);
@@ -55,7 +54,7 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
               maxIncluded: false,
               minIncluded: false,
               showTitles: true,
-              reservedSize: 30,
+              reservedSize: 35,
               getTitlesWidget: (value, meta) {
                 final step = (chartRange.$2 / 15).ceil(); // Maksymalnie 20 etykiet
                 if (value % step == 0) {

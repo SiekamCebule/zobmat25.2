@@ -13,9 +13,8 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dashboardState =
-        context.watch<DistributionDashboardCubit>().state
-            as DistributionDashboardDistributionSelected;
+    final dashboardState = context.watch<DistributionDashboardCubit>().state
+        as DistributionDashboardDistributionSelected;
 
     num cdf(int x) {
       return distribution.functions.cdf(x, dashboardState.paramsSetup);
@@ -30,10 +29,9 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
         borderData: FlBorderData(show: false),
         lineBarsData: [
           LineChartBarData(
-            spots:
-                values.keys
-                    .map((x) => FlSpot(x.toDouble(), values[x]!.toDouble()))
-                    .toList(),
+            spots: values.keys
+                .map((x) => FlSpot(x.toDouble(), values[x]!.toDouble()))
+                .toList(),
             isCurved: false,
             color: DistributionChartSharedComponents.chartColor(context),
             barWidth: 2,
@@ -83,7 +81,7 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
             sideTitles: SideTitles(
               showTitles: true,
               //interval: (maxX - minX) / 7,
-              reservedSize: 28,
+              reservedSize: 35,
               minIncluded: true,
               maxIncluded: true,
             ),

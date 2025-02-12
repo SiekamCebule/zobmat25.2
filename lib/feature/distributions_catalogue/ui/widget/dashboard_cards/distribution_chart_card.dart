@@ -34,16 +34,15 @@ class _DistributionChartCardState extends State<DistributionChartCard> {
     late Widget chartWidget;
     if (dashboardIsAvaiable) {
       distribution = dashboardState.distribution;
-      chartWidget =
-          distribution is ContinuousDistribution
-              ? ContinuousDistributionChartView(
-                distribution: distribution,
-                chartType: dashboardState.continuousChartType,
-              )
-              : DiscreteDistributionChartView(
-                distribution: distribution as DiscreteDistribution,
-                chartType: dashboardState.discreteChartType,
-              );
+      chartWidget = distribution is ContinuousDistribution
+          ? ContinuousDistributionChartView(
+              distribution: distribution,
+              chartType: dashboardState.continuousChartType,
+            )
+          : DiscreteDistributionChartView(
+              distribution: distribution as DiscreteDistribution,
+              chartType: dashboardState.discreteChartType,
+            );
     }
 
     return Card(
@@ -72,7 +71,7 @@ class _DistributionChartCardState extends State<DistributionChartCard> {
                       DistributionChartTypeSegmentedButton(),
                       Spacer(),
                       ShowDistributionAnalysisIconButton(
-                        selected: _analysisEnabled,
+                        isSelected: _analysisEnabled,
                         onSelectionChange: (selected) async {
                           if (!selected) {
                             await context
@@ -88,6 +87,7 @@ class _DistributionChartCardState extends State<DistributionChartCard> {
                           });
                         },
                       ),
+                      Gap(5),
                       DrawNumbersByDistributionIconButton(),
                     ],
                   ),

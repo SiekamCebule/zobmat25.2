@@ -14,11 +14,11 @@ class AboutAuthorCard extends StatelessWidget {
         children: [
           HyperLink(
             text:
-                'Nazywam się Konrad Król i w chwili tworzenia strony uczęszczam do [III Liceum Ogólnokształcącego im. Stefana Batorego w Chorzowie](https://www.facebook.com/3LoBatoryChorzow). Od kilku lat interesuję się programowaniem. Jestem też fanem skoków narciarskich, i to w komputerowych symulacjach skoków widzę zastosowanie rozkładów prawdopodobieństwa. Najserdeczniej pozdrawiam mojego nauczyciela matematyki, profesora Jarosława Żaka.',
+                'Nazywam się Konrad Król i w chwili tworzenia strony uczęszczam do [III Liceum Ogólnokształcącego im. Stefana Batorego w Chorzowie](https://www.facebook.com/3LoBatoryChorzow). Od kilku lat interesuję się programowaniem. Jestem też fanem skoków narciarskich, i to w komputerowych symulacjach tej dyscypliny widzę zastosowanie rozkładów prawdopodobieństwa (takową grę typu "manager", wykorzystującą rozkłady prawdopodobieństwa, [zacząłem nawet tworzyć](https://github.com/SiekamCebule/sj-manager)). Najserdeczniej pozdrawiam mojego nauczyciela matematyki, Pana Jarosława Żaka.',
             textStyle: Theme.of(context).textTheme.bodyMedium,
             linkStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-            ),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
           Gap(20),
         ],

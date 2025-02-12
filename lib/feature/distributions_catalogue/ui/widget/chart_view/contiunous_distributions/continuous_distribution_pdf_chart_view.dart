@@ -67,7 +67,6 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
             dotData: FlDotData(show: false),
           ),
         ],
-
         gridData: FlGridData(
           drawHorizontalLine: true,
           drawVerticalLine: true,
@@ -103,7 +102,7 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
             sideTitles: SideTitles(
               showTitles: true,
               interval: (maxX - minX) / 7,
-              reservedSize: 28,
+              reservedSize: 35,
               minIncluded: false,
               maxIncluded: false,
             ),
@@ -120,8 +119,8 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
         baselineY: 0,
         lineTouchData: LineTouchData(
           touchTooltipData: LineTouchTooltipData(
-            getTooltipColor:
-                (touchedSpot) => DistributionChartSharedComponents.tooltipColor(context),
+            getTooltipColor: (touchedSpot) =>
+                DistributionChartSharedComponents.tooltipColor(context),
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((lineBarSpot) {
                 late String text;
