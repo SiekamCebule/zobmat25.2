@@ -88,7 +88,7 @@ final hypergeometricDistributionModel = DiscreteDistributionModel(
       ),
       DistributionDescriptionParagraph(
         text:
-            'Za pomocą rozkładu hipergeometrycznego możemy obliczyć swoje szanse na trafienie "szóstki" w lotto, szanse na otrzymanie określonej kombinacji kart w pokerze, szanse na trafienie n liczb w grze Keno. Rozkład hipergeometryczny jest powszechnie stosowany w kontroli jakości a także w elektrochemii (dowiedz się więcej [tutaj](https://www.statisticshowto.com/hypergeometric-distribution-examples/)).',
+            'Za pomocą rozkładu hipergeometrycznego możemy obliczyć swoje szanse na trafienie "szóstki" w lotto, szanse na otrzymanie określonej kombinacji kart w pokerze, szanse na trafienie n liczb w grze Keno. Rozkład hipergeometryczny jest powszechnie stosowany w kontroli jakości, a także w elektrochemii (dowiedz się więcej [tutaj](https://www.statisticshowto.com/hypergeometric-distribution-examples/)).',
         containsMarkdownLinks: true,
       ),
     ],

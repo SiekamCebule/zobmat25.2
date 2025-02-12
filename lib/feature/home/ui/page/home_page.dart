@@ -4,7 +4,6 @@ import 'package:gap/gap.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:super_bullet_list/bullet_list.dart';
 import 'package:super_bullet_list/bullet_style.dart';
-import 'package:zobmat25_2/core/shared_ui/navigation_link_text_button.dart';
 import 'package:zobmat25_2/feature/distributions_catalogue/ui/bloc/distributions_catalogue_cubit.dart';
 import 'package:zobmat25_2/feature/navigation/domain/entity/navigation_entry.dart';
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
@@ -31,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Gap(70),
           Text(
-            'Czy chcesz dowiedzieć się czegoś...',
+            'Czy chcesz dowiedzieć się czegoś',
             style: Theme.of(context).textTheme.displayMedium,
             textAlign: TextAlign.center,
           ),
@@ -56,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Expanded(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                             style: Theme.of(
                               context,
                             ).textTheme.titleMedium!.copyWith(fontSize: 18),
-                            textAlign: TextAlign.start,
+                            textAlign: TextAlign.center,
                           ),
                           Gap(10),
                           SuperBulletList(
@@ -73,31 +73,13 @@ class _HomePageState extends State<HomePage> {
                             separator: Gap(10),
                             items: [
                               Text(
-                                'Opisy $distributionsCount rozkładów prawdopodobieństwa, wraz z ich zastosowaniami',
+                                'Opisy $distributionsCount rozkładów prawdopodobieństwa, a także ich zastosowania',
                               ),
                               Text(
-                                'Wykresy funkcji gęstości i wykresy funkcji rozkładu skumulowanego',
+                                'Wykresy funkcji gęstości i funkcji rozkładu skumulowanego',
                               ),
                               Text('Możliwość wylosowania liczb wg rozkładu'),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'Odnośniki do stron internetowych, służące do głebszego zgłębienia pojęć. Odnośniki znajdują się w niektórych opisach i w sekcji ',
-                                    ),
-                                    WidgetSpan(
-                                      baseline: TextBaseline.alphabetic,
-                                      alignment: PlaceholderAlignment.middle,
-                                      child: NavigationLinkTextButton(
-                                        text: '"O stronie"',
-                                        navigationEntry: NavigationEntry.about,
-                                      ),
-                                    ),
-                                    TextSpan(text: ''),
-                                  ],
-                                ),
-                              ),
+                              Text('Odnośniki do stron internetowych, mogące posłużyć do zgłębienia używanych pojęć'),
                             ],
                           ),
                         ],
@@ -106,14 +88,15 @@ class _HomePageState extends State<HomePage> {
                     Gap(20),
                     Expanded(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Czego NIE znajdziesz na stronie?',
+                            'Czego nie znajdziesz na stronie?',
                             style: Theme.of(
                               context,
                             ).textTheme.titleMedium!.copyWith(fontSize: 18),
-                            textAlign: TextAlign.start,
+                            textAlign: TextAlign.center,
                           ),
                           Gap(10),
                           SuperBulletList(
@@ -122,11 +105,11 @@ class _HomePageState extends State<HomePage> {
                             gap: 8,
                             separator: Gap(10),
                             items: [
+                              Text.rich(TextSpan(children: [
+                                TextSpan(text: 'Bardziej zaawansowanych zagadnień, takich jak: kurtoza, skośność rozkładu, funkcja tworząca momenty i entropia'),
+                              ])),
                               Text(
-                                'Bardziej zaawansowanych zagadnień, takich jak funkcja n rzędu, kurtoza, czy współczynnik skośności.',
-                              ),
-                              Text(
-                                'Wykresy PDF często "wariują" przy skrajnych wartościach parametrów (szczególnie rozkład beta i rozkład chi-kwadrat)',
+                                'Doskonałych wykresów funkcji gęstości (często wariują one przy skrajnych wartościach parametrów)',
                               ),
                             ],
                           ),
