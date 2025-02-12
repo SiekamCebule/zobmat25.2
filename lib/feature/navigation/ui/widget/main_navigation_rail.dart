@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_accessibility_mode.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
 import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
@@ -140,6 +141,19 @@ class MainNavigationRail extends StatelessWidget {
                 themeState.theme.themeMode == AppThemeMode.light
                     ? Symbols.dark_mode_rounded
                     : Symbols.light_mode_rounded,
+              ),
+            ),
+            Gap(15),
+            IconButton.outlined(
+              tooltip:
+                  themeState.theme.accessibilityMode == AppAccessibilityMode.off
+                      ? 'Włącz tryb dostępności'
+                      : 'Wyłącz tryb dostępności',
+              onPressed: () {
+                context.read<ThemeCubit>().toggleAppAccessibilityMode();
+              },
+              icon: Icon(
+                Symbols.accessibility_new_rounded,
               ),
             ),
           ],

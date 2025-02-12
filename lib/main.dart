@@ -42,10 +42,12 @@ import 'package:zobmat25_2/feature/navigation/domain/use_case/go_to_navigation_e
 import 'package:zobmat25_2/feature/navigation/ui/bloc/navigation_cubit.dart';
 import 'package:zobmat25_2/feature/navigation/ui/page/dynamic_page.dart';
 import 'package:zobmat25_2/feature/theme/data/repository/cached_theme_repository.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_accessibility_mode.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
 import 'package:zobmat25_2/feature/theme/domain/use_cases/change_app_color_scheme_use_case.dart';
 import 'package:zobmat25_2/feature/theme/domain/use_cases/get_app_theme_use_case.dart';
+import 'package:zobmat25_2/feature/theme/domain/use_cases/toggle_app_accessibility_mode.dart';
 import 'package:zobmat25_2/feature/theme/domain/use_cases/toggle_theme_mode_use_case.dart';
 import 'package:zobmat25_2/feature/theme/ui/bloc/theme_cubit.dart';
 import 'package:zobmat25_2/feature/theme/ui/flutter_theme_creator.dart';
@@ -55,6 +57,7 @@ void main() async {
     preferences: await SharedPreferences.getInstance(),
     defaultColorScheme: AppColorScheme.green,
     defaultThemeMode: AppThemeMode.dark,
+    defaultAccessibilityMode: AppAccessibilityMode.off
   );
   runApp(
     BlocProvider(
@@ -67,6 +70,7 @@ void main() async {
             changeAppColorSchemeUseCase: ChangeAppColorSchemeUseCase(
               themeRepository: themeRepository,
             ),
+            toggleAppAccessibilityModeUseCase: ToggleAppAccessibilityMode(themeRepository: themeRepository),
           )..initialize(),
       child: const App(),
     ),

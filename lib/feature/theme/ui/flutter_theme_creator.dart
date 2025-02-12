@@ -1,20 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/blue_theme.dart';
+import 'package:zobmat25_2/feature/theme/data/available_themes/experimental_accessibility_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/green_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/purple_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/orange_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/monochrome_theme.dart';
 import 'package:zobmat25_2/feature/theme/data/available_themes/yellow_theme.dart';
+import 'package:zobmat25_2/feature/theme/domain/entities/app_accessibility_mode.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_color_scheme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme.dart';
 import 'package:zobmat25_2/feature/theme/domain/entities/app_theme_mode.dart';
+import 'package:zobmat25_2/feature/theme/ui/accessibility_theme_creator.dart';
 
 class FlutterThemeCreator {
   late ThemeData _themeData;
+  late AppTheme _appTheme;
 
   ThemeData createFlutterTheme(AppTheme appTheme) {
+    _appTheme = appTheme;
     final textTheme = _getTextTheme();
-    if (appTheme.themeMode == AppThemeMode.light) {
+
+    return AccessibilityFlexThemeCreator().create(
+        brightness: appTheme.themeMode.toAccessibilityCreatorBrightness(),
+        accessibilityMode: appTheme.accessibilityMode,
+        flexThemeConfig: switch(appTheme.themeMode) {
+          AppThemeMode.light => switch(appTheme.colorScheme) {
+            AppColorScheme.orange => lightOrangeTheme(textTheme: textTheme),
+            _ => throw UnimplementedError(),
+          },
+          _ => throw UnimplementedError(), 
+        });
+    if (appTheme.accessibilityMode == AppAccessibilityMode.on) {
+      return experimentalAccessibilityTheme(textTheme: textTheme);
+    } else if (appTheme.themeMode == AppThemeMode.light) {
       _themeData = switch (appTheme.colorScheme) {
         AppColorScheme.orange => lightOrangeTheme(textTheme: textTheme),
         AppColorScheme.green => lightGreenTheme(textTheme: textTheme),
@@ -231,7 +249,11 @@ class FlutterThemeCreator {
   }
 
   TextTheme _getTextTheme() {
-    return _getRalewayTextTheme();
+    var textTheme = _getRalewayTextTheme();
+    if (_appTheme.accessibilityMode == AppAccessibilityMode.on) {
+      textTheme = textTheme.apply(fontSizeFactor: 1.2);
+    }
+    return textTheme;
     // return _getPoppinsTextTheme();
   }
 }

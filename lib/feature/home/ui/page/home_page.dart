@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                                 TextSpan(text: 'Bardziej zaawansowanych zagadnień, takich jak: kurtoza, skośność rozkładu, funkcja tworząca momenty i entropia'),
                               ])),
                               Text(
-                                'Doskonałych wykresów funkcji gęstości (często wariują one przy skrajnych wartościach parametrów)',
+                                'Doskonałych wykresów funkcji gęstości (często "wariują" one przy skrajnych wartościach parametrów)',
                               ),
                             ],
                           ),

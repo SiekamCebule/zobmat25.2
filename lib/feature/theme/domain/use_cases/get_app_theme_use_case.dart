@@ -10,6 +10,7 @@ class GetAppThemeUseCase {
     return AppTheme(
       colorScheme: await themeRepository.getColorScheme(),
       themeMode: await themeRepository.getThemeMode(),
+      accessibilityMode: await themeRepository.getAccessibilityMode(),
     );
   }
 }
