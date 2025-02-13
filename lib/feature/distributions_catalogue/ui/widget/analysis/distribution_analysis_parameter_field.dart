@@ -12,11 +12,13 @@ class DistributionAnalysisParameterField extends StatefulWidget {
     required this.initialValue,
     required this.analysisComponent,
     required this.analysisParameter,
+    required this.focusNode,
   });
 
   final DistributionAnalysisParameterValue initialValue;
   final DistributionAnalysisComponent analysisComponent;
   final DistributionAnalysisParameter analysisParameter;
+  final FocusNode focusNode;
 
   @override
   State<DistributionAnalysisParameterField> createState() =>
@@ -57,8 +59,9 @@ class _DistributionAnalysisParameterFieldState
       child: TextFormField(
         key: _formKey,
         controller: _controller,
-        onEditingComplete: () => _onTextFieldChange(),
-        onFieldSubmitted: (value) => _onTextFieldChange(),
+        focusNode: widget.focusNode,
+        onEditingComplete: _onTextFieldChange,
+        onFieldSubmitted: (_) => _onTextFieldChange(),
         onTapOutside: (_) => _onTextFieldChange(),
         decoration: InputDecoration(labelText: widget.analysisParameter.symbol),
         validator: (value) {
@@ -89,6 +92,9 @@ class _DistributionAnalysisParameterFieldState
             value: DistributionAnalysisParameterValue.fromNum(_getNumberFromText()!),
           );
     }
+    Future.delayed(Duration.zero, () {
+      widget.focusNode.requestFocus();
+    });
   }
 
   num? _getNumberFromText() {
