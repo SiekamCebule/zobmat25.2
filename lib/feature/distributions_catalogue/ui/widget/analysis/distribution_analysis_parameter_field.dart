@@ -4,6 +4,7 @@ import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis/setup/distribution_analysis_parameter.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/domain/entity/analysis/setup/distribution_analysis_parameter_value.dart';
 import 'package:zobmat25_2/feature/distribution_dashboard/ui/bloc/distribution_dashboard_cubit.dart';
+import 'package:zobmat25_2/feature/distributions_catalogue/ui/widget/analysis/distribution_analysis_easter_egg.dart';
 
 class DistributionAnalysisParameterField extends StatefulWidget {
   const DistributionAnalysisParameterField({
@@ -26,6 +27,7 @@ class _DistributionAnalysisParameterFieldState
     extends State<DistributionAnalysisParameterField> {
   late final TextEditingController _controller;
   late final _formKey = GlobalKey<FormFieldState>();
+  var _dialogIsShown = false;
 
   @override
   void initState() {
@@ -63,6 +65,12 @@ class _DistributionAnalysisParameterFieldState
           if (value == null) {
             return 'Wpisz wartość';
           }
+          if (!_dialogIsShown) {
+            _dialogIsShown = true;
+            handleDistributionAnalysisEasterEgg(value, context);
+          } else {
+            _dialogIsShown = false;
+          }
           final number = _getNumberFromText();
           if (number == null) {
             return 'Wpisz liczbę';
@@ -76,10 +84,10 @@ class _DistributionAnalysisParameterFieldState
   void _onTextFieldChange() {
     if (_formKey.currentState!.validate()) {
       context.read<DistributionDashboardCubit>().changeAnalysisParameter(
-        component: widget.analysisComponent,
-        parameter: widget.analysisParameter,
-        value: DistributionAnalysisParameterValue.fromNum(_getNumberFromText()!),
-      );
+            component: widget.analysisComponent,
+            parameter: widget.analysisParameter,
+            value: DistributionAnalysisParameterValue.fromNum(_getNumberFromText()!),
+          );
     }
   }
 

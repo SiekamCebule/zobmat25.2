@@ -61,6 +61,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/distribution_images/
+    - assets/icons/
+    - assets/fonts/g/g/g/gg/
   fonts:
     - family: Raleway
       fonts:
