@@ -69,6 +69,7 @@ class BibliographyCard extends StatelessWidget {
               'https://www.geeksforgeeks.org/negative-binomial-distribution-properties-applications-and-examples/',
             ),
             link('https://en.wikipedia.org/wiki/Zipf%27s_law#Occurrences'),
+            link('https://en.wikipedia.org/wiki/Beta-binomial_distribution'),
           ],
         ),
       ),

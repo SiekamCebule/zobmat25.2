@@ -99,6 +99,8 @@ class UsedImagesCard extends StatelessWidget {
             linkSpan(
               'Autor nieznany, domena publiczna, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Zipf_distribution_PMF.png)',
             ),
+            linkSpan(
+                'Nschuma, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Beta-binomial_distribution_pmf.png)'),
           ],
         ),
       ),

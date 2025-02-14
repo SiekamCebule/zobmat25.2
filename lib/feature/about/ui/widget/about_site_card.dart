@@ -37,7 +37,7 @@ class AboutSiteCard extends StatelessWidget {
               gap: 8,
               items: [
                 Text(
-                  'Listę $distributionsCount ciągłych i dyskretnych rozkładów prawdopodobieństwa',
+                  'Listę łącznie $distributionsCount ciągłych i dyskretnych rozkładów prawdopodobieństwa',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text(

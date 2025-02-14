@@ -18,5 +18,6 @@ final distributionImageUrls = {
   'hypergeometric_distribution': 'hypergeometric_distribution.jpg',
   'poisson_distribution': 'poisson_distribution.jpg',
   'pascal_distribution': 'pascal_distribution.jpg',
+  'beta_binomial_distribution': 'beta_binomial_distribution.jpg',
   'zipf_distribution': 'zipf_distribution.jpg',
 };
