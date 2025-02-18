@@ -20,21 +20,16 @@ class UpdateDistributionAnalysisUseCase {
 
     final DistributionAnalysis newAnalysis = switch (analysisSetup) {
       ContinuousDistributionAnalysisSetup() => ContinuousDistributionAnalysis().analyze(
-        setup:
-            await distributionDashboard.getAnalysisSetup()
-                as ContinuousDistributionAnalysisSetup,
-        distribution: distribution as ContinuousDistribution,
-        paramsSetup: paramsSetup,
-      ),
+          setup: analysisSetup,
+          distribution: distribution as ContinuousDistribution,
+          paramsSetup: paramsSetup,
+        ),
       DiscreteDistributionAnalysisSetup() => DiscreteDistributionAnalysis().analyze(
-        setup:
-            await distributionDashboard.getAnalysisSetup()
-                as DiscreteDistributionAnalysisSetup,
-        distribution: distribution as DiscreteDistribution,
-        paramsSetup: paramsSetup,
-      ),
-      _ =>
-        throw UnsupportedError(
+          setup: analysisSetup,
+          distribution: distribution as DiscreteDistribution,
+          paramsSetup: paramsSetup,
+        ),
+      _ => throw UnsupportedError(
           'An unknown distribution analysis setup type: ${analysisSetup.runtimeType.toString()}',
         ),
     };

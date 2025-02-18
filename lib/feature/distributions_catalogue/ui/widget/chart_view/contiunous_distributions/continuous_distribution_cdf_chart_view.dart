@@ -57,6 +57,7 @@ class ContinuousDistributionCdfChartView extends StatelessWidget {
             belowBarData: BarAreaData(color: Colors.yellow),
             isCurved: true,
             dotData: FlDotData(show: false),
+            barWidth: DistributionChartSharedComponents.lineChartWidth(context),
           ),
         ],
         gridData: FlGridData(

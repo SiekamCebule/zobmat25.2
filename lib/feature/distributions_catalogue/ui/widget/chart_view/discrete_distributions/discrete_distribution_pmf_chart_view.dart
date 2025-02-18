@@ -79,7 +79,7 @@ class DiscreteDistributionPmfChartView extends StatelessWidget {
               x: x,
               barRods: [
                 BarChartRodData(
-                  width: 7,
+                  width: DistributionChartSharedComponents.barChartWidth(context),
                   fromY: 0,
                   toY: values[x],
                   color: DistributionChartSharedComponents.chartColor(context),

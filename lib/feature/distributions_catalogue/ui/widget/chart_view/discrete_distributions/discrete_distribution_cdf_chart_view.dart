@@ -34,7 +34,7 @@ class DiscreteDistributionCdfChartView extends StatelessWidget {
                 .toList(),
             isCurved: false,
             color: DistributionChartSharedComponents.chartColor(context),
-            barWidth: 2,
+            barWidth: DistributionChartSharedComponents.lineChartWidth(context),
             dotData: FlDotData(
               show: true,
               getDotPainter: (spot, xPercentage, barData, index) {

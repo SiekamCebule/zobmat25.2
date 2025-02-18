@@ -29,7 +29,7 @@ final betaBinomialDistribution = DiscreteDistributionModel(
       'alpha',
       'Parametr alfa',
       'Parametr kształtu rozkładu beta.',
-      min: 0,
+      min: 0.001,
       max: 74,
       defaultValue: 1,
     ),
@@ -37,7 +37,7 @@ final betaBinomialDistribution = DiscreteDistributionModel(
       'beta',
       'Parametr beta',
       'Parametr kształtu rozkładu beta.',
-      min: 0,
+      min: 0.001,
       max: 74,
       defaultValue: 1,
     ),
@@ -47,6 +47,7 @@ final betaBinomialDistribution = DiscreteDistributionModel(
       DistributionDescriptionParagraph(
         text:
             'Dowiedz się więcej [tutaj (angielska Wikipedia)](https://en.wikipedia.org/wiki/Beta-binomial_distribution).',
+        containsMarkdownLinks: true,
       ),
       DistributionDescriptionMathExpression(
         title: 'Masa prawdopodobieństwa',

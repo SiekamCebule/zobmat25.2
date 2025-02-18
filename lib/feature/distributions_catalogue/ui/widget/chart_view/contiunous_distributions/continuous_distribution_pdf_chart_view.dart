@@ -65,6 +65,7 @@ class ContinuousDistributionPdfChartView extends StatelessWidget {
             isCurved: true,
             curveSmoothness: 0.35,
             dotData: FlDotData(show: false),
+            barWidth: DistributionChartSharedComponents.lineChartWidth(context),
           ),
         ],
         gridData: FlGridData(
